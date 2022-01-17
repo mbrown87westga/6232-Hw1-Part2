@@ -16,5 +16,17 @@ namespace TechSupport.View
     {
       InitializeComponent();
     }
+
+    private void LoginButton_Click(object sender, EventArgs e)
+    {
+      if (UsernameTextBox.Text == "Jane" && PasswordTextBox.Text == "test1234")
+      {
+        MessageBox.Show("log in success!");
+      }
+      else
+      {
+        ErrorMessageLabel.Text = "invalid username/password";
+      }
+    }
   }
 }
