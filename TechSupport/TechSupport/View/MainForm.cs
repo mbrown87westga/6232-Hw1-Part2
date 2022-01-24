@@ -1,4 +1,7 @@
-﻿using System.Windows.Forms;
+﻿using System.Collections.Generic;
+using System.ComponentModel;
+using System.Windows.Forms;
+using TechSupport.Model;
 
 namespace TechSupport.View
 {
@@ -10,6 +13,8 @@ namespace TechSupport.View
   /// </remarks>
   public partial class MainForm : Form
   {
+    private List<Incident> incidents;
+
     private string username;
     /// <summary>
     /// The username of the currently logged in user.
@@ -32,7 +37,10 @@ namespace TechSupport.View
     /// </summary>
     public MainForm()
     {
+      incidents = new List<Incident>();
       InitializeComponent();
+
+      incidentsDataGridView.DataSource = new BindingSource(new BindingList<Incident>(incidents), null);
     }
 
     /// <summary>
