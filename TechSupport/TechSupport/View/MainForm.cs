@@ -55,7 +55,11 @@ namespace TechSupport.View
       Application.Exit();
     }
 
-    private void button1_Click(object sender, System.EventArgs e)
+    private void addIncident_Click(object sender, System.EventArgs e)
+    {
+
+    }
+    private void searchIncident_Click(object sender, System.EventArgs e)
     {
 
     }
