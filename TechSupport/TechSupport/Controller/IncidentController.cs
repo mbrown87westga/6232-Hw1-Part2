@@ -8,14 +8,14 @@ namespace TechSupport.Controller
   /// <summary>
   /// This controller is how the frontend talks to the backend.
   /// </summary>
-  public class IncidentsController
+  public class IncidentController
   {
     private readonly IncidentsDal _incidentsDal; //In your example code, you used both camelCase and underscore prefixed camelCase, so I am going with underscore prefixed for class variables.
 
     /// <summary>
     /// The default constructor. Builds a DAL to get and save the incidents.
     /// </summary>
-    public IncidentsController()
+    public IncidentController()
     {
       _incidentsDal = new IncidentsDal(); //Normally I would use IOC here so that this could be unit tested, but I will go with how we were instructed to do this.
     }
