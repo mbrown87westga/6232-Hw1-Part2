@@ -22,11 +22,11 @@ namespace TechSupport.View
     /// </summary>
     /// <param name="sender">ignored</param>
     /// <param name="e">ignored</param>
-    private void LoginButton_Click(object sender, EventArgs e)
+    private void LoginButtonClick(object sender, EventArgs e)
     {
       if (UsernameTextBox.Text == "Jane" && PasswordTextBox.Text == "test1234")
       {
-        var mainForm = this.HideThisAndShowForm<MainForm>() as MainForm;
+        var mainForm = this.HideThisAndShowForm<MainForm>();
         mainForm.Username = UsernameTextBox.Text;
         UsernameTextBox.Clear(); //clearing these to make the form clean when we re-enter it after logging out.
         PasswordTextBox.Clear();
@@ -47,7 +47,7 @@ namespace TechSupport.View
     /// </summary>
     /// <param name="sender">ignored</param>
     /// <param name="e">ignored</param>
-    private void EitherTextBox_TextChanged(object sender, EventArgs e)
+    private void EitherTextBoxTextChanged(object sender, EventArgs e)
     {
       if (!string.IsNullOrEmpty(ErrorMessageLabel.Text) &&
           (!string.IsNullOrEmpty(UsernameTextBox.Text) || 
@@ -63,7 +63,7 @@ namespace TechSupport.View
     /// </summary>
     /// <param name="sender">ignored</param>
     /// <param name="e">ignored</param>
-    private void LoginForm_FormClosed(object sender, FormClosedEventArgs e)
+    private void LoginFormFormClosed(object sender, FormClosedEventArgs e)
     {
       Application.Exit();
     }

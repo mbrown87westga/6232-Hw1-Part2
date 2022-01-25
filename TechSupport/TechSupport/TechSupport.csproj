@@ -46,10 +46,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller\IncidentsController.cs" />
+    <Compile Include="DAL\IncidentsDAL.cs" />
     <Compile Include="ExtensionMethods.cs" />
     <Compile Include="Model\Incident.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="View\SearchForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\SearchForm.Designer.cs">
+      <DependentUpon>SearchForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\AddForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -77,6 +85,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="View\SearchForm.resx">
+      <DependentUpon>SearchForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\AddForm.resx">
       <DependentUpon>AddForm.cs</DependentUpon>
     </EmbeddedResource>

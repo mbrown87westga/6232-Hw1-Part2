@@ -47,7 +47,7 @@
       this.UsernameTextBox.Name = "UsernameTextBox";
       this.UsernameTextBox.Size = new System.Drawing.Size(171, 20);
       this.UsernameTextBox.TabIndex = 1;
-      this.UsernameTextBox.TextChanged += new System.EventHandler(this.EitherTextBox_TextChanged);
+      this.UsernameTextBox.TextChanged += new System.EventHandler(this.EitherTextBoxTextChanged);
       // 
       // UsernameLabel
       // 
@@ -91,7 +91,7 @@
       this.LoginButton.TabIndex = 3;
       this.LoginButton.Text = "Login";
       this.LoginButton.UseVisualStyleBackColor = true;
-      this.LoginButton.Click += new System.EventHandler(this.LoginButton_Click);
+      this.LoginButton.Click += new System.EventHandler(this.LoginButtonClick);
       // 
       // fileSystemWatcher1
       // 
@@ -106,7 +106,7 @@
       this.PasswordTextBox.PasswordChar = '*';
       this.PasswordTextBox.Size = new System.Drawing.Size(171, 20);
       this.PasswordTextBox.TabIndex = 2;
-      this.PasswordTextBox.TextChanged += new System.EventHandler(this.EitherTextBox_TextChanged);
+      this.PasswordTextBox.TextChanged += new System.EventHandler(this.EitherTextBoxTextChanged);
       // 
       // MainTableLayoutPanel
       // 
@@ -143,7 +143,7 @@
       this.Name = "LoginForm";
       this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
       this.Text = "Login";
-      this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.LoginForm_FormClosed);
+      this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.LoginFormFormClosed);
       ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).EndInit();
       this.MainTableLayoutPanel.ResumeLayout(false);
       this.MainTableLayoutPanel.PerformLayout();

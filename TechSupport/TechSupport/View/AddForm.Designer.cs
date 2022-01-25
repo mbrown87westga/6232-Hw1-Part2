@@ -103,6 +103,7 @@
       this.addButton.TabIndex = 4;
       this.addButton.Text = "Add";
       this.addButton.UseVisualStyleBackColor = true;
+      this.addButton.Click += new System.EventHandler(this.AddClick);
       // 
       // cancelButton
       // 
@@ -113,6 +114,7 @@
       this.cancelButton.TabIndex = 5;
       this.cancelButton.Text = "Cancel";
       this.cancelButton.UseVisualStyleBackColor = true;
+      this.cancelButton.Click += new System.EventHandler(this.CancelClick);
       // 
       // AddForm
       // 

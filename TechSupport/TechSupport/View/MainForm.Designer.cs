@@ -33,9 +33,6 @@
       this.addIncidentButton = new System.Windows.Forms.Button();
       this.searchIncidentButton = new System.Windows.Forms.Button();
       this.incidentsDataGridView = new System.Windows.Forms.DataGridView();
-      this.TitleColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-      this.DescriptionColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-      this.CustomerIdColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
       ((System.ComponentModel.ISupportInitialize)(this.incidentsDataGridView)).BeginInit();
       this.SuspendLayout();
       // 
@@ -59,7 +56,7 @@
       this.Logout.TabStop = true;
       this.Logout.Text = "Logout";
       this.Logout.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-      this.Logout.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.Logout_LinkClicked);
+      this.Logout.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LogoutLinkClicked);
       // 
       // addIncidentButton
       // 
@@ -69,7 +66,7 @@
       this.addIncidentButton.TabIndex = 2;
       this.addIncidentButton.Text = "Add Incident";
       this.addIncidentButton.UseVisualStyleBackColor = true;
-      this.addIncidentButton.Click += new System.EventHandler(this.addIncident_Click);
+      this.addIncidentButton.Click += new System.EventHandler(this.AddIncidentClick);
       // 
       // searchIncidentButton
       // 
@@ -79,7 +76,7 @@
       this.searchIncidentButton.TabIndex = 2;
       this.searchIncidentButton.Text = "Search Incident";
       this.searchIncidentButton.UseVisualStyleBackColor = true;
-      this.searchIncidentButton.Click += new System.EventHandler(this.searchIncident_Click);
+      this.searchIncidentButton.Click += new System.EventHandler(this.SearchIncidentClick);
       // 
       // incidentsDataGridView
       // 
@@ -87,29 +84,10 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
       this.incidentsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-      this.incidentsDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.TitleColumn,
-            this.DescriptionColumn,
-            this.CustomerIdColumn});
       this.incidentsDataGridView.Location = new System.Drawing.Point(12, 42);
       this.incidentsDataGridView.Name = "incidentsDataGridView";
       this.incidentsDataGridView.Size = new System.Drawing.Size(344, 218);
       this.incidentsDataGridView.TabIndex = 3;
-      // 
-      // TitleColumn
-      // 
-      this.TitleColumn.HeaderText = "Title";
-      this.TitleColumn.Name = "TitleColumn";
-      // 
-      // DescriptionColumn
-      // 
-      this.DescriptionColumn.HeaderText = "Description";
-      this.DescriptionColumn.Name = "DescriptionColumn";
-      // 
-      // CustomerIdColumn
-      // 
-      this.CustomerIdColumn.HeaderText = "Customer ID";
-      this.CustomerIdColumn.Name = "CustomerIdColumn";
       // 
       // MainForm
       // 
@@ -124,7 +102,8 @@
       this.Name = "MainForm";
       this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
       this.Text = "Main Form";
-      this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
+      this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainFormFormClosed);
+      this.Load += new System.EventHandler(this.MainFormLoad);
       ((System.ComponentModel.ISupportInitialize)(this.incidentsDataGridView)).EndInit();
       this.ResumeLayout(false);
       this.PerformLayout();
@@ -138,8 +117,5 @@
     private System.Windows.Forms.Button addIncidentButton;
     private System.Windows.Forms.Button searchIncidentButton;
     private System.Windows.Forms.DataGridView incidentsDataGridView;
-    private System.Windows.Forms.DataGridViewTextBoxColumn TitleColumn;
-    private System.Windows.Forms.DataGridViewTextBoxColumn DescriptionColumn;
-    private System.Windows.Forms.DataGridViewTextBoxColumn CustomerIdColumn;
   }
 }

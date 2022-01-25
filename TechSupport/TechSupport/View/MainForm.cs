@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Windows.Forms;
+using TechSupport.Controller;
 using TechSupport.Model;
 
 namespace TechSupport.View
@@ -13,9 +13,9 @@ namespace TechSupport.View
   /// </remarks>
   public partial class MainForm : Form
   {
-    private List<Incident> incidents;
+    readonly IncidentsController _incidentsController;
 
-    private string username;
+    private string _username;
     /// <summary>
     /// The username of the currently logged in user.
     /// </summary>
@@ -24,10 +24,10 @@ namespace TechSupport.View
     /// </remarks>
     public string Username
     {
-      get { return username; }
+      get => _username;
       set
       {
-        username = value;
+        _username = value;
         LoggedInUserLabel.Text = value;
       }
     }
@@ -37,10 +37,19 @@ namespace TechSupport.View
     /// </summary>
     public MainForm()
     {
-      incidents = new List<Incident>();
       InitializeComponent();
 
-      incidentsDataGridView.DataSource = new BindingSource(new BindingList<Incident>(incidents), null);
+      _incidentsController = new IncidentsController();
+    }
+    private void MainFormLoad(object sender, System.EventArgs e)
+    {
+      SetDataSource();
+    }
+
+    private void SetDataSource()
+    {
+      incidentsDataGridView.DataSource = null;
+      incidentsDataGridView.DataSource = new BindingSource(_incidentsController.GetIncidents(), null);
     }
 
     /// <summary>
@@ -48,7 +57,7 @@ namespace TechSupport.View
     /// </summary>
     /// <param name="sender">ignored</param>
     /// <param name="e">ignored</param>
-    private void Logout_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+    private void LogoutLinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
     {
       this.HideThisAndShowForm<LoginForm>();
     }
@@ -58,18 +67,22 @@ namespace TechSupport.View
     /// </summary>
     /// <param name="sender">ignored</param>
     /// <param name="e">ignored</param>
-    private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
+    private void MainFormFormClosed(object sender, FormClosedEventArgs e)
     {
       Application.Exit();
     }
 
-    private void addIncident_Click(object sender, System.EventArgs e)
+    private void AddIncidentClick(object sender, System.EventArgs e)
     {
-
+      var (_, result) = this.ShowFormAsModal<AddForm>();
+      if (result == DialogResult.OK)
+      {
+        SetDataSource();
+      }
     }
-    private void searchIncident_Click(object sender, System.EventArgs e)
+    private void SearchIncidentClick(object sender, System.EventArgs e)
     {
-
+      this.ShowFormAsModal<SearchForm>();
     }
   }
 }
