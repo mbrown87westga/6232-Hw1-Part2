@@ -10,7 +10,7 @@ namespace TechSupport.Controller
   /// </summary>
   public class IncidentsController
   {
-    private readonly IncidentsDal _incidentsDal; //In your example code, you used both camelCase and underscore prefixed camelCase, so I am going with underscore prefixed.
+    private readonly IncidentsDal _incidentsDal; //In your example code, you used both camelCase and underscore prefixed camelCase, so I am going with underscore prefixed for class variables.
 
     /// <summary>
     /// The default constructor. Builds a DAL to get and save the incidents.
@@ -31,7 +31,7 @@ namespace TechSupport.Controller
     }
 
     /// <summary>
-    /// A method to ave a new incident
+    /// A method to save a new incident
     /// </summary>
     /// <param name="incident">the incident to save.</param>
     public void Add(Incident incident)
