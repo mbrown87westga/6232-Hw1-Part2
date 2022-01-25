@@ -23,8 +23,8 @@ namespace TechSupport.View
     
     private void SearchClick(object sender, EventArgs e)
     {
-      resultsDataGridView.DataSource = null;
-      resultsDataGridView.DataSource = new BindingSource(_incidentController.GetIncidents(customerIdTextBox.Text), null);
+      ResultsDataGridView.DataSource = null;
+      ResultsDataGridView.DataSource = new BindingSource(_incidentController.GetIncidents(CustomerIdTextBox.Text), null);
     }
 
     /// <summary>

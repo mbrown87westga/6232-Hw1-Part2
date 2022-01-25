@@ -18,7 +18,7 @@ namespace TechSupport.View
     /// The username of the currently logged in user.
     /// </summary>
     /// <remarks>
-    /// Note how setting this also sets the loggedInUserLabel's text. This is a poor person's data binding.
+    /// Note how setting this also sets the LoggedInUserLabel's text. This is a poor person's data binding.
     /// </remarks>
     public string Username
     {
@@ -26,7 +26,7 @@ namespace TechSupport.View
       set
       {
         _username = value;
-        loggedInUserLabel.Text = value;
+        LoggedInUserLabel.Text = value;
       }
     }
 
@@ -46,8 +46,8 @@ namespace TechSupport.View
 
     private void SetDataSource()
     {
-      incidentsDataGridView.DataSource = null;
-      incidentsDataGridView.DataSource = new BindingSource(_incidentController.GetIncidents(), null);
+      IncidentsDataGridView.DataSource = null;
+      IncidentsDataGridView.DataSource = new BindingSource(_incidentController.GetIncidents(), null);
     }
 
     /// <summary>

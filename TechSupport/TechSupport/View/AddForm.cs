@@ -35,9 +35,9 @@ namespace TechSupport.View
     {
       _incidentController.Add(new Incident
       {
-        Description = descriptionTextBox.Text,
-        Title = titleTextBox.Text,
-        CustomerId = customerIdTextBox.Text
+        Description = DescriptionTextBox.Text,
+        Title = TitleTextBox.Text,
+        CustomerId = CustomerIdTextBox.Text
       });
       ClearDialog();
       this.DialogResult = DialogResult.OK;
@@ -56,20 +56,20 @@ namespace TechSupport.View
 
     private void ClearDialog()
     {
-      titleTextBox.Text = "";
-      customerIdTextBox.Text = "";
-      descriptionTextBox.Text = "";
+      TitleTextBox.Text = "";
+      CustomerIdTextBox.Text = "";
+      DescriptionTextBox.Text = "";
     }
 
     private void customerIdTextBoxTextChanged(object sender, EventArgs e)
     {
-      if (String.IsNullOrEmpty(customerIdTextBox.Text))
+      if (String.IsNullOrEmpty(CustomerIdTextBox.Text))
       {
-        addButton.Enabled = false;
+        AddButton.Enabled = false;
       }
       else
       {
-        addButton.Enabled = true;
+        AddButton.Enabled = true;
       }
     }
   }

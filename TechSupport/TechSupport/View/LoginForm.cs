@@ -24,19 +24,19 @@ namespace TechSupport.View
     /// <param name="e">ignored</param>
     private void LoginButtonClick(object sender, EventArgs e)
     {
-      if (usernameTextBox.Text == "Jane" && passwordTextBox.Text == "test1234")
+      if (UsernameTextBox.Text == "Jane" && PasswordTextBox.Text == "test1234")
       {
         var mainForm = this.HideThisAndShowForm<MainForm>();
-        mainForm.Username = usernameTextBox.Text;
-        usernameTextBox.Clear(); //clearing these to make the form clean when we re-enter it after logging out.
-        passwordTextBox.Clear();
+        mainForm.Username = UsernameTextBox.Text;
+        UsernameTextBox.Clear(); //clearing these to make the form clean when we re-enter it after logging out.
+        PasswordTextBox.Clear();
       }
       else
       {
-        usernameTextBox.Select(0, usernameTextBox.TextLength); //this selects the username text box, since you probably want to fill it out again.
-        usernameTextBox.Select();
-        errorMessageLabel.ForeColor = Color.Red;
-        errorMessageLabel.Text = "invalid username/password";
+        UsernameTextBox.Select(0, UsernameTextBox.TextLength); //this selects the username text box, since you probably want to fill it out again.
+        UsernameTextBox.Select();
+        ErrorMessageLabel.ForeColor = Color.Red;
+        ErrorMessageLabel.Text = "invalid username/password";
       }
 
     }
@@ -49,21 +49,21 @@ namespace TechSupport.View
     /// <param name="e">ignored</param>
     private void EitherTextBoxTextChanged(object sender, EventArgs e)
     {
-      if (String.IsNullOrEmpty(usernameTextBox.Text) || String.IsNullOrEmpty(passwordTextBox.Text))
+      if (String.IsNullOrEmpty(UsernameTextBox.Text) || String.IsNullOrEmpty(PasswordTextBox.Text))
       {
-        loginButton.Enabled = false;
+        LoginButton.Enabled = false;
       }
       else
       {
-        loginButton.Enabled = true;
+        LoginButton.Enabled = true;
       }
 
-      if (!string.IsNullOrEmpty(errorMessageLabel.Text) &&
-          (!string.IsNullOrEmpty(usernameTextBox.Text) ||
-           !string.IsNullOrEmpty(passwordTextBox.Text)))
+      if (!string.IsNullOrEmpty(ErrorMessageLabel.Text) &&
+          (!string.IsNullOrEmpty(UsernameTextBox.Text) ||
+           !string.IsNullOrEmpty(PasswordTextBox.Text)))
       {
-        errorMessageLabel.Text = "";
-        errorMessageLabel.ForeColor = Color.Black; //An assumption: I think I should reset the color to the default color when the error is fixed.
+        ErrorMessageLabel.Text = "";
+        ErrorMessageLabel.ForeColor = Color.Black; //An assumption: I think I should reset the color to the default color when the error is fixed.
       }
     }
 

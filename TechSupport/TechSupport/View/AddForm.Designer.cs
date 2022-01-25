@@ -28,99 +28,99 @@
     /// </summary>
     private void InitializeComponent()
     {
-      this.titleLabel = new System.Windows.Forms.Label();
-      this.titleTextBox = new System.Windows.Forms.TextBox();
-      this.descriptionTextBox = new System.Windows.Forms.TextBox();
-      this.descriptionLabel = new System.Windows.Forms.Label();
-      this.customerIdTextBox = new System.Windows.Forms.TextBox();
-      this.customerIdLabel = new System.Windows.Forms.Label();
-      this.addButton = new System.Windows.Forms.Button();
-      this.cancelButton = new System.Windows.Forms.Button();
+      this.TitleLabel = new System.Windows.Forms.Label();
+      this.TitleTextBox = new System.Windows.Forms.TextBox();
+      this.DescriptionTextBox = new System.Windows.Forms.TextBox();
+      this.DescriptionLabel = new System.Windows.Forms.Label();
+      this.CustomerIdTextBox = new System.Windows.Forms.TextBox();
+      this.CustomerIdLabel = new System.Windows.Forms.Label();
+      this.AddButton = new System.Windows.Forms.Button();
+      this.FormCancelButton = new System.Windows.Forms.Button();
       this.CustomerIdRequiredLabel = new System.Windows.Forms.Label();
       this.RequiredDescriptionAsteriskLabel = new System.Windows.Forms.Label();
       this.RequiredDescriptionLabel = new System.Windows.Forms.Label();
       this.SuspendLayout();
       // 
-      // titleLabel
+      // TitleLabel
       // 
-      this.titleLabel.AutoSize = true;
-      this.titleLabel.Location = new System.Drawing.Point(12, 15);
-      this.titleLabel.Name = "titleLabel";
-      this.titleLabel.Size = new System.Drawing.Size(27, 13);
-      this.titleLabel.TabIndex = 0;
-      this.titleLabel.Text = "Title";
+      this.TitleLabel.AutoSize = true;
+      this.TitleLabel.Location = new System.Drawing.Point(12, 15);
+      this.TitleLabel.Name = "TitleLabel";
+      this.TitleLabel.Size = new System.Drawing.Size(27, 13);
+      this.TitleLabel.TabIndex = 0;
+      this.TitleLabel.Text = "Title";
       // 
-      // titleTextBox
+      // TitleTextBox
       // 
-      this.titleTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+      this.TitleTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-      this.titleTextBox.Location = new System.Drawing.Point(41, 12);
-      this.titleTextBox.Name = "titleTextBox";
-      this.titleTextBox.Size = new System.Drawing.Size(278, 20);
-      this.titleTextBox.TabIndex = 1;
+      this.TitleTextBox.Location = new System.Drawing.Point(41, 12);
+      this.TitleTextBox.Name = "TitleTextBox";
+      this.TitleTextBox.Size = new System.Drawing.Size(278, 20);
+      this.TitleTextBox.TabIndex = 1;
       // 
-      // descriptionTextBox
+      // DescriptionTextBox
       // 
-      this.descriptionTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+      this.DescriptionTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-      this.descriptionTextBox.Location = new System.Drawing.Point(12, 57);
-      this.descriptionTextBox.Multiline = true;
-      this.descriptionTextBox.Name = "descriptionTextBox";
-      this.descriptionTextBox.Size = new System.Drawing.Size(491, 140);
-      this.descriptionTextBox.TabIndex = 3;
+      this.DescriptionTextBox.Location = new System.Drawing.Point(12, 57);
+      this.DescriptionTextBox.Multiline = true;
+      this.DescriptionTextBox.Name = "DescriptionTextBox";
+      this.DescriptionTextBox.Size = new System.Drawing.Size(491, 140);
+      this.DescriptionTextBox.TabIndex = 3;
       // 
-      // descriptionLabel
+      // DescriptionLabel
       // 
-      this.descriptionLabel.AutoSize = true;
-      this.descriptionLabel.Location = new System.Drawing.Point(12, 41);
-      this.descriptionLabel.Name = "descriptionLabel";
-      this.descriptionLabel.Size = new System.Drawing.Size(60, 13);
-      this.descriptionLabel.TabIndex = 2;
-      this.descriptionLabel.Text = "Description";
+      this.DescriptionLabel.AutoSize = true;
+      this.DescriptionLabel.Location = new System.Drawing.Point(12, 41);
+      this.DescriptionLabel.Name = "DescriptionLabel";
+      this.DescriptionLabel.Size = new System.Drawing.Size(60, 13);
+      this.DescriptionLabel.TabIndex = 2;
+      this.DescriptionLabel.Text = "Description";
       // 
-      // customerIdTextBox
+      // CustomerIdTextBox
       // 
-      this.customerIdTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-      this.customerIdTextBox.Location = new System.Drawing.Point(403, 12);
-      this.customerIdTextBox.Name = "customerIdTextBox";
-      this.customerIdTextBox.Size = new System.Drawing.Size(100, 20);
-      this.customerIdTextBox.TabIndex = 2;
-      this.customerIdTextBox.TextChanged += new System.EventHandler(this.customerIdTextBoxTextChanged);
+      this.CustomerIdTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+      this.CustomerIdTextBox.Location = new System.Drawing.Point(403, 12);
+      this.CustomerIdTextBox.Name = "CustomerIdTextBox";
+      this.CustomerIdTextBox.Size = new System.Drawing.Size(100, 20);
+      this.CustomerIdTextBox.TabIndex = 2;
+      this.CustomerIdTextBox.TextChanged += new System.EventHandler(this.customerIdTextBoxTextChanged);
       // 
-      // customerIdLabel
+      // CustomerIdLabel
       // 
-      this.customerIdLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-      this.customerIdLabel.AutoSize = true;
-      this.customerIdLabel.Location = new System.Drawing.Point(325, 15);
-      this.customerIdLabel.Name = "customerIdLabel";
-      this.customerIdLabel.Size = new System.Drawing.Size(65, 13);
-      this.customerIdLabel.TabIndex = 4;
-      this.customerIdLabel.Text = "Customer ID";
+      this.CustomerIdLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+      this.CustomerIdLabel.AutoSize = true;
+      this.CustomerIdLabel.Location = new System.Drawing.Point(325, 15);
+      this.CustomerIdLabel.Name = "CustomerIdLabel";
+      this.CustomerIdLabel.Size = new System.Drawing.Size(65, 13);
+      this.CustomerIdLabel.TabIndex = 4;
+      this.CustomerIdLabel.Text = "Customer ID";
       // 
-      // addButton
+      // AddButton
       // 
-      this.addButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-      this.addButton.Enabled = false;
-      this.addButton.Location = new System.Drawing.Point(347, 203);
-      this.addButton.Name = "addButton";
-      this.addButton.Size = new System.Drawing.Size(75, 23);
-      this.addButton.TabIndex = 4;
-      this.addButton.Text = "Add";
-      this.addButton.UseVisualStyleBackColor = true;
-      this.addButton.Click += new System.EventHandler(this.AddClick);
+      this.AddButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+      this.AddButton.Enabled = false;
+      this.AddButton.Location = new System.Drawing.Point(347, 203);
+      this.AddButton.Name = "AddButton";
+      this.AddButton.Size = new System.Drawing.Size(75, 23);
+      this.AddButton.TabIndex = 4;
+      this.AddButton.Text = "Add";
+      this.AddButton.UseVisualStyleBackColor = true;
+      this.AddButton.Click += new System.EventHandler(this.AddClick);
       // 
-      // cancelButton
+      // FormCancelButton
       // 
-      this.cancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-      this.cancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-      this.cancelButton.Location = new System.Drawing.Point(428, 203);
-      this.cancelButton.Name = "cancelButton";
-      this.cancelButton.Size = new System.Drawing.Size(75, 23);
-      this.cancelButton.TabIndex = 5;
-      this.cancelButton.Text = "Cancel";
-      this.cancelButton.UseVisualStyleBackColor = true;
-      this.cancelButton.Click += new System.EventHandler(this.CancelClick);
+      this.FormCancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+      this.FormCancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+      this.FormCancelButton.Location = new System.Drawing.Point(428, 203);
+      this.FormCancelButton.Name = "FormCancelButton";
+      this.FormCancelButton.Size = new System.Drawing.Size(75, 23);
+      this.FormCancelButton.TabIndex = 5;
+      this.FormCancelButton.Text = "Cancel";
+      this.FormCancelButton.UseVisualStyleBackColor = true;
+      this.FormCancelButton.Click += new System.EventHandler(this.CancelClick);
       // 
       // CustomerIdRequiredLabel
       // 
@@ -156,22 +156,21 @@
       // 
       // AddForm
       // 
-      this.AcceptButton = this.addButton;
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-      this.CancelButton = this.cancelButton;
+      this.CancelButton = this.FormCancelButton;
       this.ClientSize = new System.Drawing.Size(515, 238);
       this.Controls.Add(this.RequiredDescriptionLabel);
       this.Controls.Add(this.RequiredDescriptionAsteriskLabel);
       this.Controls.Add(this.CustomerIdRequiredLabel);
-      this.Controls.Add(this.cancelButton);
-      this.Controls.Add(this.addButton);
-      this.Controls.Add(this.customerIdTextBox);
-      this.Controls.Add(this.customerIdLabel);
-      this.Controls.Add(this.descriptionTextBox);
-      this.Controls.Add(this.descriptionLabel);
-      this.Controls.Add(this.titleTextBox);
-      this.Controls.Add(this.titleLabel);
+      this.Controls.Add(this.FormCancelButton);
+      this.Controls.Add(this.AddButton);
+      this.Controls.Add(this.CustomerIdTextBox);
+      this.Controls.Add(this.CustomerIdLabel);
+      this.Controls.Add(this.DescriptionTextBox);
+      this.Controls.Add(this.DescriptionLabel);
+      this.Controls.Add(this.TitleTextBox);
+      this.Controls.Add(this.TitleLabel);
       this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
       this.MaximizeBox = false;
       this.MinimizeBox = false;
@@ -185,14 +184,14 @@
 
     #endregion
 
-    private System.Windows.Forms.Label titleLabel;
-    private System.Windows.Forms.TextBox titleTextBox;
-    private System.Windows.Forms.TextBox descriptionTextBox;
-    private System.Windows.Forms.Label descriptionLabel;
-    private System.Windows.Forms.TextBox customerIdTextBox;
-    private System.Windows.Forms.Label customerIdLabel;
-    private System.Windows.Forms.Button addButton;
-    private System.Windows.Forms.Button cancelButton;
+    private System.Windows.Forms.Label TitleLabel;
+    private System.Windows.Forms.TextBox TitleTextBox;
+    private System.Windows.Forms.TextBox DescriptionTextBox;
+    private System.Windows.Forms.Label DescriptionLabel;
+    private System.Windows.Forms.TextBox CustomerIdTextBox;
+    private System.Windows.Forms.Label CustomerIdLabel;
+    private System.Windows.Forms.Button AddButton;
+    private System.Windows.Forms.Button FormCancelButton;
     private System.Windows.Forms.Label CustomerIdRequiredLabel;
     private System.Windows.Forms.Label RequiredDescriptionAsteriskLabel;
     private System.Windows.Forms.Label RequiredDescriptionLabel;
