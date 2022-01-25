@@ -24,19 +24,19 @@ namespace TechSupport.View
     /// <param name="e">ignored</param>
     private void LoginButtonClick(object sender, EventArgs e)
     {
-      if (UsernameTextBox.Text == "Jane" && PasswordTextBox.Text == "test1234")
+      if (usernameTextBox.Text == "Jane" && passwordTextBox.Text == "test1234")
       {
         var mainForm = this.HideThisAndShowForm<MainForm>();
-        mainForm.Username = UsernameTextBox.Text;
-        UsernameTextBox.Clear(); //clearing these to make the form clean when we re-enter it after logging out.
-        PasswordTextBox.Clear();
+        mainForm.Username = usernameTextBox.Text;
+        usernameTextBox.Clear(); //clearing these to make the form clean when we re-enter it after logging out.
+        passwordTextBox.Clear();
       }
       else
       {
-        UsernameTextBox.Select(0, UsernameTextBox.TextLength); //this selects the username text box, since you probably want to fill it out again.
-        UsernameTextBox.Select();
-        ErrorMessageLabel.ForeColor = Color.Red;
-        ErrorMessageLabel.Text = "invalid username/password";
+        usernameTextBox.Select(0, usernameTextBox.TextLength); //this selects the username text box, since you probably want to fill it out again.
+        usernameTextBox.Select();
+        errorMessageLabel.ForeColor = Color.Red;
+        errorMessageLabel.Text = "invalid username/password";
       }
 
     }
@@ -49,12 +49,21 @@ namespace TechSupport.View
     /// <param name="e">ignored</param>
     private void EitherTextBoxTextChanged(object sender, EventArgs e)
     {
-      if (!string.IsNullOrEmpty(ErrorMessageLabel.Text) &&
-          (!string.IsNullOrEmpty(UsernameTextBox.Text) || 
-           !string.IsNullOrEmpty(PasswordTextBox.Text)))
+      if (String.IsNullOrEmpty(usernameTextBox.Text) || String.IsNullOrEmpty(passwordTextBox.Text))
       {
-        ErrorMessageLabel.Text = "";
-        ErrorMessageLabel.ForeColor = Color.Black; //An assumption: I think I should reset the color to the default color when the error is fixed.
+        loginButton.Enabled = false;
+      }
+      else
+      {
+        loginButton.Enabled = true;
+      }
+
+      if (!string.IsNullOrEmpty(errorMessageLabel.Text) &&
+          (!string.IsNullOrEmpty(usernameTextBox.Text) ||
+           !string.IsNullOrEmpty(passwordTextBox.Text)))
+      {
+        errorMessageLabel.Text = "";
+        errorMessageLabel.ForeColor = Color.Black; //An assumption: I think I should reset the color to the default color when the error is fixed.
       }
     }
 

@@ -7,7 +7,7 @@ namespace TechSupport.DAL
   /// <summary>
   /// Data access layer for incidents
   /// </summary>
-  public class IncidentsDal
+  public class IncidentDal
   {
     private static readonly List<Incident> Incidents = new List<Incident>();
     

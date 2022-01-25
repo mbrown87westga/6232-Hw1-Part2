@@ -10,7 +10,7 @@ namespace TechSupport.View
   /// </summary>
   public partial class AddForm : Form
   {
-    private readonly IncidentsController _incidentsController;
+    private readonly IncidentController _incidentController;
 
     /// <summary>
     /// this constructor initializes the component and also builds the incidents controller.
@@ -23,7 +23,7 @@ namespace TechSupport.View
     {
       InitializeComponent();
 
-      _incidentsController = new IncidentsController();
+      _incidentController = new IncidentController();
     }
 
     /// <summary>
@@ -33,7 +33,7 @@ namespace TechSupport.View
     /// <param name="e">Ignored.</param>
     private void AddClick(object sender, EventArgs e)
     {
-      _incidentsController.Add(new Incident
+      _incidentController.Add(new Incident
       {
         Description = descriptionTextBox.Text,
         Title = titleTextBox.Text,
@@ -59,6 +59,18 @@ namespace TechSupport.View
       titleTextBox.Text = "";
       customerIdTextBox.Text = "";
       descriptionTextBox.Text = "";
+    }
+
+    private void customerIdTextBoxTextChanged(object sender, EventArgs e)
+    {
+      if (String.IsNullOrEmpty(customerIdTextBox.Text))
+      {
+        addButton.Enabled = false;
+      }
+      else
+      {
+        addButton.Enabled = true;
+      }
     }
   }
 }

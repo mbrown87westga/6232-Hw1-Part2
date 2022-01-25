@@ -36,6 +36,9 @@
       this.customerIdLabel = new System.Windows.Forms.Label();
       this.addButton = new System.Windows.Forms.Button();
       this.cancelButton = new System.Windows.Forms.Button();
+      this.CustomerIdRequiredLabel = new System.Windows.Forms.Label();
+      this.RequiredDescriptionAsteriskLabel = new System.Windows.Forms.Label();
+      this.RequiredDescriptionLabel = new System.Windows.Forms.Label();
       this.SuspendLayout();
       // 
       // titleLabel
@@ -53,7 +56,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
       this.titleTextBox.Location = new System.Drawing.Point(41, 12);
       this.titleTextBox.Name = "titleTextBox";
-      this.titleTextBox.Size = new System.Drawing.Size(248, 20);
+      this.titleTextBox.Size = new System.Drawing.Size(278, 20);
       this.titleTextBox.TabIndex = 1;
       // 
       // descriptionTextBox
@@ -64,7 +67,7 @@
       this.descriptionTextBox.Location = new System.Drawing.Point(12, 57);
       this.descriptionTextBox.Multiline = true;
       this.descriptionTextBox.Name = "descriptionTextBox";
-      this.descriptionTextBox.Size = new System.Drawing.Size(454, 110);
+      this.descriptionTextBox.Size = new System.Drawing.Size(491, 140);
       this.descriptionTextBox.TabIndex = 3;
       // 
       // descriptionLabel
@@ -79,16 +82,17 @@
       // customerIdTextBox
       // 
       this.customerIdTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-      this.customerIdTextBox.Location = new System.Drawing.Point(366, 12);
+      this.customerIdTextBox.Location = new System.Drawing.Point(403, 12);
       this.customerIdTextBox.Name = "customerIdTextBox";
       this.customerIdTextBox.Size = new System.Drawing.Size(100, 20);
       this.customerIdTextBox.TabIndex = 2;
+      this.customerIdTextBox.TextChanged += new System.EventHandler(this.customerIdTextBoxTextChanged);
       // 
       // customerIdLabel
       // 
       this.customerIdLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
       this.customerIdLabel.AutoSize = true;
-      this.customerIdLabel.Location = new System.Drawing.Point(295, 15);
+      this.customerIdLabel.Location = new System.Drawing.Point(325, 15);
       this.customerIdLabel.Name = "customerIdLabel";
       this.customerIdLabel.Size = new System.Drawing.Size(65, 13);
       this.customerIdLabel.TabIndex = 4;
@@ -97,7 +101,8 @@
       // addButton
       // 
       this.addButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-      this.addButton.Location = new System.Drawing.Point(310, 173);
+      this.addButton.Enabled = false;
+      this.addButton.Location = new System.Drawing.Point(347, 203);
       this.addButton.Name = "addButton";
       this.addButton.Size = new System.Drawing.Size(75, 23);
       this.addButton.TabIndex = 4;
@@ -108,7 +113,8 @@
       // cancelButton
       // 
       this.cancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-      this.cancelButton.Location = new System.Drawing.Point(391, 173);
+      this.cancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+      this.cancelButton.Location = new System.Drawing.Point(428, 203);
       this.cancelButton.Name = "cancelButton";
       this.cancelButton.Size = new System.Drawing.Size(75, 23);
       this.cancelButton.TabIndex = 5;
@@ -116,11 +122,48 @@
       this.cancelButton.UseVisualStyleBackColor = true;
       this.cancelButton.Click += new System.EventHandler(this.CancelClick);
       // 
+      // CustomerIdRequiredLabel
+      // 
+      this.CustomerIdRequiredLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+      this.CustomerIdRequiredLabel.AutoSize = true;
+      this.CustomerIdRequiredLabel.ForeColor = System.Drawing.Color.Red;
+      this.CustomerIdRequiredLabel.Location = new System.Drawing.Point(386, 15);
+      this.CustomerIdRequiredLabel.Name = "CustomerIdRequiredLabel";
+      this.CustomerIdRequiredLabel.Size = new System.Drawing.Size(11, 13);
+      this.CustomerIdRequiredLabel.TabIndex = 6;
+      this.CustomerIdRequiredLabel.Text = "*";
+      // 
+      // RequiredDescriptionAsteriskLabel
+      // 
+      this.RequiredDescriptionAsteriskLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+      this.RequiredDescriptionAsteriskLabel.AutoSize = true;
+      this.RequiredDescriptionAsteriskLabel.ForeColor = System.Drawing.Color.Red;
+      this.RequiredDescriptionAsteriskLabel.Location = new System.Drawing.Point(12, 208);
+      this.RequiredDescriptionAsteriskLabel.Name = "RequiredDescriptionAsteriskLabel";
+      this.RequiredDescriptionAsteriskLabel.Size = new System.Drawing.Size(11, 13);
+      this.RequiredDescriptionAsteriskLabel.TabIndex = 7;
+      this.RequiredDescriptionAsteriskLabel.Text = "*";
+      // 
+      // RequiredDescriptionLabel
+      // 
+      this.RequiredDescriptionLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+      this.RequiredDescriptionLabel.AutoSize = true;
+      this.RequiredDescriptionLabel.Location = new System.Drawing.Point(24, 208);
+      this.RequiredDescriptionLabel.Name = "RequiredDescriptionLabel";
+      this.RequiredDescriptionLabel.Size = new System.Drawing.Size(56, 13);
+      this.RequiredDescriptionLabel.TabIndex = 8;
+      this.RequiredDescriptionLabel.Text = "- Required";
+      // 
       // AddForm
       // 
+      this.AcceptButton = this.addButton;
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-      this.ClientSize = new System.Drawing.Size(478, 208);
+      this.CancelButton = this.cancelButton;
+      this.ClientSize = new System.Drawing.Size(515, 238);
+      this.Controls.Add(this.RequiredDescriptionLabel);
+      this.Controls.Add(this.RequiredDescriptionAsteriskLabel);
+      this.Controls.Add(this.CustomerIdRequiredLabel);
       this.Controls.Add(this.cancelButton);
       this.Controls.Add(this.addButton);
       this.Controls.Add(this.customerIdTextBox);
@@ -150,5 +193,8 @@
     private System.Windows.Forms.Label customerIdLabel;
     private System.Windows.Forms.Button addButton;
     private System.Windows.Forms.Button cancelButton;
+    private System.Windows.Forms.Label CustomerIdRequiredLabel;
+    private System.Windows.Forms.Label RequiredDescriptionAsteriskLabel;
+    private System.Windows.Forms.Label RequiredDescriptionLabel;
   }
 }

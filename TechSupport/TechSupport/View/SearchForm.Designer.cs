@@ -42,7 +42,7 @@
       this.customerIdTextBox.Location = new System.Drawing.Point(83, 12);
       this.customerIdTextBox.Name = "customerIdTextBox";
       this.customerIdTextBox.Size = new System.Drawing.Size(319, 20);
-      this.customerIdTextBox.TabIndex = 2;
+      this.customerIdTextBox.TabIndex = 1;
       // 
       // customerIdLabel
       // 
@@ -59,24 +59,28 @@
       this.searchButton.Location = new System.Drawing.Point(408, 10);
       this.searchButton.Name = "searchButton";
       this.searchButton.Size = new System.Drawing.Size(75, 23);
-      this.searchButton.TabIndex = 5;
+      this.searchButton.TabIndex = 2;
       this.searchButton.Text = "Search";
       this.searchButton.UseVisualStyleBackColor = true;
       this.searchButton.Click += new System.EventHandler(this.SearchClick);
       // 
       // resultsDataGridView
       // 
+      this.resultsDataGridView.AllowUserToAddRows = false;
+      this.resultsDataGridView.AllowUserToDeleteRows = false;
       this.resultsDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
       this.resultsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
       this.resultsDataGridView.Location = new System.Drawing.Point(12, 38);
       this.resultsDataGridView.Name = "resultsDataGridView";
+      this.resultsDataGridView.ReadOnly = true;
       this.resultsDataGridView.Size = new System.Drawing.Size(471, 188);
-      this.resultsDataGridView.TabIndex = 6;
+      this.resultsDataGridView.TabIndex = 3;
       // 
       // SearchForm
       // 
+      this.AcceptButton = this.searchButton;
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.ClientSize = new System.Drawing.Size(495, 238);

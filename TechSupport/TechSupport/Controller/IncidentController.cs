@@ -10,14 +10,14 @@ namespace TechSupport.Controller
   /// </summary>
   public class IncidentController
   {
-    private readonly IncidentsDal _incidentsDal; //In your example code, you used both camelCase and underscore prefixed camelCase, so I am going with underscore prefixed for class variables.
+    private readonly IncidentDal _incidentDal; //In your example code, you used both camelCase and underscore prefixed camelCase, so I am going with underscore prefixed for class variables.
 
     /// <summary>
     /// The default constructor. Builds a DAL to get and save the incidents.
     /// </summary>
     public IncidentController()
     {
-      _incidentsDal = new IncidentsDal(); //Normally I would use IOC here so that this could be unit tested, but I will go with how we were instructed to do this.
+      _incidentDal = new IncidentDal(); //Normally I would use IOC here so that this could be unit tested, but I will go with how we were instructed to do this.
     }
 
     /// <summary>
@@ -27,7 +27,7 @@ namespace TechSupport.Controller
     /// <returns>the specified incidents.</returns>
     public IEnumerable<Incident> GetIncidents(string customerId = null)
     {
-      return string.IsNullOrEmpty(customerId) ? _incidentsDal.GetIncidents() : _incidentsDal.SearchIncidentsByCustomerId(customerId);
+      return string.IsNullOrEmpty(customerId) ? _incidentDal.GetIncidents() : _incidentDal.SearchIncidentsByCustomerId(customerId);
     }
 
     /// <summary>
@@ -46,7 +46,7 @@ namespace TechSupport.Controller
         throw new ArgumentException("CustomerID must be filled out.");
       }
 
-      _incidentsDal.Add(incident);
+      _incidentDal.Add(incident);
     }
   }
 }

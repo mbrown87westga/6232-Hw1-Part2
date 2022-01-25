@@ -1,7 +1,5 @@
-﻿using System.ComponentModel;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 using TechSupport.Controller;
-using TechSupport.Model;
 
 namespace TechSupport.View
 {
@@ -13,14 +11,14 @@ namespace TechSupport.View
   /// </remarks>
   public partial class MainForm : Form
   {
-    readonly IncidentsController _incidentsController;
+    readonly IncidentController _incidentController;
 
     private string _username;
     /// <summary>
     /// The username of the currently logged in user.
     /// </summary>
     /// <remarks>
-    /// Note how setting this also sets the LoggedInUserLabel's text. This is a poor person's data binding.
+    /// Note how setting this also sets the loggedInUserLabel's text. This is a poor person's data binding.
     /// </remarks>
     public string Username
     {
@@ -28,7 +26,7 @@ namespace TechSupport.View
       set
       {
         _username = value;
-        LoggedInUserLabel.Text = value;
+        loggedInUserLabel.Text = value;
       }
     }
 
@@ -39,7 +37,7 @@ namespace TechSupport.View
     {
       InitializeComponent();
 
-      _incidentsController = new IncidentsController();
+      _incidentController = new IncidentController();
     }
     private void MainFormLoad(object sender, System.EventArgs e)
     {
@@ -49,7 +47,7 @@ namespace TechSupport.View
     private void SetDataSource()
     {
       incidentsDataGridView.DataSource = null;
-      incidentsDataGridView.DataSource = new BindingSource(_incidentsController.GetIncidents(), null);
+      incidentsDataGridView.DataSource = new BindingSource(_incidentController.GetIncidents(), null);
     }
 
     /// <summary>
