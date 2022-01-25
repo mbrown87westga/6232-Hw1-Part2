@@ -43,7 +43,7 @@
       this.UsernameTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
       this.UsernameTextBox.Location = new System.Drawing.Point(72, 3);
       this.UsernameTextBox.Name = "UsernameTextBox";
-      this.UsernameTextBox.Size = new System.Drawing.Size(170, 20);
+      this.UsernameTextBox.Size = new System.Drawing.Size(169, 20);
       this.UsernameTextBox.TabIndex = 1;
       this.UsernameTextBox.TextChanged += new System.EventHandler(this.EitherTextBoxTextChanged);
       // 
@@ -75,7 +75,7 @@
       this.ErrorMessageLabel.Dock = System.Windows.Forms.DockStyle.Fill;
       this.ErrorMessageLabel.Location = new System.Drawing.Point(3, 51);
       this.ErrorMessageLabel.Name = "ErrorMessageLabel";
-      this.ErrorMessageLabel.Size = new System.Drawing.Size(239, 25);
+      this.ErrorMessageLabel.Size = new System.Drawing.Size(238, 25);
       this.ErrorMessageLabel.TabIndex = 4;
       this.ErrorMessageLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
       // 
@@ -83,10 +83,10 @@
       // 
       this.LoginButton.Dock = System.Windows.Forms.DockStyle.Fill;
       this.LoginButton.Enabled = false;
-      this.LoginButton.Location = new System.Drawing.Point(248, 3);
+      this.LoginButton.Location = new System.Drawing.Point(247, 3);
       this.LoginButton.Name = "LoginButton";
       this.MainTableLayoutPanel.SetRowSpan(this.LoginButton, 3);
-      this.LoginButton.Size = new System.Drawing.Size(53, 70);
+      this.LoginButton.Size = new System.Drawing.Size(54, 70);
       this.LoginButton.TabIndex = 3;
       this.LoginButton.Text = "Login";
       this.LoginButton.UseVisualStyleBackColor = true;
@@ -98,7 +98,7 @@
       this.PasswordTextBox.Location = new System.Drawing.Point(72, 30);
       this.PasswordTextBox.Name = "PasswordTextBox";
       this.PasswordTextBox.PasswordChar = '*';
-      this.PasswordTextBox.Size = new System.Drawing.Size(170, 20);
+      this.PasswordTextBox.Size = new System.Drawing.Size(169, 20);
       this.PasswordTextBox.TabIndex = 2;
       this.PasswordTextBox.TextChanged += new System.EventHandler(this.EitherTextBoxTextChanged);
       // 
@@ -110,7 +110,7 @@
       this.MainTableLayoutPanel.ColumnCount = 3;
       this.MainTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 28.25112F));
       this.MainTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 71.74888F));
-      this.MainTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 58F));
+      this.MainTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 59F));
       this.MainTableLayoutPanel.Controls.Add(this.UsernameTextBox, 1, 0);
       this.MainTableLayoutPanel.Controls.Add(this.PasswordTextBox, 1, 1);
       this.MainTableLayoutPanel.Controls.Add(this.UsernameLabel, 0, 0);
