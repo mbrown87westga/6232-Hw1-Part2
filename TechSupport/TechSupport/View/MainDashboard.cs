@@ -2,6 +2,9 @@
 
 namespace TechSupport.View
 {
+  /// <summary>
+  /// This is the new main form of the application.
+  /// </summary>
   public partial class MainDashboard : Form
   {
     private string _username;
@@ -21,6 +24,9 @@ namespace TechSupport.View
       }
     }
 
+    /// <summary>
+    /// The default constructor. Nothing to see here.
+    /// </summary>
     public MainDashboard()
     {
       InitializeComponent();

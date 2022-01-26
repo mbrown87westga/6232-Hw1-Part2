@@ -5,6 +5,9 @@ using TechSupport.Model;
 
 namespace TechSupport.View
 {
+  /// <summary>
+  /// A control that allows the user to add an incident
+  /// </summary>
   public partial class AddIncidentControl : UserControl
   {
     private readonly IncidentController _incidentController;

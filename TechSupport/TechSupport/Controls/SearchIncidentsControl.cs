@@ -11,6 +11,9 @@ using TechSupport.Controller;
 
 namespace TechSupport.Controls
 {
+  /// <summary>
+  /// A control that allows the user to search through the incidents.
+  /// </summary>
   public partial class SearchIncidentsControl : UserControl
   {
     private readonly IncidentController _incidentController;
