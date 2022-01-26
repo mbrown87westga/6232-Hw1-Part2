@@ -26,7 +26,7 @@ namespace TechSupport.View
     {
       if (UsernameTextBox.Text == "Jane" && PasswordTextBox.Text == "test1234")
       {
-        var mainForm = this.HideThisAndShowForm<MainForm>();
+        var mainForm = this.HideThisAndShowForm<MainDashboard>();
         mainForm.Username = UsernameTextBox.Text;
         UsernameTextBox.Clear(); //clearing these to make the form clean when we re-enter it after logging out.
         PasswordTextBox.Clear();
