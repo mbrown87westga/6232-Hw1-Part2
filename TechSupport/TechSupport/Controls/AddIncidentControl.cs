@@ -33,7 +33,7 @@ namespace TechSupport.View
     /// <param name="e">Ignored.</param>
     private void AddClick(object sender, EventArgs e)
     {
-      _incidentController.Add(new Incident
+      _incidentController.Add(new LegacyIncident
       {
         Description = DescriptionTextBox.Text,
         Title = TitleTextBox.Text,

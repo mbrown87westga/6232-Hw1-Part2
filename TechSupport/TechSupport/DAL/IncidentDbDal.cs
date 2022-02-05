@@ -14,9 +14,9 @@ namespace TechSupport.DAL
     /// Get the incidents from the db
     /// </summary>
     /// <returns>the incidents</returns>
-    public IEnumerable<DBIncident> GetIncidents()
+    public IEnumerable<Incident> GetIncidents()
     {
-      List<DBIncident> IncidentList = new List<DBIncident>();
+      List<Incident> IncidentList = new List<Incident>();
 
       string selectStatement = @"select i.ProductCode,
                                         i.DateOpened,
@@ -37,7 +37,7 @@ namespace TechSupport.DAL
           {
             while (reader.Read())
             {
-              DBIncident Incident = new DBIncident();
+              Incident Incident = new Incident();
               Incident.ProductCode = reader["ProductCode"].ToString();
               Incident.DateOpened = (DateTime)reader["DateOpened"];
               Incident.Customer = reader["CustomerName"].ToString();

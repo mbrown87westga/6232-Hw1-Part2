@@ -34,6 +34,7 @@
       this.CustomerColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
       this.TechnicianColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
       this.TitleColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+      this.ErrorLabel = new System.Windows.Forms.Label();
       this.SuspendLayout();
       // 
       // OpenIncidentsListView
@@ -85,15 +86,28 @@
       this.TitleColumnHeader.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
       this.TitleColumnHeader.Width = 200;
       // 
+      // ErrorLabel
+      // 
+      this.ErrorLabel.AutoSize = true;
+      this.ErrorLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.ErrorLabel.Location = new System.Drawing.Point(0, 0);
+      this.ErrorLabel.Name = "ErrorLabel";
+      this.ErrorLabel.Size = new System.Drawing.Size(0, 13);
+      this.ErrorLabel.TabIndex = 1;
+      this.ErrorLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+      this.ErrorLabel.Visible = false;
+      // 
       // DisplayOpenIncidentsControl
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+      this.Controls.Add(this.ErrorLabel);
       this.Controls.Add(this.OpenIncidentsListView);
       this.Name = "DisplayOpenIncidentsControl";
       this.Size = new System.Drawing.Size(637, 386);
       this.VisibleChanged += new System.EventHandler(this.DisplayOpenIncidentsControlVisibleChanged);
       this.ResumeLayout(false);
+      this.PerformLayout();
 
     }
 
@@ -105,5 +119,6 @@
     private System.Windows.Forms.ColumnHeader CustomerColumnHeader;
     private System.Windows.Forms.ColumnHeader TechnicianColumnHeader;
     private System.Windows.Forms.ColumnHeader TitleColumnHeader;
+    private System.Windows.Forms.Label ErrorLabel;
   }
 }

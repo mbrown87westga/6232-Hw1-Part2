@@ -27,35 +27,35 @@ namespace TechSupport.Controller
     /// </summary>
     /// <param name="customerId">optional. If provided, gets all incidents for that customer.</param>
     /// <returns>the specified incidents.</returns>
-    public IEnumerable<Incident> GetIncidents(string customerId = null)
+    public IEnumerable<LegacyIncident> GetIncidents(string customerId = null)
     {
       return string.IsNullOrEmpty(customerId) ? _incidentDal.GetIncidents() : _incidentDal.SearchIncidentsByCustomerId(customerId);
     }
 
     /// <summary>
-    /// A method to save a new incident
+    /// A method to save a new legacyIncident
     /// </summary>
-    /// <param name="incident">the incident to save.</param>
-    public void Add(Incident incident)
+    /// <param name="legacyIncident">the legacyIncident to save.</param>
+    public void Add(LegacyIncident legacyIncident)
     {
-      if (incident == null)
+      if (legacyIncident == null)
       {
-        throw new ArgumentNullException(nameof(incident));
+        throw new ArgumentNullException(nameof(legacyIncident));
       }
 
-      if (string.IsNullOrEmpty(incident.CustomerId))
+      if (string.IsNullOrEmpty(legacyIncident.CustomerId))
       {
         throw new ArgumentException("CustomerID must be filled out.");
       }
 
-      _incidentDal.Add(incident);
+      _incidentDal.Add(legacyIncident);
     }
 
     /// <summary>
     /// Gets the open incidents from the db
     /// </summary>
     /// <returns>the open incidents</returns>
-    public IEnumerable<DBIncident> GetOpenIncidents()
+    public IEnumerable<Incident> GetOpenIncidents()
     {
       return _incidentDbDal.GetIncidents();
     }

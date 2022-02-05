@@ -1,14 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using TechSupport.Controller;
-using TechSupport.View;
 
 namespace TechSupport.Controls
 {
@@ -31,16 +24,29 @@ namespace TechSupport.Controls
 
     private void SetDataSource()
     {
-      var incidents = _incidentController.GetOpenIncidents().ToList();
-      OpenIncidentsListView.Items.Clear();
-      for (int i = 0; i < incidents.Count; i++)
+      try
       {
-        var incident = incidents[i];
-        OpenIncidentsListView.Items.Add(incident.ProductCode);
-        OpenIncidentsListView.Items[i].SubItems.Add(incident.DateOpened.ToShortDateString());
-        OpenIncidentsListView.Items[i].SubItems.Add(incident.Customer);
-        OpenIncidentsListView.Items[i].SubItems.Add(incident.Technician);
-        OpenIncidentsListView.Items[i].SubItems.Add(incident.Title);
+        this.ErrorLabel.Text = "";
+        this.OpenIncidentsListView.Show();
+        this.ErrorLabel.Hide();
+
+        var incidents = _incidentController.GetOpenIncidents().ToList();
+        OpenIncidentsListView.Items.Clear();
+        for (int i = 0; i < incidents.Count; i++)
+        {
+          var incident = incidents[i];
+          OpenIncidentsListView.Items.Add(incident.ProductCode);
+          OpenIncidentsListView.Items[i].SubItems.Add(incident.DateOpened.ToShortDateString());
+          OpenIncidentsListView.Items[i].SubItems.Add(incident.Customer);
+          OpenIncidentsListView.Items[i].SubItems.Add(incident.Technician);
+          OpenIncidentsListView.Items[i].SubItems.Add(incident.Title);
+        }
+      }
+      catch (Exception e)
+      {
+        this.ErrorLabel.Text = e.Message;
+        this.OpenIncidentsListView.Hide();
+        this.ErrorLabel.Show();
       }
     }
 

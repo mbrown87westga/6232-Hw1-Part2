@@ -69,8 +69,8 @@
     <Compile Include="DAL\IncidentDbDal.cs" />
     <Compile Include="DAL\TechSupportDbConnection.cs" />
     <Compile Include="ExtensionMethods.cs" />
-    <Compile Include="Model\DBIncident.cs" />
     <Compile Include="Model\Incident.cs" />
+    <Compile Include="Model\LegacyIncident.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controls\AddIncidentControl.cs">
