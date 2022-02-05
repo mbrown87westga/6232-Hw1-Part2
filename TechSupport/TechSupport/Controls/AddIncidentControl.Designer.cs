@@ -93,6 +93,7 @@
       this.CustomerIdTextBox.Size = new System.Drawing.Size(100, 20);
       this.CustomerIdTextBox.TabIndex = 11;
       this.CustomerIdTextBox.TextChanged += new System.EventHandler(this.customerIdTextBoxTextChanged);
+      this.CustomerIdTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CustomerIdTextBoxKeyPress);
       // 
       // CustomerIdLabel
       // 

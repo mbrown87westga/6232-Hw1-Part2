@@ -37,7 +37,7 @@ namespace TechSupport.DAL
     /// <returns>the matching incidents.</returns>
     public IEnumerable<LegacyIncident> SearchIncidentsByCustomerId(string customerId)
     {
-      return Incidents.Where(incident => incident.CustomerId == customerId);
+      return Incidents.Where(incident => incident.CustomerId.ToString() == customerId);
     }
   }
 }

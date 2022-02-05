@@ -16,6 +16,6 @@
     /// <summary>
     /// The id of the reporting customer
     /// </summary>
-    public string CustomerId { get; set; }
+    public int CustomerId { get; set; }
   }
 }

@@ -33,13 +33,27 @@ namespace TechSupport.View
     /// <param name="e">Ignored.</param>
     private void AddClick(object sender, EventArgs e)
     {
-      _incidentController.Add(new LegacyIncident
+      try
       {
-        Description = DescriptionTextBox.Text,
-        Title = TitleTextBox.Text,
-        CustomerId = CustomerIdTextBox.Text
-      });
-      ClearDialog();
+        _incidentController.Add(new LegacyIncident
+        {
+          Description = DescriptionTextBox.Text,
+          Title = TitleTextBox.Text,
+          CustomerId = int.Parse(CustomerIdTextBox.Text)
+        });
+        ClearDialog();
+      }
+      catch (Exception ex)
+      {
+        if (ex is FormatException)
+        {
+          MessageBox.Show("CustomerID must be an integer.", "Error");
+        }
+        else
+        {
+          throw;
+        }
+      }
     }
 
     /// <summary>
@@ -69,6 +83,11 @@ namespace TechSupport.View
       {
         AddButton.Enabled = true;
       }
+    }
+
+    private void CustomerIdTextBoxKeyPress(object sender, KeyPressEventArgs e)
+    {
+      e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
     }
   }
 }

@@ -43,11 +43,6 @@ namespace TechSupport.Controller
         throw new ArgumentNullException(nameof(legacyIncident));
       }
 
-      if (string.IsNullOrEmpty(legacyIncident.CustomerId))
-      {
-        throw new ArgumentException("CustomerID must be filled out.");
-      }
-
       _incidentDal.Add(legacyIncident);
     }
 
