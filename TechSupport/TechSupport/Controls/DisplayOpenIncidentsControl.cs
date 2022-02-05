@@ -31,8 +31,17 @@ namespace TechSupport.Controls
 
     private void SetDataSource()
     {
-      IncidentsDataGridView.DataSource = null;
-      IncidentsDataGridView.DataSource = new BindingSource(_incidentController.GetOpenIncidents(), null);
+      var incidents = _incidentController.GetOpenIncidents().ToList();
+      OpenIncidentsListView.Items.Clear();
+      for (int i = 0; i < incidents.Count; i++)
+      {
+        var incident = incidents[i];
+        OpenIncidentsListView.Items.Add(incident.ProductCode);
+        OpenIncidentsListView.Items[i].SubItems.Add(incident.DateOpened.ToShortDateString());
+        OpenIncidentsListView.Items[i].SubItems.Add(incident.Customer);
+        OpenIncidentsListView.Items[i].SubItems.Add(incident.Technician);
+        OpenIncidentsListView.Items[i].SubItems.Add(incident.Title);
+      }
     }
 
     private void DisplayOpenIncidentsControlVisibleChanged(object sender, EventArgs e)
