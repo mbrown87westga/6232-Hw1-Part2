@@ -13,7 +13,7 @@ using TechSupport.View;
 namespace TechSupport.Controls
 {
   /// <summary>
-  /// A control that shows all the incidents unfiltered.
+  /// A control that shows all the incidents in the db unfiltered.
   /// </summary>
   public partial class DisplayOpenIncidentsControl : UserControl
   {

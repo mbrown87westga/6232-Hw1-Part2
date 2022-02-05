@@ -51,6 +51,10 @@ namespace TechSupport.Controller
       _incidentDal.Add(incident);
     }
 
+    /// <summary>
+    /// Gets the open incidents from the db
+    /// </summary>
+    /// <returns>the open incidents</returns>
     public IEnumerable<DBIncident> GetOpenIncidents()
     {
       return _incidentDbDal.GetIncidents();

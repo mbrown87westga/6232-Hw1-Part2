@@ -5,8 +5,15 @@ using TechSupport.Model;
 
 namespace TechSupport.DAL
 {
+  /// <summary>
+  /// The class that gets incidents from the db
+  /// </summary>
   public class IncidentDbDal
   {
+    /// <summary>
+    /// Get the incidents from the db
+    /// </summary>
+    /// <returns>the incidents</returns>
     public IEnumerable<DBIncident> GetIncidents()
     {
       List<DBIncident> IncidentList = new List<DBIncident>();
