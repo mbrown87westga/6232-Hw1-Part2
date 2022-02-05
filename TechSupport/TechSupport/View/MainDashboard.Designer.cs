@@ -30,13 +30,14 @@
     {
       this.tabControl1 = new System.Windows.Forms.TabControl();
       this.AddIncidentPage = new System.Windows.Forms.TabPage();
+      this.addIncidentControl1 = new TechSupport.View.AddIncidentControl();
       this.LoadAllIncidentsPage = new System.Windows.Forms.TabPage();
+      this.loadAllIncidentsControl1 = new TechSupport.Controls.LoadAllIncidentsControl();
       this.SearchIncidentsPage = new System.Windows.Forms.TabPage();
+      this.searchIncidentsControl1 = new TechSupport.Controls.SearchIncidentsControl();
       this.LogoutLink = new System.Windows.Forms.LinkLabel();
       this.LoggedInUserLabel = new System.Windows.Forms.Label();
-      this.addIncidentControl1 = new TechSupport.View.AddIncidentControl();
-      this.loadAllIncidentsControl1 = new TechSupport.Controls.LoadAllIncidentsControl();
-      this.searchIncidentsControl1 = new TechSupport.Controls.SearchIncidentsControl();
+      this.DisplayOpenIncidentsPage = new System.Windows.Forms.TabPage();
       this.tabControl1.SuspendLayout();
       this.AddIncidentPage.SuspendLayout();
       this.LoadAllIncidentsPage.SuspendLayout();
@@ -51,6 +52,7 @@
       this.tabControl1.Controls.Add(this.AddIncidentPage);
       this.tabControl1.Controls.Add(this.LoadAllIncidentsPage);
       this.tabControl1.Controls.Add(this.SearchIncidentsPage);
+      this.tabControl1.Controls.Add(this.DisplayOpenIncidentsPage);
       this.tabControl1.Location = new System.Drawing.Point(0, 6);
       this.tabControl1.Name = "tabControl1";
       this.tabControl1.SelectedIndex = 0;
@@ -68,26 +70,50 @@
       this.AddIncidentPage.Text = "Add Incident";
       this.AddIncidentPage.UseVisualStyleBackColor = true;
       // 
+      // addIncidentControl1
+      // 
+      this.addIncidentControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.addIncidentControl1.Location = new System.Drawing.Point(3, 3);
+      this.addIncidentControl1.Name = "addIncidentControl1";
+      this.addIncidentControl1.Size = new System.Drawing.Size(696, 449);
+      this.addIncidentControl1.TabIndex = 0;
+      // 
       // LoadAllIncidentsPage
       // 
       this.LoadAllIncidentsPage.Controls.Add(this.loadAllIncidentsControl1);
       this.LoadAllIncidentsPage.Location = new System.Drawing.Point(4, 22);
       this.LoadAllIncidentsPage.Name = "LoadAllIncidentsPage";
       this.LoadAllIncidentsPage.Padding = new System.Windows.Forms.Padding(3);
-      this.LoadAllIncidentsPage.Size = new System.Drawing.Size(448, 320);
+      this.LoadAllIncidentsPage.Size = new System.Drawing.Size(702, 455);
       this.LoadAllIncidentsPage.TabIndex = 1;
       this.LoadAllIncidentsPage.Text = "Load All Incidents";
       this.LoadAllIncidentsPage.UseVisualStyleBackColor = true;
+      // 
+      // loadAllIncidentsControl1
+      // 
+      this.loadAllIncidentsControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.loadAllIncidentsControl1.Location = new System.Drawing.Point(3, 3);
+      this.loadAllIncidentsControl1.Name = "loadAllIncidentsControl1";
+      this.loadAllIncidentsControl1.Size = new System.Drawing.Size(696, 449);
+      this.loadAllIncidentsControl1.TabIndex = 0;
       // 
       // SearchIncidentsPage
       // 
       this.SearchIncidentsPage.Controls.Add(this.searchIncidentsControl1);
       this.SearchIncidentsPage.Location = new System.Drawing.Point(4, 22);
       this.SearchIncidentsPage.Name = "SearchIncidentsPage";
-      this.SearchIncidentsPage.Size = new System.Drawing.Size(448, 320);
+      this.SearchIncidentsPage.Size = new System.Drawing.Size(702, 455);
       this.SearchIncidentsPage.TabIndex = 2;
       this.SearchIncidentsPage.Text = "Search Incidents";
       this.SearchIncidentsPage.UseVisualStyleBackColor = true;
+      // 
+      // searchIncidentsControl1
+      // 
+      this.searchIncidentsControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.searchIncidentsControl1.Location = new System.Drawing.Point(0, 0);
+      this.searchIncidentsControl1.Name = "searchIncidentsControl1";
+      this.searchIncidentsControl1.Size = new System.Drawing.Size(702, 455);
+      this.searchIncidentsControl1.TabIndex = 0;
       // 
       // LogoutLink
       // 
@@ -111,29 +137,14 @@
       this.LoggedInUserLabel.TabIndex = 4;
       this.LoggedInUserLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
       // 
-      // addIncidentControl1
+      // DisplayOpenIncidentsPage
       // 
-      this.addIncidentControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.addIncidentControl1.Location = new System.Drawing.Point(3, 3);
-      this.addIncidentControl1.Name = "addIncidentControl1";
-      this.addIncidentControl1.Size = new System.Drawing.Size(696, 449);
-      this.addIncidentControl1.TabIndex = 0;
-      // 
-      // loadAllIncidentsControl1
-      // 
-      this.loadAllIncidentsControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.loadAllIncidentsControl1.Location = new System.Drawing.Point(3, 3);
-      this.loadAllIncidentsControl1.Name = "loadAllIncidentsControl1";
-      this.loadAllIncidentsControl1.Size = new System.Drawing.Size(442, 314);
-      this.loadAllIncidentsControl1.TabIndex = 0;
-      // 
-      // searchIncidentsControl1
-      // 
-      this.searchIncidentsControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.searchIncidentsControl1.Location = new System.Drawing.Point(0, 0);
-      this.searchIncidentsControl1.Name = "searchIncidentsControl1";
-      this.searchIncidentsControl1.Size = new System.Drawing.Size(448, 320);
-      this.searchIncidentsControl1.TabIndex = 0;
+      this.DisplayOpenIncidentsPage.Location = new System.Drawing.Point(4, 22);
+      this.DisplayOpenIncidentsPage.Name = "DisplayOpenIncidentsPage";
+      this.DisplayOpenIncidentsPage.Size = new System.Drawing.Size(702, 455);
+      this.DisplayOpenIncidentsPage.TabIndex = 3;
+      this.DisplayOpenIncidentsPage.Text = "Display Open Incidents";
+      this.DisplayOpenIncidentsPage.UseVisualStyleBackColor = true;
       // 
       // MainDashboard
       // 
@@ -167,5 +178,6 @@
     private Controls.SearchIncidentsControl searchIncidentsControl1;
     private System.Windows.Forms.LinkLabel LogoutLink;
     private System.Windows.Forms.Label LoggedInUserLabel;
+    private System.Windows.Forms.TabPage DisplayOpenIncidentsPage;
   }
 }
