@@ -66,7 +66,9 @@
       <DependentUpon>SearchIncidentsControl.cs</DependentUpon>
     </Compile>
     <Compile Include="DAL\IncidentDal.cs" />
+    <Compile Include="DAL\IncidentDbDal.cs" />
     <Compile Include="ExtensionMethods.cs" />
+    <Compile Include="Model\DBIncident.cs" />
     <Compile Include="Model\Incident.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

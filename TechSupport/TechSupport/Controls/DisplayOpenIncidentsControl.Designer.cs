@@ -55,7 +55,7 @@
       this.Controls.Add(this.IncidentsDataGridView);
       this.Name = "LoadAllIncidentsControl";
       this.Size = new System.Drawing.Size(637, 386);
-      this.VisibleChanged += new System.EventHandler(this.LoadAllIncidentsControlVisibleChanged);
+      this.VisibleChanged += new System.EventHandler(this.DisplayOpenIncidentsControlVisibleChanged);
       ((System.ComponentModel.ISupportInitialize)(this.IncidentsDataGridView)).EndInit();
       this.ResumeLayout(false);
 

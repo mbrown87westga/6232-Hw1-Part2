@@ -32,10 +32,10 @@ namespace TechSupport.Controls
     private void SetDataSource()
     {
       IncidentsDataGridView.DataSource = null;
-      IncidentsDataGridView.DataSource = new BindingSource(_incidentController.GetIncidents(), null);
+      IncidentsDataGridView.DataSource = new BindingSource(_incidentController.GetOpenIncidents(), null);
     }
 
-    private void LoadAllIncidentsControlVisibleChanged(object sender, EventArgs e)
+    private void DisplayOpenIncidentsControlVisibleChanged(object sender, EventArgs e)
     {
       SetDataSource();
     }

@@ -10,14 +10,16 @@ namespace TechSupport.Controller
   /// </summary>
   public class IncidentController
   {
-    private readonly IncidentDal _incidentDal; //In your example code, you used both camelCase and underscore prefixed camelCase, so I am going with underscore prefixed for class variables.
+    private readonly IncidentDal _incidentDal;
+    private readonly IncidentDbDal _incidentDbDal;
 
     /// <summary>
     /// The default constructor. Builds a DAL to get and save the incidents.
     /// </summary>
     public IncidentController()
     {
-      _incidentDal = new IncidentDal(); //Normally I would use IOC here so that this could be unit tested, but I will go with how we were instructed to do this.
+      _incidentDal = new IncidentDal();
+      _incidentDbDal = new IncidentDbDal();
     }
 
     /// <summary>
@@ -47,6 +49,11 @@ namespace TechSupport.Controller
       }
 
       _incidentDal.Add(incident);
+    }
+
+    public IEnumerable<DBIncident> GetOpenIncidents()
+    {
+      return _incidentDbDal.GetIncidents();
     }
   }
 }
