@@ -14,7 +14,7 @@ namespace TechSupport.DAL
     /// Get the incidents from the db
     /// </summary>
     /// <returns>the incidents</returns>
-    public IEnumerable<Incident> GetIncidents()
+    public IEnumerable<Incident> GetOpenIncidents()
     {
       List<Incident> IncidentList = new List<Incident>();
 
@@ -25,7 +25,8 @@ namespace TechSupport.DAL
                                         i.Title
                                  from [dbo].[Incidents] i
                                  join [dbo].[Customers] c on i.[CustomerID] = c.[CustomerID]
-                                 left join [dbo].[Technicians] t on i.[TechID] = t.[TechID]";
+                                 left join [dbo].[Technicians] t on i.[TechID] = t.[TechID]
+                                 where DateClosed is null";
 
       using (SqlConnection connection = TechSupportDbConnection.GetConnection())
       {

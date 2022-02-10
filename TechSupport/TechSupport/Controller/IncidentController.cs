@@ -52,7 +52,7 @@ namespace TechSupport.Controller
     /// <returns>the open incidents</returns>
     public IEnumerable<Incident> GetOpenIncidents()
     {
-      return _incidentDbDal.GetIncidents();
+      return _incidentDbDal.GetOpenIncidents();
     }
   }
 }
