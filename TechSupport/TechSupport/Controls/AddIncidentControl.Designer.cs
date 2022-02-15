@@ -71,6 +71,7 @@
       this.DescriptionTextBox.Name = "DescriptionTextBox";
       this.DescriptionTextBox.Size = new System.Drawing.Size(211, 66);
       this.DescriptionTextBox.TabIndex = 13;
+      this.DescriptionTextBox.TextChanged += new System.EventHandler(this.TextBox_TextChanged);
       // 
       // DescriptionLabel
       // 
@@ -89,6 +90,7 @@
       this.TitleTextBox.Name = "TitleTextBox";
       this.TitleTextBox.Size = new System.Drawing.Size(211, 20);
       this.TitleTextBox.TabIndex = 10;
+      this.TitleTextBox.TextChanged += new System.EventHandler(this.TextBox_TextChanged);
       // 
       // TitleLabel
       // 

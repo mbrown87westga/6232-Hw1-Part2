@@ -24,6 +24,8 @@ namespace TechSupport.View
       InitializeComponent();
 
       _incidentController = new IncidentController();
+
+      
     }
 
     /// <summary>
@@ -73,6 +75,11 @@ namespace TechSupport.View
       CustomerComboBox.SelectedIndex = 0;
       ProductComboBox.SelectedIndex = 0;
       DescriptionTextBox.Text = "";
+    }
+
+    private void TextBox_TextChanged(object sender, EventArgs e)
+    {
+      AddButton.Enabled = !string.IsNullOrEmpty(TitleTextBox.Text) && !string.IsNullOrEmpty(DescriptionTextBox.Text);
     }
   }
 }
