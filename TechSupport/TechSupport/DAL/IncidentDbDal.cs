@@ -53,5 +53,47 @@ namespace TechSupport.DAL
       return IncidentList;
     }
 
+    public IEnumerable<Customer> GetCustomers()
+    {
+      List<Customer> CustomerList = new List<Customer>();
+
+      string selectStatement = @"select c.CustomerID,
+                                        c.[Name],
+                                        c.[Address],
+                                        c.City,
+                                        c.[State],
+                                        c.ZipCode,
+                                        c.Phone,
+                                        c.Email
+                                 from [dbo].[Customers] c;";
+
+      using (SqlConnection connection = TechSupportDbConnection.GetConnection())
+      {
+        connection.Open();
+
+        using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
+        {
+          using (SqlDataReader reader = selectCommand.ExecuteReader())
+          {
+            while (reader.Read())
+            {
+              Customer Customer = new Customer();
+              Customer.CustomerID = int.Parse(reader["CustomerID"].ToString()); 
+              Customer.Name = reader["Name"].ToString();
+              Customer.Address = reader["Address"].ToString();
+              Customer.City = reader["City"].ToString();
+              Customer.State = reader["State"].ToString();
+              Customer.ZipCode = reader["ZipCode"].ToString();
+              Customer.Phone = reader["Phone"].ToString();
+              Customer.Email = reader["Email"].ToString();
+
+              CustomerList.Add(Customer);
+            }
+          }
+        }
+      }
+
+      return CustomerList;
+    }
   }
 }

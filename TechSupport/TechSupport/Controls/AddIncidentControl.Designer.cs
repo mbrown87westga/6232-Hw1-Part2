@@ -118,6 +118,7 @@
       this.CustomerComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
       this.CustomerComboBox.Cursor = System.Windows.Forms.Cursors.Default;
+      this.CustomerComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
       this.CustomerComboBox.FormattingEnabled = true;
       this.CustomerComboBox.Location = new System.Drawing.Point(72, 6);
       this.CustomerComboBox.Name = "CustomerComboBox";
@@ -137,6 +138,7 @@
       // 
       this.ProductComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+      this.ProductComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
       this.ProductComboBox.FormattingEnabled = true;
       this.ProductComboBox.Location = new System.Drawing.Point(72, 33);
       this.ProductComboBox.Name = "ProductComboBox";
@@ -159,6 +161,7 @@
       this.Controls.Add(this.TitleLabel);
       this.Name = "AddIncidentControl";
       this.Size = new System.Drawing.Size(295, 193);
+      this.Load += new System.EventHandler(this.AddIncidentControl_Load);
       this.ResumeLayout(false);
       this.PerformLayout();
 

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 using TechSupport.Controller;
 using TechSupport.Model;
@@ -11,6 +12,7 @@ namespace TechSupport.View
   public partial class AddIncidentControl : UserControl
   {
     private readonly IncidentController _incidentController;
+    private IEnumerable<Customer> _customers;
 
     /// <summary>
     /// this constructor initializes the component and also builds the incidents controller.
@@ -24,8 +26,6 @@ namespace TechSupport.View
       InitializeComponent();
 
       _incidentController = new IncidentController();
-
-      
     }
 
     /// <summary>
@@ -80,6 +80,15 @@ namespace TechSupport.View
     private void TextBox_TextChanged(object sender, EventArgs e)
     {
       AddButton.Enabled = !string.IsNullOrEmpty(TitleTextBox.Text) && !string.IsNullOrEmpty(DescriptionTextBox.Text);
+    }
+
+    private void AddIncidentControl_Load(object sender, EventArgs e)
+    {
+      _customers = _incidentController.GetCustomers();
+      foreach (Customer customer in _customers)
+      {
+        CustomerComboBox.Items.Add(customer.Name);
+      }
     }
   }
 }

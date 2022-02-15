@@ -54,5 +54,14 @@ namespace TechSupport.Controller
     {
       return _incidentDbDal.GetOpenIncidents();
     }
+
+    /// <summary>
+    /// Gets the customers from the db
+    /// </summary>
+    /// <returns>the customers</returns>
+    public IEnumerable<Customer> GetCustomers()
+    {
+      return _incidentDbDal.GetCustomers();
+    }
   }
 }
