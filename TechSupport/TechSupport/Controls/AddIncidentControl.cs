@@ -39,7 +39,8 @@ namespace TechSupport.View
         {
           Description = DescriptionTextBox.Text,
           Title = TitleTextBox.Text,
-          CustomerId = int.Parse(CustomerIdTextBox.Text)
+          ProductId = 0, //Todo: make this correct
+          CustomerId = 0
         });
         ClearDialog();
       }
@@ -69,25 +70,9 @@ namespace TechSupport.View
     private void ClearDialog()
     {
       TitleTextBox.Text = "";
-      CustomerIdTextBox.Text = "";
+      CustomerComboBox.SelectedIndex = 0;
+      ProductComboBox.SelectedIndex = 0;
       DescriptionTextBox.Text = "";
-    }
-
-    private void customerIdTextBoxTextChanged(object sender, EventArgs e)
-    {
-      if (String.IsNullOrEmpty(CustomerIdTextBox.Text))
-      {
-        AddButton.Enabled = false;
-      }
-      else
-      {
-        AddButton.Enabled = true;
-      }
-    }
-
-    private void CustomerIdTextBoxKeyPress(object sender, KeyPressEventArgs e)
-    {
-      e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
     }
   }
 }
