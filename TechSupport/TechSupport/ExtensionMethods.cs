@@ -23,21 +23,7 @@ namespace TechSupport
       thisForm.Hide();
       return otherForm;
     }
-
-    /// <summary>
-    /// Finds an instance of the form that this is called for, and then opens it as a modal 
-    ///
-    /// If the instance exists, shows it, and if it doesn't then it makes a new one and shows it.
-    /// </summary>
-    /// <typeparam name="T">The type of form that should be shown</typeparam>
-    /// <param name="thisForm">The form that is calling this method. Will be the owner of the modal.</param>
-    /// <returns>the new form that was just shown - in case we need to do anything with it, and also the dialog result (for the same reason).</returns>
-    public static (T, DialogResult) ShowFormAsModal<T>(this Form thisForm) where T : Form, new()
-    {
-      var otherForm = RetrieveOrCreateForm<T>();
-      return (otherForm, otherForm.ShowDialog(thisForm));
-    }
-
+    
     /// <summary>
     /// This keeps us from ever having more than one copy of any given form open. If one exists it returns it, and if one doesn't then it makes a new one.
     /// </summary>

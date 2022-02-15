@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace TechSupport.Model
+﻿namespace TechSupport.Model
 {
   /// <summary>
   /// A customer that was retrieved from the database.

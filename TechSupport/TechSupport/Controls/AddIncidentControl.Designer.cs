@@ -55,7 +55,7 @@
       // CustomerIdLabel
       // 
       this.CustomerIdLabel.AutoSize = true;
-      this.CustomerIdLabel.Location = new System.Drawing.Point(12, 9);
+      this.CustomerIdLabel.Location = new System.Drawing.Point(3, 9);
       this.CustomerIdLabel.Name = "CustomerIdLabel";
       this.CustomerIdLabel.Size = new System.Drawing.Size(54, 13);
       this.CustomerIdLabel.TabIndex = 15;
@@ -95,7 +95,7 @@
       // TitleLabel
       // 
       this.TitleLabel.AutoSize = true;
-      this.TitleLabel.Location = new System.Drawing.Point(36, 63);
+      this.TitleLabel.Location = new System.Drawing.Point(3, 63);
       this.TitleLabel.Name = "TitleLabel";
       this.TitleLabel.Size = new System.Drawing.Size(30, 13);
       this.TitleLabel.TabIndex = 9;
@@ -128,7 +128,7 @@
       // ProductLabel
       // 
       this.ProductLabel.AutoSize = true;
-      this.ProductLabel.Location = new System.Drawing.Point(19, 36);
+      this.ProductLabel.Location = new System.Drawing.Point(3, 36);
       this.ProductLabel.Name = "ProductLabel";
       this.ProductLabel.Size = new System.Drawing.Size(47, 13);
       this.ProductLabel.TabIndex = 21;

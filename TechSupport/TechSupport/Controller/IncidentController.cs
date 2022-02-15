@@ -12,6 +12,8 @@ namespace TechSupport.Controller
   {
     private readonly IncidentDal _incidentDal;
     private readonly IncidentDbDal _incidentDbDal;
+    private readonly CustomerDbDal _customerDbDal;
+    private readonly ProductDbDal _productDbDal;
 
     /// <summary>
     /// The default constructor. Builds a DAL to get and save the incidents.
@@ -20,6 +22,8 @@ namespace TechSupport.Controller
     {
       _incidentDal = new IncidentDal();
       _incidentDbDal = new IncidentDbDal();
+      _customerDbDal = new CustomerDbDal();
+      _productDbDal = new ProductDbDal();
     }
 
     /// <summary>
@@ -30,20 +34,6 @@ namespace TechSupport.Controller
     public IEnumerable<LegacyIncident> GetIncidents(string customerId = null)
     {
       return string.IsNullOrEmpty(customerId) ? _incidentDal.GetIncidents() : _incidentDal.SearchIncidentsByCustomerId(customerId);
-    }
-
-    /// <summary>
-    /// A method to save a new legacyIncident
-    /// </summary>
-    /// <param name="legacyIncident">the legacyIncident to save.</param>
-    public void AddLegacyIncident(LegacyIncident legacyIncident)
-    {
-      if (legacyIncident == null)
-      {
-        throw new ArgumentNullException(nameof(legacyIncident));
-      }
-
-      _incidentDal.Add(legacyIncident);
     }
 
     /// <summary>
@@ -61,14 +51,22 @@ namespace TechSupport.Controller
     /// <returns>the customers</returns>
     public IEnumerable<Customer> GetCustomers()
     {
-      return _incidentDbDal.GetCustomers();
+      return _customerDbDal.GetCustomers();
     }
 
+    /// <summary>
+    /// Gets the products from the db
+    /// </summary>
+    /// <returns>the products</returns>
     public IEnumerable<Product> GetProducts()
     {
-      return _incidentDbDal.GetProducts();
+      return _productDbDal.GetProducts();
     }
 
+    /// <summary>
+    /// adds an incident to the db
+    /// </summary>
+    /// <param name="incident">the incident</param>
     public void AddIncident(Incident incident)
     {
       if (string.IsNullOrWhiteSpace(incident.Title))
@@ -79,7 +77,7 @@ namespace TechSupport.Controller
       {
         throw new ArgumentException("Description is required.");
       }
-      if (!_incidentDbDal.IsCustomerAssociatedToProduct(incident.CustomerID, incident.ProductCode))
+      if (!_customerDbDal.IsCustomerAssociatedToProduct(incident.CustomerID, incident.ProductCode))
       {
         throw new ArgumentException("There is no registration associated with the product.");
       }

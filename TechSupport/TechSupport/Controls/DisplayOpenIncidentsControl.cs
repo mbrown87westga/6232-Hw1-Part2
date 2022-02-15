@@ -42,11 +42,9 @@ namespace TechSupport.Controls
           OpenIncidentsListView.Items[i].SubItems.Add(incident.Title);
         }
       }
-      catch (Exception e)
+      catch (Exception ex)
       {
-        this.ErrorLabel.Text = e.Message;
-        this.OpenIncidentsListView.Hide();
-        this.ErrorLabel.Show();
+        MessageBox.Show(ex.Message, "There was an Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
       }
     }
 

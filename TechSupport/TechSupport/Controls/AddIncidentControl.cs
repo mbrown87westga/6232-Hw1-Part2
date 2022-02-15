@@ -51,7 +51,7 @@ namespace TechSupport.View
       }
       catch (Exception ex)
       {
-        MessageBox.Show(ex.Message, "There was an Error");
+        MessageBox.Show(ex.Message, "There was an Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
       }
       finally
       {
@@ -84,19 +84,26 @@ namespace TechSupport.View
 
     private void AddIncidentControl_Load(object sender, EventArgs e)
     {
-      _customers = _incidentController.GetCustomers();
-      foreach (Customer customer in _customers)
+      try
       {
-        CustomerComboBox.Items.Add(customer.Name);
+        _customers = _incidentController.GetCustomers();
+        foreach (Customer customer in _customers)
+        {
+          CustomerComboBox.Items.Add(customer.Name);
+        }
+
+        _products = _incidentController.GetProducts();
+        foreach (Product product in _products)
+        {
+          ProductComboBox.Items.Add(product.Name);
+        }
+        
+        ClearDialog();
       }
-      CustomerComboBox.SelectedIndex = 0;
-      
-      _products = _incidentController.GetProducts();
-      foreach (Product product in _products)
+      catch(Exception ex)
       {
-        ProductComboBox.Items.Add(product.Name);
+        MessageBox.Show(ex.Message, "There was an Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
       }
-      ProductComboBox.SelectedIndex = 0;
 
     }
   }

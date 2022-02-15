@@ -65,7 +65,9 @@
     <Compile Include="Controls\SearchIncidentsControl.Designer.cs">
       <DependentUpon>SearchIncidentsControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="DAL\ProductDbDal.cs" />
     <Compile Include="DAL\IncidentDal.cs" />
+    <Compile Include="DAL\CustomerDbDal.cs" />
     <Compile Include="DAL\IncidentDbDal.cs" />
     <Compile Include="DAL\TechSupportDbConnection.cs" />
     <Compile Include="ExtensionMethods.cs" />
