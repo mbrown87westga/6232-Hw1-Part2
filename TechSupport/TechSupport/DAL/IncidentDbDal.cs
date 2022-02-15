@@ -95,5 +95,40 @@ namespace TechSupport.DAL
 
       return CustomerList;
     }
+
+    public IEnumerable<Product> GetProducts()
+    {
+      List<Product> ProductList = new List<Product>();
+
+      string selectStatement = @"select p.ProductCode,
+                                        p.Name,
+                                        p.Version,
+                                        p.ReleaseDate
+                                 from [dbo].[Products] p;";
+
+      using (SqlConnection connection = TechSupportDbConnection.GetConnection())
+      {
+        connection.Open();
+
+        using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
+        {
+          using (SqlDataReader reader = selectCommand.ExecuteReader())
+          {
+            while (reader.Read())
+            {
+              Product Product = new Product();
+              Product.ProductCode = reader["ProductCode"].ToString();
+              Product.Name = reader["Name"].ToString();
+              Product.Version = decimal.Parse(reader["Version"].ToString());
+              Product.ReleaseDate = DateTime.Parse(reader["ReleaseDate"].ToString());
+
+              ProductList.Add(Product);
+            }
+          }
+        }
+      }
+
+      return ProductList;
+    }
   }
 }

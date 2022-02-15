@@ -69,6 +69,7 @@
     <Compile Include="DAL\IncidentDbDal.cs" />
     <Compile Include="DAL\TechSupportDbConnection.cs" />
     <Compile Include="ExtensionMethods.cs" />
+    <Compile Include="Model\Product.cs" />
     <Compile Include="Model\Customer.cs" />
     <Compile Include="Model\Incident.cs" />
     <Compile Include="Model\LegacyIncident.cs" />

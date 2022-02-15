@@ -13,6 +13,7 @@ namespace TechSupport.View
   {
     private readonly IncidentController _incidentController;
     private IEnumerable<Customer> _customers;
+    private IEnumerable<Product> _products;
 
     /// <summary>
     /// this constructor initializes the component and also builds the incidents controller.
@@ -89,6 +90,15 @@ namespace TechSupport.View
       {
         CustomerComboBox.Items.Add(customer.Name);
       }
+      CustomerComboBox.SelectedIndex = 0;
+      
+      _products = _incidentController.GetProducts();
+      foreach (Product product in _products)
+      {
+        ProductComboBox.Items.Add(product.Name);
+      }
+      ProductComboBox.SelectedIndex = 0;
+
     }
   }
 }

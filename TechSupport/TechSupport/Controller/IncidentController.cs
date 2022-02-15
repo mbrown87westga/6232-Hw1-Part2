@@ -63,5 +63,10 @@ namespace TechSupport.Controller
     {
       return _incidentDbDal.GetCustomers();
     }
+
+    public IEnumerable<Product> GetProducts()
+    {
+      return _incidentDbDal.GetProducts();
+    }
   }
 }
