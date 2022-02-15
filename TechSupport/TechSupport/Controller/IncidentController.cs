@@ -36,7 +36,7 @@ namespace TechSupport.Controller
     /// A method to save a new legacyIncident
     /// </summary>
     /// <param name="legacyIncident">the legacyIncident to save.</param>
-    public void Add(LegacyIncident legacyIncident)
+    public void AddLegacyIncident(LegacyIncident legacyIncident)
     {
       if (legacyIncident == null)
       {
@@ -67,6 +67,23 @@ namespace TechSupport.Controller
     public IEnumerable<Product> GetProducts()
     {
       return _incidentDbDal.GetProducts();
+    }
+
+    public void AddIncident(Incident incident)
+    {
+      if (string.IsNullOrWhiteSpace(incident.Title))
+      {
+        throw new ArgumentException("Title is required.");
+      }
+      if (string.IsNullOrWhiteSpace(incident.Description))
+      {
+        throw new ArgumentException("Description is required.");
+      }
+      if (!_incidentDbDal.IsCustomerAssociatedToProduct(incident.CustomerID, incident.ProductCode))
+      {
+        throw new ArgumentException("There is no registration associated with the product.");
+      }
+      _incidentDbDal.AddIncident(incident);
     }
   }
 }

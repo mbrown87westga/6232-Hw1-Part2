@@ -21,6 +21,7 @@ namespace TechSupport.DAL
       string selectStatement = @"select i.ProductCode,
                                         i.DateOpened,
                                         c.[Name] as CustomerName,
+                                        c.CustomerID,
                                         COALESCE(t.[Name], '') as TechName,
                                         i.Title
                                  from [dbo].[Incidents] i
@@ -41,7 +42,8 @@ namespace TechSupport.DAL
               Incident Incident = new Incident();
               Incident.ProductCode = reader["ProductCode"].ToString();
               Incident.DateOpened = (DateTime)reader["DateOpened"];
-              Incident.Customer = reader["CustomerName"].ToString();
+              Incident.CustomerName = reader["CustomerName"].ToString();
+              Incident.CustomerID = (int)reader["CustomerID"];
               Incident.Technician = reader["TechName"].ToString();
               Incident.Title = reader["Title"].ToString();
               IncidentList.Add(Incident);
@@ -78,7 +80,7 @@ namespace TechSupport.DAL
             while (reader.Read())
             {
               Customer Customer = new Customer();
-              Customer.CustomerID = int.Parse(reader["CustomerID"].ToString()); 
+              Customer.CustomerID = (int)reader["CustomerID"]; 
               Customer.Name = reader["Name"].ToString();
               Customer.Address = reader["Address"].ToString();
               Customer.City = reader["City"].ToString();
@@ -119,8 +121,8 @@ namespace TechSupport.DAL
               Product Product = new Product();
               Product.ProductCode = reader["ProductCode"].ToString();
               Product.Name = reader["Name"].ToString();
-              Product.Version = decimal.Parse(reader["Version"].ToString());
-              Product.ReleaseDate = DateTime.Parse(reader["ReleaseDate"].ToString());
+              Product.Version = (decimal)reader["Version"];
+              Product.ReleaseDate = (DateTime)reader["ReleaseDate"];
 
               ProductList.Add(Product);
             }
@@ -129,6 +131,49 @@ namespace TechSupport.DAL
       }
 
       return ProductList;
+    }
+
+    public bool IsCustomerAssociatedToProduct(int customerId, string productCode)
+    {
+      string selectStatement = @"select count(*)
+                                 from [dbo].[Registrations]
+                                 where CustomerID = @CustomerID
+                                 and ProductCode = @ProductCode;";
+
+      using (SqlConnection connection = TechSupportDbConnection.GetConnection())
+      {
+        connection.Open();
+
+        using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
+        {
+          selectCommand.Parameters.AddWithValue("@CustomerID", customerId);
+          selectCommand.Parameters.AddWithValue("@ProductCode", productCode);
+          var result = (int) selectCommand.ExecuteScalar();
+          return result > 0;
+        }
+      }
+    }
+
+    public void AddIncident(Incident incident)
+    {
+      string insertStatement = @"insert into [dbo].[Incidents] (ProductCode, DateOpened, CustomerID, Title, [Description])
+                                 values (@ProductCode, @DateOpened, @CustomerID, @Title, @Description);";
+
+      using (SqlConnection connection = TechSupportDbConnection.GetConnection())
+      {
+        connection.Open();
+
+        using (SqlCommand insertCommand = new SqlCommand(insertStatement, connection))
+        {
+          insertCommand.Parameters.AddWithValue("@ProductCode", incident.ProductCode);
+          insertCommand.Parameters.AddWithValue("@DateOpened",  incident.DateOpened == DateTime.MinValue ? DateTime.Now : incident.DateOpened);
+          insertCommand.Parameters.AddWithValue("@CustomerID", incident.CustomerID);
+          insertCommand.Parameters.AddWithValue("@Title", incident.Title);
+          insertCommand.Parameters.AddWithValue("@Description", incident.Description);
+
+          insertCommand.ExecuteNonQuery();
+        }
+      }
     }
   }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 using TechSupport.Controller;
 using TechSupport.Model;
@@ -38,25 +39,23 @@ namespace TechSupport.View
     {
       try
       {
-        _incidentController.Add(new LegacyIncident
+        _incidentController.AddIncident(new Incident
         {
           Description = DescriptionTextBox.Text,
           Title = TitleTextBox.Text,
-          ProductId = 0, //Todo: make this correct
-          CustomerId = 0
+          ProductCode = _products.Single(x => x.Name == (string) ProductComboBox.SelectedItem).ProductCode,
+          CustomerID = _customers.Single(x => x.Name == (string) CustomerComboBox.SelectedItem).CustomerID
         });
-        ClearDialog();
+        MessageBox.Show("Incident was successfully added to the DB.", "Confirmation", MessageBoxButtons.OK,
+          MessageBoxIcon.Information);
       }
       catch (Exception ex)
       {
-        if (ex is FormatException)
-        {
-          MessageBox.Show("CustomerID must be an integer.", "Error");
-        }
-        else
-        {
-          throw;
-        }
+        MessageBox.Show(ex.Message, "There was an Error");
+      }
+      finally
+      {
+        ClearDialog();
       }
     }
 

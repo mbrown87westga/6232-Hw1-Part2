@@ -18,7 +18,11 @@ namespace TechSupport.Model
     /// <summary>
     /// The customer that reported the incident
     /// </summary>
-    public string Customer { get; set; }
+    public int CustomerID { get; set; }
+    /// <summary>
+    /// The customer that reported the incident
+    /// </summary>
+    public string CustomerName { get; set; }
     /// <summary>
     /// The technician assigned to the incident
     /// </summary>
@@ -27,5 +31,9 @@ namespace TechSupport.Model
     /// The title of the incident
     /// </summary>
     public string Title { get; set; }
+    /// <summary>
+    /// the Description
+    /// </summary>
+    public string Description { get; set; }
   }
 }

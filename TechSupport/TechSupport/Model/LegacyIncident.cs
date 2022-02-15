@@ -17,10 +17,5 @@
     /// The id of the reporting customer
     /// </summary>
     public int CustomerId { get; set; }
-
-    /// <summary>
-    /// the Id of the product that the incident is about
-    /// </summary>
-    public int ProductId { get; set; }
   }
 }
