@@ -14,6 +14,7 @@ namespace TechSupport.View
   {
     private readonly IncidentController _incidentController;
     private IEnumerable<Technician> _technicians;
+    private bool _modified = false;
 
     /// <summary>
     /// this constructor initializes the component and also builds the incidents controller.
@@ -41,9 +42,15 @@ namespace TechSupport.View
 
     private void ClearDialog()
     {
-      TitleTextBox.Text = "";
+      IncidentIDTextBox.Text = "";
+      CustomerTextBox.Text = "";
+      ProductTextBox.Text = "";
       TechnicianComboBox.SelectedIndex = 0;
+      TitleTextBox.Text = "";
+      DateOpenedTextBox.Text = "";
       DescriptionTextBox.Text = "";
+      TestToAddTextBox.Text = "";
+      _modified = false;
     }
 
     private void TextBox_TextChanged(object sender, EventArgs e)
@@ -60,10 +67,10 @@ namespace TechSupport.View
         {
           TechnicianComboBox.Items.Add(technician.Name);
         }
-        
+
         ClearDialog();
       }
-      catch(Exception ex)
+      catch (Exception ex)
       {
         MessageBox.Show(ex.Message, "There was an Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
       }
@@ -72,6 +79,33 @@ namespace TechSupport.View
 
     private void CloseClick(object sender, EventArgs e)
     {
+
+    }
+
+    private void GetClick(object sender, EventArgs e)
+    {
+      try
+      {
+        Incident incident = _incidentController.GetIncident(int.Parse(IncidentIDTextBox.Text));
+        if (incident != null)
+        {
+          CustomerTextBox.Text = incident.CustomerName;
+          ProductTextBox.Text = incident.ProductCode;
+          TechnicianComboBox.SelectedIndex = string.IsNullOrWhiteSpace(incident.Technician) ? 0 : TechnicianComboBox.Items.IndexOf(incident.Technician);
+          TitleTextBox.Text = incident.Title;
+          DateOpenedTextBox.Text = incident.DateOpened.ToShortDateString();
+          DescriptionTextBox.Text = incident.Description;
+          _modified = false;
+        }
+        else
+        {
+          MessageBox.Show("No incident with that ID exists.", "There was an Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+      }
+      catch (Exception ex)
+      {
+        MessageBox.Show(ex.Message, "There was an Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+      }
 
     }
   }

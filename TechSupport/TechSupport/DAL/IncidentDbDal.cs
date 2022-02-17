@@ -16,7 +16,7 @@ namespace TechSupport.DAL
     /// <returns>the incidents</returns>
     public IEnumerable<Incident> GetOpenIncidents()
     {
-      List<Incident> IncidentList = new List<Incident>();
+      List<Incident> incidentList = new List<Incident>();
 
       string selectStatement = @"select i.ProductCode,
                                         i.DateOpened,
@@ -39,20 +39,20 @@ namespace TechSupport.DAL
           {
             while (reader.Read())
             {
-              Incident Incident = new Incident();
-              Incident.ProductCode = reader["ProductCode"].ToString();
-              Incident.DateOpened = (DateTime)reader["DateOpened"];
-              Incident.CustomerName = reader["CustomerName"].ToString();
-              Incident.CustomerID = (int)reader["CustomerID"];
-              Incident.Technician = reader["TechName"].ToString();
-              Incident.Title = reader["Title"].ToString();
-              IncidentList.Add(Incident);
+              Incident incident = new Incident();
+              incident.ProductCode = reader["ProductCode"].ToString();
+              incident.DateOpened = (DateTime)reader["DateOpened"];
+              incident.CustomerName = reader["CustomerName"].ToString();
+              incident.CustomerID = (int)reader["CustomerID"];
+              incident.Technician = reader["TechName"].ToString();
+              incident.Title = reader["Title"].ToString();
+              incidentList.Add(incident);
             }
           }
         }
       }
 
-      return IncidentList;
+      return incidentList;
     }
     
     /// <summary>
@@ -79,6 +79,51 @@ namespace TechSupport.DAL
           insertCommand.ExecuteNonQuery();
         }
       }
+    }
+
+    public Incident GetIncident(int incidentId)
+    {
+      Incident incident = null;
+
+      string selectStatement = @"select i.ProductCode,
+                                        i.DateOpened,
+                                        c.[Name] as CustomerName,
+                                        c.CustomerID,
+                                        COALESCE(t.[Name], '') as TechName,
+                                        i.Title,
+                                        i.Description
+                                 from [dbo].[Incidents] i
+                                 join [dbo].[Customers] c on i.[CustomerID] = c.[CustomerID]
+                                 left join [dbo].[Technicians] t on i.[TechID] = t.[TechID]
+                                 where IncidentID = @IncidentID";
+
+      using (SqlConnection connection = TechSupportDbConnection.GetConnection())
+      {
+        connection.Open();
+
+        using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
+        {
+          selectCommand.Parameters.AddWithValue("@IncidentId", incidentId);
+          using (SqlDataReader reader = selectCommand.ExecuteReader())
+          {
+            if (reader.Read())
+            {
+              incident = new Incident
+              {
+                Title = reader["Title"].ToString(),
+                ProductCode = reader["ProductCode"].ToString(),
+                DateOpened = (DateTime)reader["DateOpened"],
+                CustomerName = reader["CustomerName"].ToString(),
+                CustomerID = (int)reader["CustomerID"],
+                Technician = reader["TechName"].ToString(),
+                Description = reader["Description"].ToString(),
+              };
+            }
+          }
+        }
+      }
+
+      return incident;
     }
   }
 }

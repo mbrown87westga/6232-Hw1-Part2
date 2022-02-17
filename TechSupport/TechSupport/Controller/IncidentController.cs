@@ -82,5 +82,10 @@ namespace TechSupport.Controller
       }
       _incidentDbDal.AddIncident(incident);
     }
+
+    public Incident GetIncident(int incidentID)
+    {
+      return _incidentDbDal.GetIncident(incidentID);
+    }
   }
 }

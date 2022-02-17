@@ -38,7 +38,7 @@
       this.TechnicianComboBox = new System.Windows.Forms.ComboBox();
       this.ProductLabel = new System.Windows.Forms.Label();
       this.GetButton = new System.Windows.Forms.Button();
-      this.IncidentTextBox = new System.Windows.Forms.TextBox();
+      this.IncidentIDTextBox = new System.Windows.Forms.TextBox();
       this.IncidentLabel = new System.Windows.Forms.Label();
       this.CustomerTextBox = new System.Windows.Forms.TextBox();
       this.ProductTextBox = new System.Windows.Forms.TextBox();
@@ -76,6 +76,7 @@
       this.DescriptionTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+      this.DescriptionTextBox.Enabled = false;
       this.DescriptionTextBox.Location = new System.Drawing.Point(84, 163);
       this.DescriptionTextBox.Multiline = true;
       this.DescriptionTextBox.Name = "DescriptionTextBox";
@@ -96,6 +97,7 @@
       // 
       this.TitleTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+      this.TitleTextBox.Enabled = false;
       this.TitleTextBox.Location = new System.Drawing.Point(84, 111);
       this.TitleTextBox.Name = "TitleTextBox";
       this.TitleTextBox.Size = new System.Drawing.Size(310, 20);
@@ -153,15 +155,16 @@
       this.GetButton.TabIndex = 22;
       this.GetButton.Text = "Get";
       this.GetButton.UseVisualStyleBackColor = true;
+      this.GetButton.Click += new System.EventHandler(this.GetClick);
       // 
-      // IncidentTextBox
+      // IncidentIDTextBox
       // 
-      this.IncidentTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+      this.IncidentIDTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-      this.IncidentTextBox.Location = new System.Drawing.Point(84, 6);
-      this.IncidentTextBox.Name = "IncidentTextBox";
-      this.IncidentTextBox.Size = new System.Drawing.Size(229, 20);
-      this.IncidentTextBox.TabIndex = 24;
+      this.IncidentIDTextBox.Location = new System.Drawing.Point(84, 6);
+      this.IncidentIDTextBox.Name = "IncidentIDTextBox";
+      this.IncidentIDTextBox.Size = new System.Drawing.Size(229, 20);
+      this.IncidentIDTextBox.TabIndex = 24;
       // 
       // IncidentLabel
       // 
@@ -176,6 +179,7 @@
       // 
       this.CustomerTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+      this.CustomerTextBox.Enabled = false;
       this.CustomerTextBox.Location = new System.Drawing.Point(84, 32);
       this.CustomerTextBox.Name = "CustomerTextBox";
       this.CustomerTextBox.Size = new System.Drawing.Size(310, 20);
@@ -185,6 +189,7 @@
       // 
       this.ProductTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+      this.ProductTextBox.Enabled = false;
       this.ProductTextBox.Location = new System.Drawing.Point(84, 58);
       this.ProductTextBox.Name = "ProductTextBox";
       this.ProductTextBox.Size = new System.Drawing.Size(310, 20);
@@ -203,6 +208,7 @@
       // 
       this.DateOpenedTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+      this.DateOpenedTextBox.Enabled = false;
       this.DateOpenedTextBox.Location = new System.Drawing.Point(84, 137);
       this.DateOpenedTextBox.Name = "DateOpenedTextBox";
       this.DateOpenedTextBox.Size = new System.Drawing.Size(310, 20);
@@ -260,7 +266,7 @@
       this.Controls.Add(this.TechnicianLabel);
       this.Controls.Add(this.ProductTextBox);
       this.Controls.Add(this.CustomerTextBox);
-      this.Controls.Add(this.IncidentTextBox);
+      this.Controls.Add(this.IncidentIDTextBox);
       this.Controls.Add(this.IncidentLabel);
       this.Controls.Add(this.GetButton);
       this.Controls.Add(this.ProductLabel);
@@ -291,7 +297,7 @@
     private System.Windows.Forms.ComboBox TechnicianComboBox;
     private System.Windows.Forms.Label ProductLabel;
     private System.Windows.Forms.Button GetButton;
-    private System.Windows.Forms.TextBox IncidentTextBox;
+    private System.Windows.Forms.TextBox IncidentIDTextBox;
     private System.Windows.Forms.Label IncidentLabel;
     private System.Windows.Forms.TextBox CustomerTextBox;
     private System.Windows.Forms.TextBox ProductTextBox;
