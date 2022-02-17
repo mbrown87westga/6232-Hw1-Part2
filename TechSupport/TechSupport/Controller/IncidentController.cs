@@ -10,7 +10,6 @@ namespace TechSupport.Controller
   /// </summary>
   public class IncidentController
   {
-    private readonly IncidentDal _incidentDal;
     private readonly IncidentDbDal _incidentDbDal;
     private readonly CustomerDbDal _customerDbDal;
     private readonly ProductDbDal _productDbDal;
@@ -20,22 +19,11 @@ namespace TechSupport.Controller
     /// </summary>
     public IncidentController()
     {
-      _incidentDal = new IncidentDal();
       _incidentDbDal = new IncidentDbDal();
       _customerDbDal = new CustomerDbDal();
       _productDbDal = new ProductDbDal();
     }
-
-    /// <summary>
-    /// The method which returns the incidents from the backend.
-    /// </summary>
-    /// <param name="customerId">optional. If provided, gets all incidents for that customer.</param>
-    /// <returns>the specified incidents.</returns>
-    public IEnumerable<LegacyIncident> GetIncidents(string customerId = null)
-    {
-      return string.IsNullOrEmpty(customerId) ? _incidentDal.GetIncidents() : _incidentDal.SearchIncidentsByCustomerId(customerId);
-    }
-
+    
     /// <summary>
     /// Gets the open incidents from the db
     /// </summary>
