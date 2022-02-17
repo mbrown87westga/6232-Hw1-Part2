@@ -83,5 +83,10 @@ namespace TechSupport.Controller
       }
       _incidentDbDal.AddIncident(incident);
     }
+
+    public IEnumerable<Technician> GetTechnicians()
+    {
+      throw new NotImplementedException();
+    }
   }
 }

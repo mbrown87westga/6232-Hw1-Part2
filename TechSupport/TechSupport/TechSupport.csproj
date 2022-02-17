@@ -47,6 +47,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controller\IncidentController.cs" />
+    <Compile Include="Controls\UpdateIncidentControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\UpdateIncidentControl.Designer.cs">
+      <DependentUpon>UpdateIncidentControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\DisplayOpenIncidentsControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -71,6 +77,7 @@
     <Compile Include="DAL\IncidentDbDal.cs" />
     <Compile Include="DAL\TechSupportDbConnection.cs" />
     <Compile Include="ExtensionMethods.cs" />
+    <Compile Include="Model\Technician.cs" />
     <Compile Include="Model\Product.cs" />
     <Compile Include="Model\Customer.cs" />
     <Compile Include="Model\Incident.cs" />
@@ -95,6 +102,9 @@
     <Compile Include="View\LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Controls\UpdateIncidentControl.resx">
+      <DependentUpon>UpdateIncidentControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\DisplayOpenIncidentsControl.resx">
       <DependentUpon>DisplayOpenIncidentsControl.cs</DependentUpon>
     </EmbeddedResource>
