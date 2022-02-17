@@ -59,6 +59,7 @@
     <Compile Include="Controls\DisplayOpenIncidentsControl.Designer.cs">
       <DependentUpon>DisplayOpenIncidentsControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="DAL\TechnicianDbDal.cs" />
     <Compile Include="DAL\ProductDbDal.cs" />
     <Compile Include="DAL\CustomerDbDal.cs" />
     <Compile Include="DAL\IncidentDbDal.cs" />

@@ -13,6 +13,7 @@ namespace TechSupport.Controller
     private readonly IncidentDbDal _incidentDbDal;
     private readonly CustomerDbDal _customerDbDal;
     private readonly ProductDbDal _productDbDal;
+    private readonly TechnicianDbDal _technicianDbDal;
 
     /// <summary>
     /// The default constructor. Builds a DAL to get and save the incidents.
@@ -22,6 +23,7 @@ namespace TechSupport.Controller
       _incidentDbDal = new IncidentDbDal();
       _customerDbDal = new CustomerDbDal();
       _productDbDal = new ProductDbDal();
+      _technicianDbDal = new TechnicianDbDal();
     }
     
     /// <summary>
@@ -52,6 +54,15 @@ namespace TechSupport.Controller
     }
 
     /// <summary>
+    /// Gets the Technicians from the db
+    /// </summary>
+    /// <returns>the Technicians</returns>
+    public IEnumerable<Technician> GetTechnicians()
+    {
+      return _technicianDbDal.GetTechnicians();
+    }
+
+    /// <summary>
     /// adds an incident to the db
     /// </summary>
     /// <param name="incident">the incident</param>
@@ -70,11 +81,6 @@ namespace TechSupport.Controller
         throw new ArgumentException("There is no registration associated with the product.");
       }
       _incidentDbDal.AddIncident(incident);
-    }
-
-    public IEnumerable<Technician> GetTechnicians()
-    {
-      throw new NotImplementedException();
     }
   }
 }
