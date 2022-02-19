@@ -40,5 +40,21 @@ namespace TechSupport.Model
     /// the Description
     /// </summary>
     public string Description { get; set; }
+
+    public override bool Equals(object obj)
+    {
+      Incident incident = obj as Incident;
+      return incident != null && (incident.Description == Description &&
+                                  incident.ProductCode == ProductCode &&
+                                  incident.DateOpened == DateOpened &&
+                                  incident.CustomerName == CustomerName &&
+                                  incident.CustomerID == CustomerID &&
+                                  incident.DateOpened == DateOpened &&
+                                  incident.IncidentID == IncidentID &&
+                                  incident.ProductCode == ProductCode &&
+                                  incident.TechID == TechID &&
+                                  incident.Technician == Technician &&
+                                  incident.Title == Title);
+    }
   }
 }

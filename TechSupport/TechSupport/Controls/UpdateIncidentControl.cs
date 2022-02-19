@@ -14,8 +14,9 @@ namespace TechSupport.View
   {
     private readonly IncidentController _incidentController;
     private IEnumerable<Technician> _technicians;
+    private int _customerId;
     private bool _loaded = false;
-    private bool _modified = false;
+    private Incident _loadedIncident = null;
 
     /// <summary>
     /// this constructor initializes the component and also builds the incidents controller.
@@ -51,7 +52,7 @@ namespace TechSupport.View
       DateOpenedTextBox.Text = "";
       DescriptionTextBox.Text = "";
       TextToAddTextBox.Text = "";
-      _modified = false;
+      _loadedIncident = null;
       _loaded = false;
       UpdateButtonStates();
     }
@@ -60,9 +61,27 @@ namespace TechSupport.View
     {
       CloseButton.Enabled = _loaded;
       FormClearButton.Enabled = _loaded;
-      UpdateButton.Enabled = _modified;
+      TechnicianComboBox.Enabled = _loaded;
+      UpdateButton.Enabled = IsModified();
+      TextToAddTextBox.Enabled = DescriptionTextBox.Text.Length < 200;
     }
-    
+
+    private bool IsModified()
+    {
+      if (_loadedIncident == null)
+      {
+        return false;
+      }
+
+      return !(string.IsNullOrWhiteSpace(TextToAddTextBox.Text) &&
+                   TechnicianComboBox.SelectedIndex == GetTechnicianIndex(_loadedIncident.Technician));
+    }
+
+    private int GetTechnicianIndex(string technician)
+    {
+      return TechnicianComboBox.Items.IndexOf(technician);
+    }
+
     private void UpdateIncidentControl_Load(object sender, EventArgs e)
     {
       try
@@ -96,13 +115,21 @@ namespace TechSupport.View
         if (incident != null)
         {
           CustomerTextBox.Text = incident.CustomerName;
+          _customerId = incident.CustomerID;
           ProductTextBox.Text = incident.ProductCode;
-          TechnicianComboBox.SelectedIndex = string.IsNullOrWhiteSpace(incident.Technician) ? 0 : TechnicianComboBox.Items.IndexOf(incident.Technician);
+          TechnicianComboBox.SelectedIndex = string.IsNullOrWhiteSpace(incident.Technician) ? 0 : GetTechnicianIndex(incident.Technician);
           TitleTextBox.Text = incident.Title;
           DateOpenedTextBox.Text = incident.DateOpened.ToShortDateString();
           DescriptionTextBox.Text = incident.Description;
-          _modified = false;
+          _loadedIncident = incident;
           _loaded = true;
+          UpdateButtonStates();
+          if (DescriptionTextBox.Text.Length >= 200)
+          {
+            MessageBox.Show(
+              "The incident's description is already at its max length - you cannot add anything more to it.",
+              "Max input length reached", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+          }
         }
         else
         {
@@ -117,21 +144,51 @@ namespace TechSupport.View
 
     private void ValueChanged(object sender, EventArgs e)
     {
-      _modified = true;
       UpdateButtonStates();
     }
 
     private void UpdateClick(object sender, EventArgs e)
     {
-      _incidentController.UpdateIncident(new Incident
+      try
       {
-        Description = DescriptionTextBox.Text + "\r\n" + TextToAddTextBox.Text,
-        TechID = _technicians.Single(x => x.Name == TechnicianComboBox.SelectedItem.ToString()).TechID,
-        IncidentID = int.Parse(IncidentIDTextBox.Text)
-      });
+        var newDescriptionText = string.IsNullOrWhiteSpace(TextToAddTextBox.Text) ? DescriptionTextBox.Text :
+          DescriptionTextBox.Text + $"\r\n<{DateTime.Now.ToShortDateString()}> " + TextToAddTextBox.Text;
 
-      GetClick(sender, e);
-      TextToAddTextBox.Text = String.Empty;
+        if (newDescriptionText.Length > 200)
+        {
+          var result =
+            MessageBox.Show(
+              $"The description is {newDescriptionText.Length - 200} character(s) too long and will be truncated.", "Confirm Truncation", MessageBoxButtons.OKCancel);
+          if (result == DialogResult.OK)
+          {
+            newDescriptionText = newDescriptionText.Substring(0, 200);
+          }
+          else if (result == DialogResult.Cancel)
+          {
+            return;
+          }
+        }
+
+        _incidentController.UpdateIncident(new Incident
+        {
+          Description = newDescriptionText,
+          TechID = _technicians.Single(x => x.Name == TechnicianComboBox.SelectedItem.ToString()).TechID,
+          IncidentID = int.Parse(IncidentIDTextBox.Text),
+          ProductCode = ProductTextBox.Text,
+          CustomerName = CustomerTextBox.Text,
+          DateOpened = DateTime.Parse(DateOpenedTextBox.Text),
+          Technician = IncidentIDTextBox.Text,
+          CustomerID = _customerId,
+          Title = TitleTextBox.Text
+        }, _loadedIncident);
+
+        GetClick(sender, e);
+        TextToAddTextBox.Text = String.Empty;
+      }
+      catch (Exception ex)
+      {
+        MessageBox.Show(ex.Message, "There was an Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+      }
     }
   }
 }

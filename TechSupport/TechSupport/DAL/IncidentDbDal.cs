@@ -54,7 +54,7 @@ namespace TechSupport.DAL
 
       return incidentList;
     }
-    
+
     /// <summary>
     /// adds an incident to the db
     /// </summary>
@@ -71,7 +71,7 @@ namespace TechSupport.DAL
         using (SqlCommand insertCommand = new SqlCommand(insertStatement, connection))
         {
           insertCommand.Parameters.AddWithValue("@ProductCode", incident.ProductCode);
-          insertCommand.Parameters.AddWithValue("@DateOpened",  incident.DateOpened == DateTime.MinValue ? DateTime.Now : incident.DateOpened);
+          insertCommand.Parameters.AddWithValue("@DateOpened", incident.DateOpened == DateTime.MinValue ? DateTime.Now : incident.DateOpened);
           insertCommand.Parameters.AddWithValue("@CustomerID", incident.CustomerID);
           insertCommand.Parameters.AddWithValue("@Title", incident.Title);
           insertCommand.Parameters.AddWithValue("@Description", incident.Description);

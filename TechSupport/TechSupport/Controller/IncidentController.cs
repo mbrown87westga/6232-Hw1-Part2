@@ -88,9 +88,18 @@ namespace TechSupport.Controller
       return _incidentDbDal.GetIncident(incidentID);
     }
 
-    public void UpdateIncident(Incident incident)
+    public void UpdateIncident(Incident incident, Incident originalIncident)
     {
-      _incidentDbDal.UpdateIncident(incident);
+      var existingIncident = GetIncident(incident.IncidentID);
+
+      if (existingIncident.Equals(originalIncident))
+      {
+        _incidentDbDal.UpdateIncident(incident);
+      }
+      else
+      {
+        throw new InvalidOperationException("The incident was updated in the db! Update aborted.");
+      }
     }
   }
 }
