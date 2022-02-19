@@ -50,7 +50,7 @@ namespace TechSupport.View
       TitleTextBox.Text = "";
       DateOpenedTextBox.Text = "";
       DescriptionTextBox.Text = "";
-      TestToAddTextBox.Text = "";
+      TextToAddTextBox.Text = "";
       _modified = false;
       _loaded = false;
       UpdateButtonStates();
@@ -113,13 +113,25 @@ namespace TechSupport.View
       {
         MessageBox.Show(ex.Message, "There was an Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
       }
-
     }
 
     private void ValueChanged(object sender, EventArgs e)
     {
       _modified = true;
       UpdateButtonStates();
+    }
+
+    private void UpdateClick(object sender, EventArgs e)
+    {
+      _incidentController.UpdateIncident(new Incident
+      {
+        Description = DescriptionTextBox.Text + "\r\n" + TextToAddTextBox.Text,
+        TechID = _technicians.Single(x => x.Name == TechnicianComboBox.SelectedItem.ToString()).TechID,
+        IncidentID = int.Parse(IncidentIDTextBox.Text)
+      });
+
+      GetClick(sender, e);
+      TextToAddTextBox.Text = String.Empty;
     }
   }
 }

@@ -7,6 +7,7 @@ namespace TechSupport.Model
   /// </summary>
   public class Incident
   {
+    public int IncidentID { get; set; }
     /// <summary>
     /// The product code
     /// </summary>
@@ -27,6 +28,10 @@ namespace TechSupport.Model
     /// The technician assigned to the incident
     /// </summary>
     public string Technician { get; set; }
+    /// <summary>
+    /// The technician assigned to the incident
+    /// </summary>
+    public int TechID { get; set; }
     /// <summary>
     /// The title of the incident
     /// </summary>

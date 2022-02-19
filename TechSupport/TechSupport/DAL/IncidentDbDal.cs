@@ -125,5 +125,27 @@ namespace TechSupport.DAL
 
       return incident;
     }
+
+    public void UpdateIncident(Incident incident)
+    {
+      string updateStatement = @"update [dbo].[Incidents]
+                                set [Description] = @Description,
+                                    TechID = @TechID
+                                 where IncidentID = @IncidentID";
+
+      using (SqlConnection connection = TechSupportDbConnection.GetConnection())
+      {
+        connection.Open();
+
+        using (SqlCommand updateCommand = new SqlCommand(updateStatement, connection))
+        {
+          updateCommand.Parameters.AddWithValue("@Description", incident.Description);
+          updateCommand.Parameters.AddWithValue("@IncidentId", incident.IncidentID);
+          updateCommand.Parameters.AddWithValue("@TechID", incident.TechID);
+
+          updateCommand.ExecuteNonQuery();
+        }
+      }
+    }
   }
 }

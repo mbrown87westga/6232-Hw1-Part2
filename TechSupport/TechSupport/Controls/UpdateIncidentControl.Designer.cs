@@ -45,7 +45,7 @@
       this.TechnicianLabel = new System.Windows.Forms.Label();
       this.DateOpenedTextBox = new System.Windows.Forms.TextBox();
       this.DateOpenedLabel = new System.Windows.Forms.Label();
-      this.TestToAddTextBox = new System.Windows.Forms.TextBox();
+      this.TextToAddTextBox = new System.Windows.Forms.TextBox();
       this.TestToAddLabel = new System.Windows.Forms.Label();
       this.UpdateButton = new System.Windows.Forms.Button();
       this.SuspendLayout();
@@ -222,16 +222,16 @@
       this.DateOpenedLabel.TabIndex = 28;
       this.DateOpenedLabel.Text = "Date Opened:";
       // 
-      // TestToAddTextBox
+      // TextToAddTextBox
       // 
-      this.TestToAddTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+      this.TextToAddTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-      this.TestToAddTextBox.Location = new System.Drawing.Point(84, 241);
-      this.TestToAddTextBox.Multiline = true;
-      this.TestToAddTextBox.Name = "TestToAddTextBox";
-      this.TestToAddTextBox.Size = new System.Drawing.Size(310, 83);
-      this.TestToAddTextBox.TabIndex = 31;
-      this.TestToAddTextBox.TextChanged += new System.EventHandler(this.ValueChanged);
+      this.TextToAddTextBox.Location = new System.Drawing.Point(84, 241);
+      this.TextToAddTextBox.Multiline = true;
+      this.TextToAddTextBox.Name = "TextToAddTextBox";
+      this.TextToAddTextBox.Size = new System.Drawing.Size(310, 83);
+      this.TextToAddTextBox.TabIndex = 31;
+      this.TextToAddTextBox.TextChanged += new System.EventHandler(this.ValueChanged);
       // 
       // TestToAddLabel
       // 
@@ -253,13 +253,14 @@
       this.UpdateButton.TabIndex = 32;
       this.UpdateButton.Text = "Update";
       this.UpdateButton.UseVisualStyleBackColor = true;
+      this.UpdateButton.Click += new System.EventHandler(this.UpdateClick);
       // 
       // UpdateIncidentControl
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.Controls.Add(this.UpdateButton);
-      this.Controls.Add(this.TestToAddTextBox);
+      this.Controls.Add(this.TextToAddTextBox);
       this.Controls.Add(this.TestToAddLabel);
       this.Controls.Add(this.DateOpenedTextBox);
       this.Controls.Add(this.DateOpenedLabel);
@@ -304,7 +305,7 @@
     private System.Windows.Forms.Label TechnicianLabel;
     private System.Windows.Forms.TextBox DateOpenedTextBox;
     private System.Windows.Forms.Label DateOpenedLabel;
-    private System.Windows.Forms.TextBox TestToAddTextBox;
+    private System.Windows.Forms.TextBox TextToAddTextBox;
     private System.Windows.Forms.Label TestToAddLabel;
     private System.Windows.Forms.Button UpdateButton;
   }
