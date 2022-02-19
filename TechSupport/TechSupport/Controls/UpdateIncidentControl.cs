@@ -14,6 +14,7 @@ namespace TechSupport.View
   {
     private readonly IncidentController _incidentController;
     private IEnumerable<Technician> _technicians;
+    private bool _loaded = false;
     private bool _modified = false;
 
     /// <summary>
@@ -51,18 +52,23 @@ namespace TechSupport.View
       DescriptionTextBox.Text = "";
       TestToAddTextBox.Text = "";
       _modified = false;
+      _loaded = false;
+      UpdateButtonStates();
     }
 
-    private void TextBox_TextChanged(object sender, EventArgs e)
+    private void UpdateButtonStates()
     {
-      CloseButton.Enabled = !string.IsNullOrEmpty(TitleTextBox.Text) && !string.IsNullOrEmpty(DescriptionTextBox.Text);
+      CloseButton.Enabled = _loaded;
+      FormClearButton.Enabled = _loaded;
+      UpdateButton.Enabled = _modified;
     }
-
+    
     private void UpdateIncidentControl_Load(object sender, EventArgs e)
     {
       try
       {
         _technicians = _incidentController.GetTechnicians();
+        TechnicianComboBox.Items.Add("--  Unassigned  --");
         foreach (Technician technician in _technicians)
         {
           TechnicianComboBox.Items.Add(technician.Name);
@@ -96,6 +102,7 @@ namespace TechSupport.View
           DateOpenedTextBox.Text = incident.DateOpened.ToShortDateString();
           DescriptionTextBox.Text = incident.Description;
           _modified = false;
+          _loaded = true;
         }
         else
         {
@@ -107,6 +114,12 @@ namespace TechSupport.View
         MessageBox.Show(ex.Message, "There was an Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
       }
 
+    }
+
+    private void ValueChanged(object sender, EventArgs e)
+    {
+      _modified = true;
+      UpdateButtonStates();
     }
   }
 }

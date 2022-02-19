@@ -82,7 +82,6 @@
       this.DescriptionTextBox.Name = "DescriptionTextBox";
       this.DescriptionTextBox.Size = new System.Drawing.Size(310, 72);
       this.DescriptionTextBox.TabIndex = 13;
-      this.DescriptionTextBox.TextChanged += new System.EventHandler(this.TextBox_TextChanged);
       // 
       // DescriptionLabel
       // 
@@ -102,7 +101,6 @@
       this.TitleTextBox.Name = "TitleTextBox";
       this.TitleTextBox.Size = new System.Drawing.Size(310, 20);
       this.TitleTextBox.TabIndex = 10;
-      this.TitleTextBox.TextChanged += new System.EventHandler(this.TextBox_TextChanged);
       // 
       // TitleLabel
       // 
@@ -136,6 +134,7 @@
       this.TechnicianComboBox.Name = "TechnicianComboBox";
       this.TechnicianComboBox.Size = new System.Drawing.Size(310, 21);
       this.TechnicianComboBox.TabIndex = 20;
+      this.TechnicianComboBox.SelectedIndexChanged += new System.EventHandler(this.ValueChanged);
       // 
       // ProductLabel
       // 
@@ -232,6 +231,7 @@
       this.TestToAddTextBox.Name = "TestToAddTextBox";
       this.TestToAddTextBox.Size = new System.Drawing.Size(310, 83);
       this.TestToAddTextBox.TabIndex = 31;
+      this.TestToAddTextBox.TextChanged += new System.EventHandler(this.ValueChanged);
       // 
       // TestToAddLabel
       // 
