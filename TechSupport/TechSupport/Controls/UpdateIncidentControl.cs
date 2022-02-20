@@ -59,7 +59,7 @@ namespace TechSupport.View
 
     private void UpdateButtonStates()
     {
-      CloseButton.Enabled = _loaded && IsOpen();
+      CloseButton.Enabled = _loaded && IsOpen() && TechnicianComboBox.SelectedIndex != 0;
       FormClearButton.Enabled = _loaded;
       TechnicianComboBox.Enabled = _loaded && IsOpen();
       UpdateButton.Enabled = IsModified() && IsOpen();
@@ -127,7 +127,7 @@ namespace TechSupport.View
         int incidentID;
         if (!int.TryParse(IncidentIDTextBox.Text, out incidentID))
         {
-          throw new FormatException("The Incident ID must be a string.");
+          throw new FormatException("The Incident ID must be an integer.");
         }
 
         _incidentController.CloseIncident(incidentID, _loadedIncident);
@@ -185,6 +185,7 @@ namespace TechSupport.View
         {
           MessageBox.Show("No incident with that ID exists.", "There was an Error", MessageBoxButtons.OK,
             MessageBoxIcon.Error);
+          ClearDialog();
         }
       }
       catch (Exception ex)
