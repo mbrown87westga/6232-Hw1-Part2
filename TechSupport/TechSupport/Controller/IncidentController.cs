@@ -101,5 +101,19 @@ namespace TechSupport.Controller
         throw new InvalidOperationException("The incident was updated in the db! Update aborted.");
       }
     }
+
+    public void CloseIncident(int incidentId, Incident originalIncident)
+    {
+      var existingIncident = GetIncident(incidentId);
+
+      if (existingIncident.Equals(originalIncident))
+      {
+        _incidentDbDal.CloseIncident(incidentId);
+      }
+      else
+      {
+        throw new InvalidOperationException("The incident was updated in the db! Update aborted.");
+      }
+    }
   }
 }

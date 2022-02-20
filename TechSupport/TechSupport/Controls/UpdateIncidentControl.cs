@@ -59,11 +59,16 @@ namespace TechSupport.View
 
     private void UpdateButtonStates()
     {
-      CloseButton.Enabled = _loaded;
+      CloseButton.Enabled = _loaded && IsOpen();
       FormClearButton.Enabled = _loaded;
-      TechnicianComboBox.Enabled = _loaded;
-      UpdateButton.Enabled = IsModified();
-      TextToAddTextBox.Enabled = DescriptionTextBox.Text.Length < 200;
+      TechnicianComboBox.Enabled = _loaded && IsOpen();
+      UpdateButton.Enabled = IsModified() && IsOpen();
+      TextToAddTextBox.Enabled = DescriptionTextBox.Text.Length < 200 && IsOpen();
+    }
+
+    private bool IsOpen()
+    {
+      return _loadedIncident != null && _loadedIncident.DateClosed == null;
     }
 
     private bool IsModified()
@@ -74,12 +79,12 @@ namespace TechSupport.View
       }
 
       return !(string.IsNullOrWhiteSpace(TextToAddTextBox.Text) &&
-                   TechnicianComboBox.SelectedIndex == GetTechnicianIndex(_loadedIncident.Technician));
+               TechnicianComboBox.SelectedIndex == GetTechnicianIndex(_loadedIncident.Technician));
     }
 
     private int GetTechnicianIndex(string technician)
     {
-      return TechnicianComboBox.Items.IndexOf(technician);
+      return string.IsNullOrWhiteSpace(technician) ? 0 : TechnicianComboBox.Items.IndexOf(technician);
     }
 
     private void UpdateIncidentControl_Load(object sender, EventArgs e)
@@ -104,28 +109,73 @@ namespace TechSupport.View
 
     private void CloseClick(object sender, EventArgs e)
     {
+      try
+      {
+        var result =
+          MessageBox.Show(
+            $"The incident cannot be updated in this form once closed. Are you sure?", "Confirm Close", MessageBoxButtons.OKCancel);
+        if (result == DialogResult.Cancel)
+        {
+          return;
+        }
 
+        if (!PerformUpdate())
+        {
+          return;
+        }
+
+        int incidentID;
+        if (!int.TryParse(IncidentIDTextBox.Text, out incidentID))
+        {
+          throw new FormatException("The Incident ID must be a string.");
+        }
+
+        _incidentController.CloseIncident(incidentID, _loadedIncident);
+
+        GetClick(sender, e);
+        TextToAddTextBox.Text = String.Empty;
+      }
+      catch (Exception ex)
+      {
+        MessageBox.Show(ex.Message, "There was an Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+      }
     }
 
     private void GetClick(object sender, EventArgs e)
     {
       try
       {
-        Incident incident = _incidentController.GetIncident(int.Parse(IncidentIDTextBox.Text));
+        var incidentID = -1;
+        if (!int.TryParse(IncidentIDTextBox.Text, out incidentID))
+        {
+          throw new FormatException("The Incident ID must be a string.");
+        }
+
+        Incident incident = _incidentController.GetIncident(incidentID);
         if (incident != null)
         {
           CustomerTextBox.Text = incident.CustomerName;
           _customerId = incident.CustomerID;
           ProductTextBox.Text = incident.ProductCode;
-          TechnicianComboBox.SelectedIndex = string.IsNullOrWhiteSpace(incident.Technician) ? 0 : GetTechnicianIndex(incident.Technician);
+          TechnicianComboBox.SelectedIndex = string.IsNullOrWhiteSpace(incident.Technician)
+            ? 0
+            : GetTechnicianIndex(incident.Technician);
           TitleTextBox.Text = incident.Title;
           DateOpenedTextBox.Text = incident.DateOpened.ToShortDateString();
           DescriptionTextBox.Text = incident.Description;
           _loadedIncident = incident;
           _loaded = true;
           UpdateButtonStates();
-          if (DescriptionTextBox.Text.Length >= 200)
+          if (!IsOpen())
           {
+            MessageBox.Show(
+              "This incident is closed. It may not be modified.",
+              "Incident Closed", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+          }
+          else if (DescriptionTextBox.Text.Length >= 200)
+          {
+            //I added this since it was in the requirements, however I think that making a red text block right above the disabled input would be better ui design, because messageboxes
+            //stop the user until they interact with them.
             MessageBox.Show(
               "The incident's description is already at its max length - you cannot add anything more to it.",
               "Max input length reached", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -133,7 +183,8 @@ namespace TechSupport.View
         }
         else
         {
-          MessageBox.Show("No incident with that ID exists.", "There was an Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+          MessageBox.Show("No incident with that ID exists.", "There was an Error", MessageBoxButtons.OK,
+            MessageBoxIcon.Error);
         }
       }
       catch (Exception ex)
@@ -151,44 +202,52 @@ namespace TechSupport.View
     {
       try
       {
-        var newDescriptionText = string.IsNullOrWhiteSpace(TextToAddTextBox.Text) ? DescriptionTextBox.Text :
-          DescriptionTextBox.Text + $"\r\n<{DateTime.Now.ToShortDateString()}> " + TextToAddTextBox.Text;
-
-        if (newDescriptionText.Length > 200)
+        if (PerformUpdate())
         {
-          var result =
-            MessageBox.Show(
-              $"The description is {newDescriptionText.Length - 200} character(s) too long and will be truncated.", "Confirm Truncation", MessageBoxButtons.OKCancel);
-          if (result == DialogResult.OK)
-          {
-            newDescriptionText = newDescriptionText.Substring(0, 200);
-          }
-          else if (result == DialogResult.Cancel)
-          {
-            return;
-          }
+          GetClick(sender, e);
+          TextToAddTextBox.Text = String.Empty;
         }
-
-        _incidentController.UpdateIncident(new Incident
-        {
-          Description = newDescriptionText,
-          TechID = _technicians.Single(x => x.Name == TechnicianComboBox.SelectedItem.ToString()).TechID,
-          IncidentID = int.Parse(IncidentIDTextBox.Text),
-          ProductCode = ProductTextBox.Text,
-          CustomerName = CustomerTextBox.Text,
-          DateOpened = DateTime.Parse(DateOpenedTextBox.Text),
-          Technician = IncidentIDTextBox.Text,
-          CustomerID = _customerId,
-          Title = TitleTextBox.Text
-        }, _loadedIncident);
-
-        GetClick(sender, e);
-        TextToAddTextBox.Text = String.Empty;
       }
       catch (Exception ex)
       {
         MessageBox.Show(ex.Message, "There was an Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
       }
+    }
+
+    private bool PerformUpdate()
+    {
+      var newDescriptionText = string.IsNullOrWhiteSpace(TextToAddTextBox.Text) ? DescriptionTextBox.Text :
+        DescriptionTextBox.Text + $"\r\n<{DateTime.Now.ToShortDateString()}> " + TextToAddTextBox.Text;
+
+      if (newDescriptionText.Length > 200)
+      {
+        var result =
+          MessageBox.Show(
+            $"The description is {newDescriptionText.Length - 200} character(s) too long and will be truncated.", "Confirm Truncation", MessageBoxButtons.OKCancel);
+        if (result == DialogResult.OK)
+        {
+          newDescriptionText = newDescriptionText.Substring(0, 200);
+        }
+        else if (result == DialogResult.Cancel)
+        {
+          return false;
+        }
+      }
+
+      _incidentController.UpdateIncident(new Incident
+      {
+        Description = newDescriptionText,
+        TechID = _technicians.SingleOrDefault(x => x.Name == TechnicianComboBox.SelectedItem.ToString())?.TechID,
+        IncidentID = int.Parse(IncidentIDTextBox.Text),
+        ProductCode = ProductTextBox.Text,
+        CustomerName = CustomerTextBox.Text,
+        DateOpened = DateTime.Parse(DateOpenedTextBox.Text),
+        Technician = IncidentIDTextBox.Text,
+        CustomerID = _customerId,
+        Title = TitleTextBox.Text
+      }, _loadedIncident);
+
+      return true;
     }
   }
 }

@@ -87,6 +87,7 @@ namespace TechSupport.DAL
 
       string selectStatement = @"select i.ProductCode,
                                         i.DateOpened,
+                                        i.DateClosed,
                                         c.[Name] as CustomerName,
                                         c.CustomerID,
                                         COALESCE(t.[Name], '') as TechName,
@@ -113,6 +114,7 @@ namespace TechSupport.DAL
                 Title = reader["Title"].ToString(),
                 ProductCode = reader["ProductCode"].ToString(),
                 DateOpened = (DateTime)reader["DateOpened"],
+                DateClosed = reader.GetNullableDateTime("DateClosed"),
                 CustomerName = reader["CustomerName"].ToString(),
                 CustomerID = (int)reader["CustomerID"],
                 Technician = reader["TechName"].ToString(),
@@ -139,9 +141,28 @@ namespace TechSupport.DAL
 
         using (SqlCommand updateCommand = new SqlCommand(updateStatement, connection))
         {
-          updateCommand.Parameters.AddWithValue("@Description", incident.Description);
+          updateCommand.Parameters.AddWithValue("@Description", (object)incident.Description ?? DBNull.Value);
           updateCommand.Parameters.AddWithValue("@IncidentId", incident.IncidentID);
-          updateCommand.Parameters.AddWithValue("@TechID", incident.TechID);
+          updateCommand.Parameters.AddWithValue("@TechID", (object)incident.TechID ?? DBNull.Value);
+
+          updateCommand.ExecuteNonQuery();
+        }
+      }
+    }
+
+    public void CloseIncident(int incidentId)
+    {
+      string closeStatement = @"update [dbo].[Incidents]
+                                set DateClosed = getDate()
+                                where IncidentID = @IncidentID";
+
+      using (SqlConnection connection = TechSupportDbConnection.GetConnection())
+      {
+        connection.Open();
+
+        using (SqlCommand updateCommand = new SqlCommand(closeStatement, connection))
+        {
+          updateCommand.Parameters.AddWithValue("@IncidentId", incidentId);
 
           updateCommand.ExecuteNonQuery();
         }

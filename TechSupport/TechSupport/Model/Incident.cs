@@ -17,6 +17,10 @@ namespace TechSupport.Model
     /// </summary>
     public DateTime DateOpened { get; set; }
     /// <summary>
+    /// The date that the incident was closed
+    /// </summary>
+    public DateTime? DateClosed { get; set; }
+    /// <summary>
     /// The customer that reported the incident
     /// </summary>
     public int CustomerID { get; set; }
@@ -31,7 +35,7 @@ namespace TechSupport.Model
     /// <summary>
     /// The technician assigned to the incident
     /// </summary>
-    public int TechID { get; set; }
+    public int? TechID { get; set; }
     /// <summary>
     /// The title of the incident
     /// </summary>
