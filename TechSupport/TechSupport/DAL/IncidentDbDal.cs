@@ -119,6 +119,7 @@ namespace TechSupport.DAL
                 CustomerID = (int)reader["CustomerID"],
                 Technician = reader["TechName"].ToString(),
                 Description = reader["Description"].ToString(),
+                IncidentID = incidentId
               };
             }
           }

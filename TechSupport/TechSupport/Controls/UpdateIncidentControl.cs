@@ -42,9 +42,13 @@ namespace TechSupport.View
       ClearDialog();
     }
 
-    private void ClearDialog()
+    private void ClearDialog(bool clearIncidentId = true)
     {
-      IncidentIDTextBox.Text = "";
+      if (clearIncidentId)
+      {
+        IncidentIDTextBox.Text = "";
+      }
+
       CustomerTextBox.Text = "";
       ProductTextBox.Text = "";
       TechnicianComboBox.SelectedIndex = 0;
@@ -111,6 +115,7 @@ namespace TechSupport.View
     {
       try
       {
+        int incidentID = _loadedIncident.IncidentID;
         var result =
           MessageBox.Show(
             $"The incident cannot be updated in this form once closed. Are you sure?", "Confirm Close", MessageBoxButtons.OKCancel);
@@ -123,16 +128,10 @@ namespace TechSupport.View
         {
           return;
         }
-
-        int incidentID;
-        if (!int.TryParse(IncidentIDTextBox.Text, out incidentID))
-        {
-          throw new FormatException("The Incident ID must be an integer.");
-        }
-
+        
         _incidentController.CloseIncident(incidentID, _loadedIncident);
 
-        GetClick(sender, e);
+        PerformGetIncident(incidentID);
         TextToAddTextBox.Text = String.Empty;
       }
       catch (Exception ex)
@@ -151,46 +150,51 @@ namespace TechSupport.View
           throw new FormatException("The Incident ID must be a string.");
         }
 
-        Incident incident = _incidentController.GetIncident(incidentID);
-        if (incident != null)
-        {
-          CustomerTextBox.Text = incident.CustomerName;
-          _customerId = incident.CustomerID;
-          ProductTextBox.Text = incident.ProductCode;
-          TechnicianComboBox.SelectedIndex = string.IsNullOrWhiteSpace(incident.Technician)
-            ? 0
-            : GetTechnicianIndex(incident.Technician);
-          TitleTextBox.Text = incident.Title;
-          DateOpenedTextBox.Text = incident.DateOpened.ToShortDateString();
-          DescriptionTextBox.Text = incident.Description;
-          _loadedIncident = incident;
-          _loaded = true;
-          UpdateButtonStates();
-          if (!IsOpen())
-          {
-            MessageBox.Show(
-              "This incident is closed. It may not be modified.",
-              "Incident Closed", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-          }
-          else if (DescriptionTextBox.Text.Length >= 200)
-          {
-            //I added this since it was in the requirements, however I think that making a red text block right above the disabled input would be better ui design, because messageboxes
-            //stop the user until they interact with them.
-            MessageBox.Show(
-              "The incident's description is already at its max length - you cannot add anything more to it.",
-              "Max input length reached", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-          }
-        }
-        else
-        {
-          MessageBox.Show("No incident with that ID exists.", "There was an Error", MessageBoxButtons.OK,
-            MessageBoxIcon.Error);
-          ClearDialog();
-        }
+        PerformGetIncident(incidentID);
       }
       catch (Exception ex)
       {
         MessageBox.Show(ex.Message, "There was an Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+      }
+    }
+
+    private void PerformGetIncident(int incidentId)
+    {
+      Incident incident = _incidentController.GetIncident(incidentId);
+      if (incident != null)
+      {
+        CustomerTextBox.Text = incident.CustomerName;
+        _customerId = incident.CustomerID;
+        ProductTextBox.Text = incident.ProductCode;
+        TechnicianComboBox.SelectedIndex = string.IsNullOrWhiteSpace(incident.Technician)
+          ? 0
+          : GetTechnicianIndex(incident.Technician);
+        TitleTextBox.Text = incident.Title;
+        DateOpenedTextBox.Text = incident.DateOpened.ToShortDateString();
+        DescriptionTextBox.Text = incident.Description;
+        _loadedIncident = incident;
+        _loaded = true;
+        UpdateButtonStates();
+        if (!IsOpen())
+        {
+          MessageBox.Show(
+            "This incident is closed. It may not be modified.",
+            "Incident Closed", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        }
+        else if (DescriptionTextBox.Text.Length >= 200)
+        {
+          //I added this since it was in the requirements, however I think that making a red text block right above the disabled input would be better ui design, because messageboxes
+          //stop the user until they interact with them.
+          MessageBox.Show(
+            "The incident's description is already at its max length - you cannot add anything more to it.",
+            "Max input length reached", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        }
+      }
+      else
+      {
+        MessageBox.Show("No incident with that ID exists.", "There was an Error", MessageBoxButtons.OK,
+          MessageBoxIcon.Error);
+        ClearDialog();
       }
     }
 
@@ -205,7 +209,7 @@ namespace TechSupport.View
       {
         if (PerformUpdate())
         {
-          GetClick(sender, e);
+          PerformGetIncident(_loadedIncident.IncidentID);
           TextToAddTextBox.Text = String.Empty;
         }
       }
@@ -239,13 +243,13 @@ namespace TechSupport.View
       {
         Description = newDescriptionText,
         TechID = _technicians.SingleOrDefault(x => x.Name == TechnicianComboBox.SelectedItem.ToString())?.TechID,
-        IncidentID = int.Parse(IncidentIDTextBox.Text),
-        ProductCode = ProductTextBox.Text,
-        CustomerName = CustomerTextBox.Text,
-        DateOpened = DateTime.Parse(DateOpenedTextBox.Text),
+        IncidentID = _loadedIncident.IncidentID,
+        ProductCode = _loadedIncident.ProductCode,
+        CustomerName = _loadedIncident.CustomerName,
+        DateOpened = _loadedIncident.DateOpened,
         Technician = IncidentIDTextBox.Text,
-        CustomerID = _customerId,
-        Title = TitleTextBox.Text
+        CustomerID = _loadedIncident.CustomerID,
+        Title = _loadedIncident.Title
       }, _loadedIncident);
 
       return true;
