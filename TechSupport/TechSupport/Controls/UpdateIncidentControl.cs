@@ -110,41 +110,13 @@ namespace TechSupport.Controls
 
     }
 
-    private void CloseClick(object sender, EventArgs e)
-    {
-      try
-      {
-        int incidentId = _loadedIncident.IncidentId;
-        var result =
-          MessageBox.Show("The incident cannot be updated in this form once closed. Are you sure?", "Confirm Close", MessageBoxButtons.OKCancel);
-        if (result == DialogResult.Cancel)
-        {
-          return;
-        }
-
-        if (!PerformUpdate())
-        {
-          return;
-        }
-        
-        _incidentController.CloseIncident(incidentId, _loadedIncident);
-
-        PerformGetIncident(incidentId);
-        TextToAddTextBox.Text = String.Empty;
-      }
-      catch (Exception ex)
-      {
-        MessageBox.Show(ex.Message, "There was an Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-      }
-    }
-
     private void GetClick(object sender, EventArgs e)
     {
       try
       {
         if (!int.TryParse(IncidentIDTextBox.Text, out var incidentId))
         {
-          throw new FormatException("The Incident ID must be a string.");
+          throw new FormatException("The Incident ID must be a number.");
         }
 
         PerformGetIncident(incidentId);
@@ -249,6 +221,36 @@ namespace TechSupport.Controls
       }, _loadedIncident);
 
       return true;
+    }
+
+    private void CloseClick(object sender, EventArgs e)
+    {
+      try
+      {
+        int incidentId = _loadedIncident.IncidentId;
+        var result =
+          MessageBox.Show("The incident cannot be updated in this form once closed. Are you sure?", "Confirm Close", MessageBoxButtons.OKCancel);
+        if (result == DialogResult.Cancel)
+        {
+          return;
+        }
+
+        if (!PerformUpdate())
+        {
+          return;
+        }
+
+        PerformGetIncident(incidentId);
+        TextToAddTextBox.Text = String.Empty;
+
+        _incidentController.CloseIncident(incidentId, _loadedIncident);
+
+        PerformGetIncident(incidentId);
+      }
+      catch (Exception ex)
+      {
+        MessageBox.Show(ex.Message, "There was an Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+      }
     }
   }
 }
