@@ -15,7 +15,7 @@ namespace TechSupport.DAL
     /// <returns>the customers</returns>
     public IEnumerable<Customer> GetCustomers()
     {
-      List<Customer> CustomerList = new List<Customer>();
+      List<Customer> customerList = new List<Customer>();
 
       string selectStatement = @"select c.CustomerID,
                                         c.[Name],
@@ -37,23 +37,26 @@ namespace TechSupport.DAL
           {
             while (reader.Read())
             {
-              Customer Customer = new Customer();
-              Customer.CustomerID = (int)reader["CustomerID"]; 
-              Customer.Name = reader["Name"].ToString();
-              Customer.Address = reader["Address"].ToString();
-              Customer.City = reader["City"].ToString();
-              Customer.State = reader["State"].ToString();
-              Customer.ZipCode = reader["ZipCode"].ToString();
-              Customer.Phone = reader["Phone"].ToString();
-              Customer.Email = reader["Email"].ToString();
+              Customer customer = new Customer
+              {
+                CustomerId = (int) reader["CustomerID"],
+                Name = reader["Name"].ToString(),
+                Address = reader["Address"].ToString(),
+                City = reader["City"].ToString(),
+                State = reader["State"].ToString(),
+                ZipCode = reader["ZipCode"].ToString(),
+                Phone = reader["Phone"].ToString(),
+                Email = reader["Email"].ToString()
+              };
 
-              CustomerList.Add(Customer);
+
+              customerList.Add(customer);
             }
           }
         }
       }
 
-      return CustomerList;
+      return customerList;
     }
 
     /// <summary>

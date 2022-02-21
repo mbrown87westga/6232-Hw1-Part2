@@ -1,4 +1,4 @@
-﻿namespace TechSupport.View
+﻿namespace TechSupport.Controls
 {
   partial class UpdateIncidentControl
   {

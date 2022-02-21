@@ -39,13 +39,15 @@ namespace TechSupport.DAL
           {
             while (reader.Read())
             {
-              Incident incident = new Incident();
-              incident.ProductCode = reader["ProductCode"].ToString();
-              incident.DateOpened = (DateTime)reader["DateOpened"];
-              incident.CustomerName = reader["CustomerName"].ToString();
-              incident.CustomerID = (int)reader["CustomerID"];
-              incident.Technician = reader["TechName"].ToString();
-              incident.Title = reader["Title"].ToString();
+              Incident incident = new Incident
+              {
+                ProductCode = reader["ProductCode"].ToString(),
+                DateOpened = (DateTime) reader["DateOpened"],
+                CustomerName = reader["CustomerName"].ToString(),
+                CustomerId = (int) reader["CustomerID"],
+                Technician = reader["TechName"].ToString(),
+                Title = reader["Title"].ToString()
+              };
               incidentList.Add(incident);
             }
           }
@@ -72,7 +74,7 @@ namespace TechSupport.DAL
         {
           insertCommand.Parameters.AddWithValue("@ProductCode", incident.ProductCode);
           insertCommand.Parameters.AddWithValue("@DateOpened", incident.DateOpened == DateTime.MinValue ? DateTime.Now : incident.DateOpened);
-          insertCommand.Parameters.AddWithValue("@CustomerID", incident.CustomerID);
+          insertCommand.Parameters.AddWithValue("@CustomerID", incident.CustomerId);
           insertCommand.Parameters.AddWithValue("@Title", incident.Title);
           insertCommand.Parameters.AddWithValue("@Description", incident.Description);
 
@@ -81,6 +83,11 @@ namespace TechSupport.DAL
       }
     }
 
+    /// <summary>
+    /// Gets an incident from the db
+    /// </summary>
+    /// <param name="incidentId">the id of the incident</param>
+    /// <returns>the incident</returns>
     public Incident GetIncident(int incidentId)
     {
       Incident incident = null;
@@ -116,10 +123,10 @@ namespace TechSupport.DAL
                 DateOpened = (DateTime)reader["DateOpened"],
                 DateClosed = reader.GetNullableDateTime("DateClosed"),
                 CustomerName = reader["CustomerName"].ToString(),
-                CustomerID = (int)reader["CustomerID"],
+                CustomerId = (int)reader["CustomerID"],
                 Technician = reader["TechName"].ToString(),
                 Description = reader["Description"].ToString(),
-                IncidentID = incidentId
+                IncidentId = incidentId
               };
             }
           }
@@ -129,6 +136,10 @@ namespace TechSupport.DAL
       return incident;
     }
 
+    /// <summary>
+    /// updates an incident in the db
+    /// </summary>
+    /// <param name="incident">the new values for the incident</param>
     public void UpdateIncident(Incident incident)
     {
       string updateStatement = @"update [dbo].[Incidents]
@@ -143,14 +154,18 @@ namespace TechSupport.DAL
         using (SqlCommand updateCommand = new SqlCommand(updateStatement, connection))
         {
           updateCommand.Parameters.AddWithValue("@Description", (object)incident.Description ?? DBNull.Value);
-          updateCommand.Parameters.AddWithValue("@IncidentId", incident.IncidentID);
-          updateCommand.Parameters.AddWithValue("@TechID", (object)incident.TechID ?? DBNull.Value);
+          updateCommand.Parameters.AddWithValue("@IncidentId", incident.IncidentId);
+          updateCommand.Parameters.AddWithValue("@TechID", (object)incident.TechId ?? DBNull.Value);
 
           updateCommand.ExecuteNonQuery();
         }
       }
     }
 
+    /// <summary>
+    /// closes an incident
+    /// </summary>
+    /// <param name="incidentId">the id of the incident to close</param>
     public void CloseIncident(int incidentId)
     {
       string closeStatement = @"update [dbo].[Incidents]

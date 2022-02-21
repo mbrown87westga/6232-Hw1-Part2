@@ -16,7 +16,7 @@ namespace TechSupport.DAL
     /// <returns>the products</returns>
     public IEnumerable<Product> GetProducts()
     {
-      List<Product> ProductList = new List<Product>();
+      List<Product> productList = new List<Product>();
 
       string selectStatement = @"select p.ProductCode,
                                         p.Name,
@@ -34,19 +34,21 @@ namespace TechSupport.DAL
           {
             while (reader.Read())
             {
-              Product Product = new Product();
-              Product.ProductCode = reader["ProductCode"].ToString();
-              Product.Name = reader["Name"].ToString();
-              Product.Version = (decimal)reader["Version"];
-              Product.ReleaseDate = (DateTime)reader["ReleaseDate"];
+              Product product = new Product
+              {
+                ProductCode = reader["ProductCode"].ToString(),
+                Name = reader["Name"].ToString(),
+                Version = (decimal) reader["Version"],
+                ReleaseDate = (DateTime) reader["ReleaseDate"]
+              };
 
-              ProductList.Add(Product);
+              productList.Add(product);
             }
           }
         }
       }
 
-      return ProductList;
+      return productList;
     }
   }
 }

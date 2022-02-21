@@ -7,7 +7,7 @@ namespace TechSupport.Model
   /// </summary>
   public class Incident
   {
-    public int IncidentID { get; set; }
+    public int IncidentId { get; set; }
     /// <summary>
     /// The product code
     /// </summary>
@@ -23,7 +23,7 @@ namespace TechSupport.Model
     /// <summary>
     /// The customer that reported the incident
     /// </summary>
-    public int CustomerID { get; set; }
+    public int CustomerId { get; set; }
     /// <summary>
     /// The customer that reported the incident
     /// </summary>
@@ -35,7 +35,7 @@ namespace TechSupport.Model
     /// <summary>
     /// The technician assigned to the incident
     /// </summary>
-    public int? TechID { get; set; }
+    public int? TechId { get; set; }
     /// <summary>
     /// The title of the incident
     /// </summary>
@@ -45,20 +45,24 @@ namespace TechSupport.Model
     /// </summary>
     public string Description { get; set; }
 
+    /// <summary>
+    /// checks to see if the object is equal to the passed object
+    /// </summary>
+    /// <param name="obj">the object to check against</param>
+    /// <returns>true if they are equal</returns>
     public override bool Equals(object obj)
     {
-      Incident incident = obj as Incident;
-      return incident != null && (incident.Description == Description &&
-                                  incident.ProductCode == ProductCode &&
-                                  incident.DateOpened == DateOpened &&
-                                  incident.CustomerName == CustomerName &&
-                                  incident.CustomerID == CustomerID &&
-                                  incident.DateOpened == DateOpened &&
-                                  incident.IncidentID == IncidentID &&
-                                  incident.ProductCode == ProductCode &&
-                                  incident.TechID == TechID &&
-                                  incident.Technician == Technician &&
-                                  incident.Title == Title);
+      return obj is Incident incident && (incident.Description == Description &&
+                                          incident.ProductCode == ProductCode &&
+                                          incident.DateOpened == DateOpened &&
+                                          incident.CustomerName == CustomerName &&
+                                          incident.CustomerId == CustomerId &&
+                                          incident.DateOpened == DateOpened &&
+                                          incident.IncidentId == IncidentId &&
+                                          incident.ProductCode == ProductCode &&
+                                          incident.TechId == TechId &&
+                                          incident.Technician == Technician &&
+                                          incident.Title == Title);
     }
   }
 }

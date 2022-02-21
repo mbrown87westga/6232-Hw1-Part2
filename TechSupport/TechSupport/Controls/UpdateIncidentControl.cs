@@ -5,7 +5,7 @@ using System.Windows.Forms;
 using TechSupport.Controller;
 using TechSupport.Model;
 
-namespace TechSupport.View
+namespace TechSupport.Controls
 {
   /// <summary>
   /// A control that allows the user to add an incident
@@ -14,9 +14,8 @@ namespace TechSupport.View
   {
     private readonly IncidentController _incidentController;
     private IEnumerable<Technician> _technicians;
-    private int _customerId;
-    private bool _loaded = false;
-    private Incident _loadedIncident = null;
+    private bool _loaded;
+    private Incident _loadedIncident;
 
     /// <summary>
     /// this constructor initializes the component and also builds the incidents controller.
@@ -115,10 +114,9 @@ namespace TechSupport.View
     {
       try
       {
-        int incidentID = _loadedIncident.IncidentID;
+        int incidentId = _loadedIncident.IncidentId;
         var result =
-          MessageBox.Show(
-            $"The incident cannot be updated in this form once closed. Are you sure?", "Confirm Close", MessageBoxButtons.OKCancel);
+          MessageBox.Show("The incident cannot be updated in this form once closed. Are you sure?", "Confirm Close", MessageBoxButtons.OKCancel);
         if (result == DialogResult.Cancel)
         {
           return;
@@ -129,9 +127,9 @@ namespace TechSupport.View
           return;
         }
         
-        _incidentController.CloseIncident(incidentID, _loadedIncident);
+        _incidentController.CloseIncident(incidentId, _loadedIncident);
 
-        PerformGetIncident(incidentID);
+        PerformGetIncident(incidentId);
         TextToAddTextBox.Text = String.Empty;
       }
       catch (Exception ex)
@@ -144,13 +142,12 @@ namespace TechSupport.View
     {
       try
       {
-        var incidentID = -1;
-        if (!int.TryParse(IncidentIDTextBox.Text, out incidentID))
+        if (!int.TryParse(IncidentIDTextBox.Text, out var incidentId))
         {
           throw new FormatException("The Incident ID must be a string.");
         }
 
-        PerformGetIncident(incidentID);
+        PerformGetIncident(incidentId);
       }
       catch (Exception ex)
       {
@@ -164,7 +161,6 @@ namespace TechSupport.View
       if (incident != null)
       {
         CustomerTextBox.Text = incident.CustomerName;
-        _customerId = incident.CustomerID;
         ProductTextBox.Text = incident.ProductCode;
         TechnicianComboBox.SelectedIndex = string.IsNullOrWhiteSpace(incident.Technician)
           ? 0
@@ -183,7 +179,7 @@ namespace TechSupport.View
         }
         else if (DescriptionTextBox.Text.Length >= 200)
         {
-          //I added this since it was in the requirements, however I think that making a red text block right above the disabled input would be better ui design, because messageboxes
+          //I added this since it was in the requirements, however I think that making a red text block right above the disabled input would be better ui design, because message boxes
           //stop the user until they interact with them.
           MessageBox.Show(
             "The incident's description is already at its max length - you cannot add anything more to it.",
@@ -209,7 +205,7 @@ namespace TechSupport.View
       {
         if (PerformUpdate())
         {
-          PerformGetIncident(_loadedIncident.IncidentID);
+          PerformGetIncident(_loadedIncident.IncidentId);
           TextToAddTextBox.Text = String.Empty;
         }
       }
@@ -242,13 +238,13 @@ namespace TechSupport.View
       _incidentController.UpdateIncident(new Incident
       {
         Description = newDescriptionText,
-        TechID = _technicians.SingleOrDefault(x => x.Name == TechnicianComboBox.SelectedItem.ToString())?.TechID,
-        IncidentID = _loadedIncident.IncidentID,
+        TechId = _technicians.SingleOrDefault(x => x.Name == TechnicianComboBox.SelectedItem.ToString())?.TechId,
+        IncidentId = _loadedIncident.IncidentId,
         ProductCode = _loadedIncident.ProductCode,
         CustomerName = _loadedIncident.CustomerName,
         DateOpened = _loadedIncident.DateOpened,
         Technician = IncidentIDTextBox.Text,
-        CustomerID = _loadedIncident.CustomerID,
+        CustomerId = _loadedIncident.CustomerId,
         Title = _loadedIncident.Title
       }, _loadedIncident);
 

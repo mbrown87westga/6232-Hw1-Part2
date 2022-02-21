@@ -8,7 +8,7 @@
     /// <summary>
     /// the TechnicianID
     /// </summary>
-    public int TechID { get; set; }
+    public int TechId { get; set; }
     /// <summary>
     /// the Name
     /// </summary>

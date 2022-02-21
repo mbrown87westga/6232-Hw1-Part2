@@ -5,7 +5,7 @@ using System.Windows.Forms;
 using TechSupport.Controller;
 using TechSupport.Model;
 
-namespace TechSupport.View
+namespace TechSupport.Controls
 {
   /// <summary>
   /// A control that allows the user to add an incident
@@ -44,7 +44,7 @@ namespace TechSupport.View
           Description = DescriptionTextBox.Text,
           Title = TitleTextBox.Text,
           ProductCode = _products.Single(x => x.Name == (string) ProductComboBox.SelectedItem).ProductCode,
-          CustomerID = _customers.Single(x => x.Name == (string) CustomerComboBox.SelectedItem).CustomerID
+          CustomerId = _customers.Single(x => x.Name == (string) CustomerComboBox.SelectedItem).CustomerId
         });
         MessageBox.Show("Incident was successfully added to the DB.", "Confirmation", MessageBoxButtons.OK,
           MessageBoxIcon.Information);

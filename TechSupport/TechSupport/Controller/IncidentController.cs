@@ -76,21 +76,31 @@ namespace TechSupport.Controller
       {
         throw new ArgumentException("Description is required.");
       }
-      if (!_customerDbDal.IsCustomerAssociatedToProduct(incident.CustomerID, incident.ProductCode))
+      if (!_customerDbDal.IsCustomerAssociatedToProduct(incident.CustomerId, incident.ProductCode))
       {
         throw new ArgumentException("There is no registration associated with the product.");
       }
       _incidentDbDal.AddIncident(incident);
     }
 
-    public Incident GetIncident(int incidentID)
+    /// <summary>
+    /// Gets an incident from the DB
+    /// </summary>
+    /// <param name="incidentId">The id of the incident to get</param>
+    /// <returns>The incident</returns>
+    public Incident GetIncident(int incidentId)
     {
-      return _incidentDbDal.GetIncident(incidentID);
+      return _incidentDbDal.GetIncident(incidentId);
     }
 
+    /// <summary>
+    /// Updates an incident as long as we have the newest version of the incident.
+    /// </summary>
+    /// <param name="incident">The incident with its new values</param>
+    /// <param name="originalIncident">the original incident - used to check to see if the incident has been modified or not.</param>
     public void UpdateIncident(Incident incident, Incident originalIncident)
     {
-      var existingIncident = GetIncident(incident.IncidentID);
+      var existingIncident = GetIncident(incident.IncidentId);
 
       if (existingIncident.Equals(originalIncident))
       {
@@ -102,6 +112,11 @@ namespace TechSupport.Controller
       }
     }
 
+    /// <summary>
+    /// Closes an incident as long as we have the newest version of the incident.
+    /// </summary>
+    /// <param name="incidentId">the incident to close</param>
+    /// <param name="originalIncident">the original incident - used to check to see if the incident has been modified or not.</param>
     public void CloseIncident(int incidentId, Incident originalIncident)
     {
       var existingIncident = GetIncident(incidentId);

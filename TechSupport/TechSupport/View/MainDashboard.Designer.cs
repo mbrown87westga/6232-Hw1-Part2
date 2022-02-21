@@ -1,4 +1,6 @@
-﻿namespace TechSupport.View
+﻿using TechSupport.Controls;
+
+namespace TechSupport.View
 {
   partial class MainDashboard
   {
@@ -33,10 +35,10 @@
       this.DisplayOpenIncidentsPage = new System.Windows.Forms.TabPage();
       this.LogoutLink = new System.Windows.Forms.LinkLabel();
       this.LoggedInUserLabel = new System.Windows.Forms.Label();
-      this.addIncidentControl1 = new TechSupport.View.AddIncidentControl();
+      this.addIncidentControl1 = new TechSupport.Controls.AddIncidentControl();
       this.displayOpenIncidentsControl1 = new TechSupport.Controls.DisplayOpenIncidentsControl();
       this.UpdateIncidentTab = new System.Windows.Forms.TabPage();
-      this.updateIncidentControl1 = new TechSupport.View.UpdateIncidentControl();
+      this.updateIncidentControl1 = new TechSupport.Controls.UpdateIncidentControl();
       this.tabControl1.SuspendLayout();
       this.AddIncidentPage.SuspendLayout();
       this.DisplayOpenIncidentsPage.SuspendLayout();

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data.SqlClient;
 using TechSupport.Model;
 
@@ -34,13 +33,15 @@ namespace TechSupport.DAL
           {
             while (reader.Read())
             {
-              Technician Technician = new Technician();
-              Technician.TechID = (int)reader["TechID"];
-              Technician.Name = reader["Name"].ToString();
-              Technician.Email = reader["Email"].ToString();
-              Technician.Phone = reader["Phone"].ToString();
+              Technician technician = new Technician
+              {
+                TechId = (int) reader["TechID"],
+                Name = reader["Name"].ToString(),
+                Email = reader["Email"].ToString(),
+                Phone = reader["Phone"].ToString()
+              };
 
-              technicianList.Add(Technician);
+              technicianList.Add(technician);
             }
           }
         }
