@@ -164,6 +164,7 @@
       this.IncidentIDTextBox.Name = "IncidentIDTextBox";
       this.IncidentIDTextBox.Size = new System.Drawing.Size(229, 20);
       this.IncidentIDTextBox.TabIndex = 24;
+      this.IncidentIDTextBox.TextChanged += new System.EventHandler(this.IncidentIDTextBox_TextChanged);
       // 
       // IncidentLabel
       // 

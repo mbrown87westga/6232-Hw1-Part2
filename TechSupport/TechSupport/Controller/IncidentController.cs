@@ -90,6 +90,10 @@ namespace TechSupport.Controller
     /// <returns>The incident</returns>
     public Incident GetIncident(int incidentId)
     {
+      if (incidentId <= 0)
+      {
+        throw new ArgumentException("IncidentId must be > 0");
+      }
       return _incidentDbDal.GetIncident(incidentId);
     }
 
@@ -100,15 +104,24 @@ namespace TechSupport.Controller
     /// <param name="originalIncident">the original incident - used to check to see if the incident has been modified or not.</param>
     public void UpdateIncident(Incident incident, Incident originalIncident)
     {
-      var existingIncident = GetIncident(incident.IncidentId);
-
-      if (existingIncident.Equals(originalIncident))
+      if (incident.IncidentId <= 0)
       {
-        _incidentDbDal.UpdateIncident(incident);
+        throw new ArgumentException("IncidentId must be > 0");
       }
-      else
+      if (string.IsNullOrWhiteSpace(incident.Description))
+      {
+        throw new ArgumentException("Description is required.");
+      }
+      
+      int updatedRows = _incidentDbDal.UpdateIncident(incident, originalIncident);
+
+      if (updatedRows == 0)
       {
         throw new InvalidOperationException("The incident was updated in the db! Update aborted.");
+      }
+      if (updatedRows > 1)
+      {
+        throw new InvalidOperationException("Multiple incidents were updated in the db!");
       }
     }
 

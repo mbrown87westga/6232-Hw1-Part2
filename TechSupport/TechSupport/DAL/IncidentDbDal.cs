@@ -140,12 +140,14 @@ namespace TechSupport.DAL
     /// updates an incident in the db
     /// </summary>
     /// <param name="incident">the new values for the incident</param>
-    public void UpdateIncident(Incident incident)
+    public int UpdateIncident(Incident incident, Incident oldIncident)
     {
       string updateStatement = @"update [dbo].[Incidents]
                                 set [Description] = @Description,
                                     TechID = @TechID
-                                 where IncidentID = @IncidentID";
+                                 where IncidentID = @IncidentID
+                                   and Description = @OldDescription
+                                   and ((DateClosed is null and @OldDateClosed is null) or DateClosed = @OldDateClosed)";
 
       using (SqlConnection connection = TechSupportDbConnection.GetConnection())
       {
@@ -156,8 +158,10 @@ namespace TechSupport.DAL
           updateCommand.Parameters.AddWithValue("@Description", (object)incident.Description ?? DBNull.Value);
           updateCommand.Parameters.AddWithValue("@IncidentId", incident.IncidentId);
           updateCommand.Parameters.AddWithValue("@TechID", (object)incident.TechId ?? DBNull.Value);
+          updateCommand.Parameters.AddWithValue("@OldDescription", (object)oldIncident.Description ?? DBNull.Value);
+          updateCommand.Parameters.AddWithValue("@OldDateClosed", (object)oldIncident.DateClosed ?? DBNull.Value);
 
-          updateCommand.ExecuteNonQuery();
+          return updateCommand.ExecuteNonQuery();
         }
       }
     }

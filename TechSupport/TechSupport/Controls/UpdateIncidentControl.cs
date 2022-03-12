@@ -252,5 +252,10 @@ namespace TechSupport.Controls
         MessageBox.Show(ex.Message, "There was an Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
       }
     }
+
+    private void IncidentIDTextBox_TextChanged(object sender, EventArgs e)
+    {
+      ClearDialog(false);
+    }
   }
 }
