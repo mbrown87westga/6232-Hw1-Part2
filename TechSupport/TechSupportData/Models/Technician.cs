@@ -1,4 +1,4 @@
-﻿namespace TechSupport.Model
+﻿namespace TechSupportData.Models
 {
   /// <summary>
   /// A technician that was retrieved from the database.

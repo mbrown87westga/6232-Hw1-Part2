@@ -1,6 +1,6 @@
 ﻿using System.Data.SqlClient;
 
-namespace TechSupport.DAL
+namespace TechSupportData.DAL
 {
   /// <summary>
   /// Get a connection object. 

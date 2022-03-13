@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Data.SqlClient;
-using TechSupport.Model;
+using TechSupportData.Models;
 
-namespace TechSupport.DAL
+namespace TechSupportData.DAL
 {
   /// <summary>
   /// The class that gets Technicians from the db

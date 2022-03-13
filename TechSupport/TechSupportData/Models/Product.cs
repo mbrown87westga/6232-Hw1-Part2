@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace TechSupport.Model
+namespace TechSupportData.Models
 {
   /// <summary>
   /// A customer that was retrieved from the database.

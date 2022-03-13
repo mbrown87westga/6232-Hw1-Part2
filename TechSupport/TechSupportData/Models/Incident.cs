@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace TechSupport.Model
+namespace TechSupportData.Models
 {
   /// <summary>
   /// An incident that was retrieved from the database. It has different properties than a legacy incident.
