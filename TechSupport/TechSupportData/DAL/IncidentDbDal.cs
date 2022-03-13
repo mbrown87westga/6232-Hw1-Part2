@@ -188,5 +188,50 @@ namespace TechSupportData.DAL
         }
       }
     }
+
+    public List<Incident> GetOpenTechnicianIncidents(int technicianId)
+    {
+      List<Incident> incidentList = new List<Incident>();
+
+      string selectStatement = @"select i.ProductCode,
+                                        i.DateOpened,
+                                        c.[Name] as CustomerName,
+                                        c.CustomerID,
+                                        COALESCE(t.[Name], '') as TechName,
+                                        i.Title
+                                 from [dbo].[Incidents] i
+                                 join [dbo].[Customers] c on i.[CustomerID] = c.[CustomerID]
+                                 left join [dbo].[Technicians] t on i.[TechID] = t.[TechID]
+                                 where DateClosed is null
+                                 and I.TechID = @TechID";
+
+      using (SqlConnection connection = TechSupportDbConnection.GetConnection())
+      {
+        connection.Open();
+
+        using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
+        {
+          selectCommand.Parameters.AddWithValue("@TechID", technicianId);
+          using (SqlDataReader reader = selectCommand.ExecuteReader())
+          {
+            while (reader.Read())
+            {
+              Incident incident = new Incident
+              {
+                ProductCode = reader["ProductCode"].ToString(),
+                DateOpened = (DateTime)reader["DateOpened"],
+                CustomerName = reader["CustomerName"].ToString(),
+                CustomerId = (int)reader["CustomerID"],
+                Technician = reader["TechName"].ToString(),
+                Title = reader["Title"].ToString()
+              };
+              incidentList.Add(incident);
+            }
+          }
+        }
+      }
+
+      return incidentList;
+    }
   }
 }

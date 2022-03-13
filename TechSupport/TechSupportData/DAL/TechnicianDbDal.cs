@@ -35,7 +35,7 @@ namespace TechSupportData.DAL
             {
               Technician technician = new Technician
               {
-                TechId = (int) reader["TechID"],
+                TechId = (int)reader["TechID"],
                 Name = reader["Name"].ToString(),
                 Email = reader["Email"].ToString(),
                 Phone = reader["Phone"].ToString()
@@ -48,6 +48,75 @@ namespace TechSupportData.DAL
       }
 
       return technicianList;
+    }
+
+    /// <summary>
+    /// gets the Technicians with incidents from the db
+    /// </summary>
+    /// <returns>the Technicians</returns>
+    public IEnumerable<Technician> GetTechniciansWithIncidents()
+    {
+      List<Technician> technicianList = new List<Technician>();
+
+      string selectStatement = @"select distinct t.TechID,
+                                        t.[Name],
+                                 from [dbo].[Technicians] t
+                                 join [dbo].[Incidents] i on t.[TechID] = i.[TechID];";
+
+      using (SqlConnection connection = TechSupportDbConnection.GetConnection())
+      {
+        connection.Open();
+
+        using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
+        {
+          using (SqlDataReader reader = selectCommand.ExecuteReader())
+          {
+            while (reader.Read())
+            {
+              Technician technician = new Technician
+              {
+                TechId = (int)reader["TechID"],
+                Name = reader["Name"].ToString()
+              };
+
+              technicianList.Add(technician);
+            }
+          }
+        }
+      }
+
+      return technicianList;
+    }
+
+    public Technician GetTechnicianEmailAndPhone(int technicianId)
+    {
+      string selectStatement = @"select t.TechID,
+                                        t.[Name],
+                                        t.Email,
+                                        t.Phone
+                                 from [dbo].[Technicians] t
+                                 where t.TechID = @TechID;";
+
+      using (SqlConnection connection = TechSupportDbConnection.GetConnection())
+      {
+        connection.Open();
+
+        using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
+        {
+          selectCommand.Parameters.AddWithValue("@TechID", technicianId);
+          using (SqlDataReader reader = selectCommand.ExecuteReader())
+          {
+            reader.Read();
+            return new Technician
+            {
+              TechId = (int)reader["TechID"],
+              Name = reader["Name"].ToString(),
+              Email = reader["Email"].ToString(),
+              Phone = reader["Phone"].ToString()
+            };
+          }
+        }
+      }
     }
   }
 }

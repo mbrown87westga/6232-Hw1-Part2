@@ -69,7 +69,17 @@ namespace TechSupport.Controller
     /// <returns>the Technicians</returns>
     public IEnumerable<Technician> GetTechniciansWithIncidents()
     {
-      return _technicianDbDal.GetTechnicians();
+      return _technicianDbDal.GetTechniciansWithIncidents();
+    }
+
+    public Technician GetTechnicianEmailAndPhone(int technicianId)
+    {
+      return _technicianDbDal.GetTechnicianEmailAndPhone(technicianId);
+    }
+
+    public List<Incident> GetOpenTechnicianIncidents(int technicianId)
+    {
+      return _incidentDbDal.GetOpenTechnicianIncidents(technicianId);
     }
 
     /// <summary>

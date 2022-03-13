@@ -15,9 +15,9 @@ namespace TechSupport.Controls
   public partial class ViewIncidentsByTechnicianControl : UserControl
   {
     private readonly IncidentController _incidentController;
-    private List<Technician> _technicianList;
+    private IEnumerable<Technician> _technicianList;
     private Technician _technician;
-    private List<Invoice> _invoiceList;
+    private List<Incident> _incidentList;
 
     public ViewIncidentsByTechnicianControl()
     {
@@ -35,7 +35,7 @@ namespace TechSupport.Controls
     {
       try
       {
-        _technicianList = _incidentController.GetTechniciansWithIncidents();
+        _technicianList = _incidentController.GetTechniciansWithIncidents().ToList();
         nameComboBox.DataSource = _technicianList;
       }
       catch (Exception ex)
@@ -49,12 +49,12 @@ namespace TechSupport.Controls
       int technicianID = (int)nameComboBox.SelectedValue;
       try
       {
-        _technician = TechnicianDB.GetTechnicianNameAndAddress(technicianID);
+        _technician = _incidentController.GetTechnicianEmailAndPhone(technicianID);
         technicianBindingSource.Clear();
         technicianBindingSource.Add(_technician);
 
-        _invoiceList = InvoiceDB.GetUnpaidTechnicianInvoices(technicianID);
-        invoiceDataGridView.DataSource = _invoiceList;
+        _incidentList = _incidentController.GetOpenTechnicianIncidents(technicianID);
+        incidentDataGridView.DataSource = _incidentList;
       }
       catch (Exception ex)
       {
