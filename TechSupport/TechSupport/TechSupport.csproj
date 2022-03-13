@@ -59,16 +59,13 @@
     <Compile Include="Controls\DisplayOpenIncidentsControl.Designer.cs">
       <DependentUpon>DisplayOpenIncidentsControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="DAL\TechnicianDbDal.cs" />
-    <Compile Include="DAL\ProductDbDal.cs" />
-    <Compile Include="DAL\CustomerDbDal.cs" />
-    <Compile Include="DAL\IncidentDbDal.cs" />
-    <Compile Include="DAL\TechSupportDbConnection.cs" />
+    <Compile Include="Controls\ViewIncidentsByTechnicianControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\ViewIncidentsByTechnicianControl.Designer.cs">
+      <DependentUpon>ViewIncidentsByTechnicianControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="ExtensionMethods.cs" />
-    <Compile Include="Model\Technician.cs" />
-    <Compile Include="Model\Product.cs" />
-    <Compile Include="Model\Customer.cs" />
-    <Compile Include="Model\Incident.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controls\AddIncidentControl.cs">
@@ -95,6 +92,9 @@
     <EmbeddedResource Include="Controls\DisplayOpenIncidentsControl.resx">
       <DependentUpon>DisplayOpenIncidentsControl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Controls\ViewIncidentsByTechnicianControl.resx">
+      <DependentUpon>ViewIncidentsByTechnicianControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -113,6 +113,8 @@
     <EmbeddedResource Include="View\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="Properties\DataSources\TechSupportData.Models.Incident.datasource" />
+    <None Include="Properties\DataSources\TechSupportData.Models.Technician.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -126,6 +128,14 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\TechSupportData\TechSupportData.csproj">
+      <Project>{64602449-91D9-4644-91F7-316D2D4D0F76}</Project>
+      <Name>TechSupportData</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="DAL\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

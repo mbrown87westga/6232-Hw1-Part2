@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using TechSupport.DAL;
-using TechSupport.Model;
+using TechSupportData;
+using TechSupportData.DAL;
+using TechSupportData.Models;
 
 namespace TechSupport.Controller
 {
@@ -58,6 +59,15 @@ namespace TechSupport.Controller
     /// </summary>
     /// <returns>the Technicians</returns>
     public IEnumerable<Technician> GetTechnicians()
+    {
+      return _technicianDbDal.GetTechnicians();
+    }
+
+    /// <summary>
+    /// Gets the Technicians which have incidents from the db
+    /// </summary>
+    /// <returns>the Technicians</returns>
+    public IEnumerable<Technician> GetTechniciansWithIncidents()
     {
       return _technicianDbDal.GetTechnicians();
     }

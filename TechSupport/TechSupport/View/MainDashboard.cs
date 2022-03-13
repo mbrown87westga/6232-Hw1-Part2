@@ -1,4 +1,5 @@
 ﻿using System.Windows.Forms;
+using TechSupportData;
 
 namespace TechSupport.View
 {
