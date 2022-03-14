@@ -72,11 +72,21 @@ namespace TechSupport.Controller
       return _technicianDbDal.GetTechniciansWithIncidents();
     }
 
+    /// <summary>
+    /// Gets the technicians email and phone
+    /// </summary>
+    /// <param name="technicianId">the technician's id</param>
+    /// <returns>the technician with only some fields populated (see above)</returns>
     public Technician GetTechnicianEmailAndPhone(int technicianId)
     {
       return _technicianDbDal.GetTechnicianEmailAndPhone(technicianId);
     }
 
+    /// <summary>
+    /// Gets the open technician's incidents
+    /// </summary>
+    /// <param name="technicianId">the id of the technician to get</param>
+    /// <returns>the incidents as a list</returns>
     public List<Incident> GetOpenTechnicianIncidents(int technicianId)
     {
       return _incidentDbDal.GetOpenTechnicianIncidents(technicianId);

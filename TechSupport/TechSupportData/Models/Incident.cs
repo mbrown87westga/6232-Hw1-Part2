@@ -7,6 +7,9 @@ namespace TechSupportData.Models
   /// </summary>
   public class Incident
   {
+    /// <summary>
+    /// The incident id
+    /// </summary>
     public int IncidentId { get; set; }
     /// <summary>
     /// The product code

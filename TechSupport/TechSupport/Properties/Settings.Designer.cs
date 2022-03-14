@@ -19,6 +19,9 @@ namespace TechSupport.Properties
 
     private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
 
+    /// <summary>
+    /// The default settings
+    /// </summary>
     public static Settings Default
     {
       get

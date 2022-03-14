@@ -12,6 +12,9 @@ using TechSupportData.Models;
 
 namespace TechSupport.Controls
 {
+  /// <summary>
+  /// a control which lets you view incidents by technician
+  /// </summary>
   public partial class ViewIncidentsByTechnicianControl : UserControl
   {
     private readonly IncidentController _incidentController;
@@ -19,6 +22,9 @@ namespace TechSupport.Controls
     private Technician _technician;
     private List<Incident> _incidentList;
 
+    /// <summary>
+    /// the constructor
+    /// </summary>
     public ViewIncidentsByTechnicianControl()
     {
       InitializeComponent();

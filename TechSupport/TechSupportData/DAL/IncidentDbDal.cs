@@ -189,6 +189,11 @@ namespace TechSupportData.DAL
       }
     }
 
+    /// <summary>
+    /// Gets the open technician incidents
+    /// </summary>
+    /// <param name="technicianId">the id of the technician</param>
+    /// <returns>the incidents list</returns>
     public List<Incident> GetOpenTechnicianIncidents(int technicianId)
     {
       List<Incident> incidentList = new List<Incident>();

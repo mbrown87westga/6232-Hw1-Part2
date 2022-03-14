@@ -88,6 +88,11 @@ namespace TechSupportData.DAL
       return technicianList;
     }
 
+    /// <summary>
+    /// gets a technician's email and phone
+    /// </summary>
+    /// <param name="technicianId">the id of teh technician</param>
+    /// <returns>a partially populated technician object</returns>
     public Technician GetTechnicianEmailAndPhone(int technicianId)
     {
       string selectStatement = @"select t.TechID,
