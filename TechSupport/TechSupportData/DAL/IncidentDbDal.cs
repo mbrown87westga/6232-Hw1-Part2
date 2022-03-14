@@ -219,7 +219,7 @@ namespace TechSupportData.DAL
               Incident incident = new Incident
               {
                 ProductCode = reader["ProductCode"].ToString(),
-                DateOpened = (DateTime)reader["DateOpened"],
+                DateOpened = ((DateTime)reader["DateOpened"]).Date,
                 CustomerName = reader["CustomerName"].ToString(),
                 CustomerId = (int)reader["CustomerID"],
                 Technician = reader["TechName"].ToString(),
