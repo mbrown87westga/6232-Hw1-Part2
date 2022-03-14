@@ -194,6 +194,7 @@ namespace TechSupportData.DAL
       List<Incident> incidentList = new List<Incident>();
 
       string selectStatement = @"select i.ProductCode,
+                                        p.[Name] as ProductName,
                                         i.DateOpened,
                                         c.[Name] as CustomerName,
                                         c.CustomerID,
@@ -201,6 +202,7 @@ namespace TechSupportData.DAL
                                         i.Title
                                  from [dbo].[Incidents] i
                                  join [dbo].[Customers] c on i.[CustomerID] = c.[CustomerID]
+                                 join [dbo].[Products] p on i.[ProductCode] = p.[ProductCode]
                                  left join [dbo].[Technicians] t on i.[TechID] = t.[TechID]
                                  where DateClosed is null
                                  and I.TechID = @TechID";
@@ -219,6 +221,7 @@ namespace TechSupportData.DAL
               Incident incident = new Incident
               {
                 ProductCode = reader["ProductCode"].ToString(),
+                ProductName = reader["ProductName"].ToString(),
                 DateOpened = ((DateTime)reader["DateOpened"]).Date,
                 CustomerName = reader["CustomerName"].ToString(),
                 CustomerId = (int)reader["CustomerID"],

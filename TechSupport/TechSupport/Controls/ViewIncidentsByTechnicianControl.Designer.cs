@@ -42,7 +42,6 @@
       this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-      this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
       emailLabel = new System.Windows.Forms.Label();
       phoneLabel = new System.Windows.Forms.Label();
       nameLabel = new System.Windows.Forms.Label();
@@ -128,8 +127,7 @@
             this.dataGridViewTextBoxColumn2,
             this.dataGridViewTextBoxColumn3,
             this.dataGridViewTextBoxColumn6,
-            this.dataGridViewTextBoxColumn9,
-            this.dataGridViewTextBoxColumn10});
+            this.dataGridViewTextBoxColumn9});
       this.incidentDataGridView.DataSource = this.incidentBindingSource;
       this.incidentDataGridView.Location = new System.Drawing.Point(3, 82);
       this.incidentDataGridView.Name = "incidentDataGridView";
@@ -138,20 +136,20 @@
       // 
       // dataGridViewTextBoxColumn2
       // 
-      this.dataGridViewTextBoxColumn2.DataPropertyName = "ProductCode";
-      this.dataGridViewTextBoxColumn2.HeaderText = "ProductCode";
+      this.dataGridViewTextBoxColumn2.DataPropertyName = "ProductName";
+      this.dataGridViewTextBoxColumn2.HeaderText = "Product";
       this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
       // 
       // dataGridViewTextBoxColumn3
       // 
       this.dataGridViewTextBoxColumn3.DataPropertyName = "DateOpened";
-      this.dataGridViewTextBoxColumn3.HeaderText = "DateOpened";
+      this.dataGridViewTextBoxColumn3.HeaderText = "Date Opened";
       this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
       // 
       // dataGridViewTextBoxColumn6
       // 
       this.dataGridViewTextBoxColumn6.DataPropertyName = "CustomerName";
-      this.dataGridViewTextBoxColumn6.HeaderText = "CustomerName";
+      this.dataGridViewTextBoxColumn6.HeaderText = "Customer";
       this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
       // 
       // dataGridViewTextBoxColumn9
@@ -159,12 +157,6 @@
       this.dataGridViewTextBoxColumn9.DataPropertyName = "Title";
       this.dataGridViewTextBoxColumn9.HeaderText = "Title";
       this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
-      // 
-      // dataGridViewTextBoxColumn10
-      // 
-      this.dataGridViewTextBoxColumn10.DataPropertyName = "Description";
-      this.dataGridViewTextBoxColumn10.HeaderText = "Description";
-      this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
       // 
       // ViewIncidentsByTechnicianControl
       // 
@@ -200,6 +192,5 @@
     private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
     private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
     private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
-    private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
   }
 }

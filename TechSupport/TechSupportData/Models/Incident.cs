@@ -13,6 +13,10 @@ namespace TechSupportData.Models
     /// </summary>
     public string ProductCode { get; set; }
     /// <summary>
+    /// The product's name
+    /// </summary>
+    public string ProductName { get; set; }
+    /// <summary>
     /// The date that the incident was opened
     /// </summary>
     public DateTime DateOpened { get; set; }
