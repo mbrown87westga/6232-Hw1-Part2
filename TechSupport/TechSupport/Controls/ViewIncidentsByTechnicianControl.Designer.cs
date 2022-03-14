@@ -85,6 +85,7 @@
       // emailTextBox
       // 
       this.emailTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.technicianBindingSource, "Email", true));
+      this.emailTextBox.Enabled = false;
       this.emailTextBox.Location = new System.Drawing.Point(60, 30);
       this.emailTextBox.Name = "emailTextBox";
       this.emailTextBox.Size = new System.Drawing.Size(340, 20);
@@ -93,6 +94,7 @@
       // phoneTextBox
       // 
       this.phoneTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.technicianBindingSource, "Phone", true));
+      this.phoneTextBox.Enabled = false;
       this.phoneTextBox.Location = new System.Drawing.Point(60, 56);
       this.phoneTextBox.Name = "phoneTextBox";
       this.phoneTextBox.Size = new System.Drawing.Size(156, 20);
@@ -109,6 +111,7 @@
       this.nameComboBox.Size = new System.Drawing.Size(340, 21);
       this.nameComboBox.TabIndex = 6;
       this.nameComboBox.ValueMember = "TechId";
+      this.nameComboBox.SelectedIndexChanged += new System.EventHandler(this.nameComboBox_SelectedIndexChanged);
       // 
       // incidentBindingSource
       // 

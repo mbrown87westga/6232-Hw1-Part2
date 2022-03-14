@@ -46,7 +46,7 @@ namespace TechSupport.Controls
 
     private void getTechnicianData()
     {
-      int technicianID = (int)nameComboBox.SelectedValue;
+      int technicianID = (int)(nameComboBox?.SelectedValue ?? 0);
       try
       {
         _technician = _incidentController.GetTechnicianEmailAndPhone(technicianID);
@@ -60,6 +60,11 @@ namespace TechSupport.Controls
       {
         MessageBox.Show(ex.Message, ex.GetType().ToString());
       }
+    }
+
+    private void nameComboBox_SelectedIndexChanged(object sender, EventArgs e)
+    {
+      this.getTechnicianData();
     }
   }
 }

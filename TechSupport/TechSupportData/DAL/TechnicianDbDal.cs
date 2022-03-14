@@ -59,7 +59,7 @@ namespace TechSupportData.DAL
       List<Technician> technicianList = new List<Technician>();
 
       string selectStatement = @"select distinct t.TechID,
-                                        t.[Name],
+                                        t.[Name]
                                  from [dbo].[Technicians] t
                                  join [dbo].[Incidents] i on t.[TechID] = i.[TechID];";
 
