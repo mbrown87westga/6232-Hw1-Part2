@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using TechSupport.Controller;
-using TechSupportData;
 using TechSupportData.Models;
 
 namespace TechSupport.Controls
