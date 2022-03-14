@@ -38,10 +38,10 @@
       this.nameComboBox = new System.Windows.Forms.ComboBox();
       this.incidentBindingSource = new System.Windows.Forms.BindingSource(this.components);
       this.incidentDataGridView = new System.Windows.Forms.DataGridView();
-      this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-      this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-      this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-      this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+      this.ProductColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+      this.DateOpenedColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+      this.CustomerColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+      this.TitleColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
       emailLabel = new System.Windows.Forms.Label();
       phoneLabel = new System.Windows.Forms.Label();
       nameLabel = new System.Windows.Forms.Label();
@@ -124,39 +124,39 @@
       this.incidentDataGridView.AutoGenerateColumns = false;
       this.incidentDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
       this.incidentDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn2,
-            this.dataGridViewTextBoxColumn3,
-            this.dataGridViewTextBoxColumn6,
-            this.dataGridViewTextBoxColumn9});
+            this.ProductColumn,
+            this.DateOpenedColumn,
+            this.CustomerColumn,
+            this.TitleColumn});
       this.incidentDataGridView.DataSource = this.incidentBindingSource;
       this.incidentDataGridView.Location = new System.Drawing.Point(3, 82);
       this.incidentDataGridView.Name = "incidentDataGridView";
       this.incidentDataGridView.Size = new System.Drawing.Size(548, 248);
       this.incidentDataGridView.TabIndex = 7;
       // 
-      // dataGridViewTextBoxColumn2
+      // ProductColumn
       // 
-      this.dataGridViewTextBoxColumn2.DataPropertyName = "ProductName";
-      this.dataGridViewTextBoxColumn2.HeaderText = "Product";
-      this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+      this.ProductColumn.DataPropertyName = "ProductName";
+      this.ProductColumn.HeaderText = "Product";
+      this.ProductColumn.Name = "ProductColumn";
       // 
-      // dataGridViewTextBoxColumn3
+      // DateOpenedColumn
       // 
-      this.dataGridViewTextBoxColumn3.DataPropertyName = "DateOpened";
-      this.dataGridViewTextBoxColumn3.HeaderText = "Date Opened";
-      this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+      this.DateOpenedColumn.DataPropertyName = "DateOpened";
+      this.DateOpenedColumn.HeaderText = "Date Opened";
+      this.DateOpenedColumn.Name = "DateOpenedColumn";
       // 
-      // dataGridViewTextBoxColumn6
+      // CustomerColumn
       // 
-      this.dataGridViewTextBoxColumn6.DataPropertyName = "CustomerName";
-      this.dataGridViewTextBoxColumn6.HeaderText = "Customer";
-      this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+      this.CustomerColumn.DataPropertyName = "CustomerName";
+      this.CustomerColumn.HeaderText = "Customer";
+      this.CustomerColumn.Name = "CustomerColumn";
       // 
-      // dataGridViewTextBoxColumn9
+      // TitleColumn
       // 
-      this.dataGridViewTextBoxColumn9.DataPropertyName = "Title";
-      this.dataGridViewTextBoxColumn9.HeaderText = "Title";
-      this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
+      this.TitleColumn.DataPropertyName = "Title";
+      this.TitleColumn.HeaderText = "Title";
+      this.TitleColumn.Name = "TitleColumn";
       // 
       // ViewIncidentsByTechnicianControl
       // 
@@ -188,9 +188,9 @@
     private System.Windows.Forms.ComboBox nameComboBox;
     private System.Windows.Forms.BindingSource incidentBindingSource;
     private System.Windows.Forms.DataGridView incidentDataGridView;
-    private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-    private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-    private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
-    private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
+    private System.Windows.Forms.DataGridViewTextBoxColumn ProductColumn;
+    private System.Windows.Forms.DataGridViewTextBoxColumn DateOpenedColumn;
+    private System.Windows.Forms.DataGridViewTextBoxColumn CustomerColumn;
+    private System.Windows.Forms.DataGridViewTextBoxColumn TitleColumn;
   }
 }
