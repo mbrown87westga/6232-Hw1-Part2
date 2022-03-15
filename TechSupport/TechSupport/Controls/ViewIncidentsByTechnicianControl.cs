@@ -28,11 +28,11 @@ namespace TechSupport.Controls
 
     private void ViewIncidentsByTechnicianControl_Load(object sender, EventArgs e)
     {
-      this.getTechnicianList();
-      this.getTechnicianData();
+      this.GetTechnicianList();
+      this.GetTechnicianData();
     }
 
-    private void getTechnicianList()
+    private void GetTechnicianList()
     {
       try
       {
@@ -45,16 +45,16 @@ namespace TechSupport.Controls
       }
     }
 
-    private void getTechnicianData()
+    private void GetTechnicianData()
     {
-      int technicianID = (int)(nameComboBox?.SelectedValue ?? 0);
       try
       {
-        _technician = _incidentController.GetTechnicianEmailAndPhone(technicianID);
+        int technicianId = (int)(nameComboBox?.SelectedValue ?? 0);
+        _technician = _incidentController.GetTechnicianEmailAndPhone(technicianId);
         technicianBindingSource.Clear();
         technicianBindingSource.Add(_technician);
 
-        _incidentList = _incidentController.GetOpenTechnicianIncidents(technicianID);
+        _incidentList = _incidentController.GetOpenTechnicianIncidents(technicianId);
         incidentDataGridView.DataSource = _incidentList;
       }
       catch (Exception ex)
@@ -65,7 +65,7 @@ namespace TechSupport.Controls
 
     private void nameComboBox_SelectedIndexChanged(object sender, EventArgs e)
     {
-      this.getTechnicianData();
+      this.GetTechnicianData();
     }
   }
 }

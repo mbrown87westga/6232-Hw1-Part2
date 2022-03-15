@@ -140,6 +140,7 @@ namespace TechSupportData.DAL
     /// updates an incident in the db
     /// </summary>
     /// <param name="incident">the new values for the incident</param>
+    /// <param name="oldIncident">the old incident</param>
     public int UpdateIncident(Incident incident, Incident oldIncident)
     {
       string updateStatement = @"update [dbo].[Incidents]
