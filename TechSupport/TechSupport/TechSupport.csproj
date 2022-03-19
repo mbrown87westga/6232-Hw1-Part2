@@ -99,6 +99,11 @@
       <DependentUpon>AddIncidentControl.cs</DependentUpon>
     </Compile>
     <Compile Include="SqlServerTypes\Loader.cs" />
+    <Compile Include="TechSupportDataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TechSupportDataSet1.xsd</DependentUpon>
+    </Compile>
     <Compile Include="View\MainDashboard.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -123,6 +128,7 @@
     <EmbeddedResource Include="Controls\ViewIncidentsByTechnicianControl.resx">
       <DependentUpon>ViewIncidentsByTechnicianControl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="OpenAssignedIncidentReport.rdlc" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -153,6 +159,17 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="TechSupportDataSet1.xsc">
+      <DependentUpon>TechSupportDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="TechSupportDataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>TechSupportDataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="TechSupportDataSet1.xss">
+      <DependentUpon>TechSupportDataSet1.xsd</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

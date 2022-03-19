@@ -39,14 +39,16 @@ namespace TechSupport.View
       this.UpdateIncidentControl = new TechSupport.Controls.UpdateIncidentControl();
       this.ViewIncidentsByTechnicianPage = new System.Windows.Forms.TabPage();
       this.ViewIncidentsByTechnicianControl = new TechSupport.Controls.ViewIncidentsByTechnicianControl();
+      this.ReportPage = new System.Windows.Forms.TabPage();
       this.LogoutLink = new System.Windows.Forms.LinkLabel();
       this.LoggedInUserLabel = new System.Windows.Forms.Label();
-      this.ReportPage = new System.Windows.Forms.TabPage();
+      this.openAssingnedIncidentsReportControl1 = new TechSupport.Controls.OpenAssingnedIncidentsReportControl();
       this.MainTabControl.SuspendLayout();
       this.DisplayOpenIncidentsPage.SuspendLayout();
       this.AddIncidentPage.SuspendLayout();
       this.UpdateIncidentPage.SuspendLayout();
       this.ViewIncidentsByTechnicianPage.SuspendLayout();
+      this.ReportPage.SuspendLayout();
       this.SuspendLayout();
       // 
       // MainTabControl
@@ -140,6 +142,16 @@ namespace TechSupport.View
       this.ViewIncidentsByTechnicianControl.Size = new System.Drawing.Size(682, 435);
       this.ViewIncidentsByTechnicianControl.TabIndex = 0;
       // 
+      // ReportPage
+      // 
+      this.ReportPage.Controls.Add(this.openAssingnedIncidentsReportControl1);
+      this.ReportPage.Location = new System.Drawing.Point(4, 22);
+      this.ReportPage.Name = "ReportPage";
+      this.ReportPage.Size = new System.Drawing.Size(702, 455);
+      this.ReportPage.TabIndex = 6;
+      this.ReportPage.Text = "Report";
+      this.ReportPage.UseVisualStyleBackColor = true;
+      // 
       // LogoutLink
       // 
       this.LogoutLink.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -162,14 +174,13 @@ namespace TechSupport.View
       this.LoggedInUserLabel.TabIndex = 4;
       this.LoggedInUserLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
       // 
-      // ReportPage
+      // openAssingnedIncidentsReportControl1
       // 
-      this.ReportPage.Location = new System.Drawing.Point(4, 22);
-      this.ReportPage.Name = "ReportPage";
-      this.ReportPage.Size = new System.Drawing.Size(702, 455);
-      this.ReportPage.TabIndex = 6;
-      this.ReportPage.Text = "Report";
-      this.ReportPage.UseVisualStyleBackColor = true;
+      this.openAssingnedIncidentsReportControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.openAssingnedIncidentsReportControl1.Location = new System.Drawing.Point(0, 0);
+      this.openAssingnedIncidentsReportControl1.Name = "openAssingnedIncidentsReportControl1";
+      this.openAssingnedIncidentsReportControl1.Size = new System.Drawing.Size(702, 455);
+      this.openAssingnedIncidentsReportControl1.TabIndex = 0;
       // 
       // MainDashboard
       // 
@@ -188,6 +199,7 @@ namespace TechSupport.View
       this.AddIncidentPage.ResumeLayout(false);
       this.UpdateIncidentPage.ResumeLayout(false);
       this.ViewIncidentsByTechnicianPage.ResumeLayout(false);
+      this.ReportPage.ResumeLayout(false);
       this.ResumeLayout(false);
       this.PerformLayout();
 
@@ -207,5 +219,6 @@ namespace TechSupport.View
     private ViewIncidentsByTechnicianControl ViewIncidentsByTechnicianControl;
     private System.Windows.Forms.TabPage ViewIncidentsByTechnicianPage;
     private System.Windows.Forms.TabPage ReportPage;
+    private OpenAssingnedIncidentsReportControl openAssingnedIncidentsReportControl1;
   }
 }

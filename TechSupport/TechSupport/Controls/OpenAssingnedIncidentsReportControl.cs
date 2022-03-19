@@ -16,5 +16,11 @@ namespace TechSupport.Controls
     {
       InitializeComponent();
     }
+
+    private void OpenAssingnedIncidentsReportControl_Load(object sender, EventArgs e)
+    {
+      this.openAssignedIncidentsTableAdapter.Fill(this.techSupportDataSet.OpenAssignedIncidents);
+      this.reportViewer.RefreshReport();
+    }
   }
 }
