@@ -6,10 +6,10 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>1.2in</Width>
+              <Width>1.95in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.2in</Width>
+              <Width>1.91875in</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -115,11 +115,14 @@
                               <Value>=Fields!DateOpened.Value</Value>
                               <Style>
                                 <FontWeight>Normal</FontWeight>
+                                <Format>d</Format>
                                 <Color>#333333</Color>
                               </Style>
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>DateOpened</rd:DefaultName>
@@ -190,7 +193,9 @@
                               </Style>
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Left</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox14</rd:DefaultName>
@@ -254,7 +259,7 @@
           <TablixMembers>
             <TablixMember>
               <TablixHeader>
-                <Size>1.2in</Size>
+                <Size>1.60625in</Size>
                 <CellContents>
                   <Textbox Name="Textbox9">
                     <CanGrow>true</CanGrow>
@@ -298,7 +303,7 @@
               <TablixMembers>
                 <TablixMember>
                   <TablixHeader>
-                    <Size>1.2in</Size>
+                    <Size>1.59583in</Size>
                     <CellContents>
                       <Textbox Name="Textbox7">
                         <CanGrow>true</CanGrow>
@@ -404,7 +409,7 @@
                 </SortExpression>
               </SortExpressions>
               <TablixHeader>
-                <Size>1.2in</Size>
+                <Size>1.60625in</Size>
                 <CellContents>
                   <Textbox Name="ProductName">
                     <CanGrow>true</CanGrow>
@@ -455,7 +460,7 @@
                     </SortExpression>
                   </SortExpressions>
                   <TablixHeader>
-                    <Size>1.2in</Size>
+                    <Size>1.59583in</Size>
                     <CellContents>
                       <Textbox Name="IncidentTitle">
                         <CanGrow>true</CanGrow>
@@ -556,7 +561,7 @@
             </TablixMember>
             <TablixMember>
               <TablixHeader>
-                <Size>1.2in</Size>
+                <Size>1.60625in</Size>
                 <CellContents>
                   <Textbox Name="Textbox11">
                     <CanGrow>true</CanGrow>
@@ -592,7 +597,7 @@
               <TablixMembers>
                 <TablixMember>
                   <TablixHeader>
-                    <Size>1.2in</Size>
+                    <Size>1.59583in</Size>
                     <CellContents>
                       <Textbox Name="Textbox12">
                         <CanGrow>true</CanGrow>
@@ -644,7 +649,9 @@
                                     </Style>
                                   </TextRun>
                                 </TextRuns>
-                                <Style />
+                                <Style>
+                                  <TextAlign>Right</TextAlign>
+                                </Style>
                               </Paragraph>
                             </Paragraphs>
                             <rd:DefaultName>Textbox13</rd:DefaultName>
@@ -672,7 +679,7 @@
         <DataSetName>OpenAssignedIncidentDataSet</DataSetName>
         <Top>0.40625in</Top>
         <Height>0.75in</Height>
-        <Width>6.5in</Width>
+        <Width>8.77083in</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -700,9 +707,9 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox28</rd:DefaultName>
-        <Left>1.2in</Left>
+        <Left>1.60625in</Left>
         <Height>0.25in</Height>
-        <Width>4.1in</Width>
+        <Width>5.24583in</Width>
         <ZIndex>1</ZIndex>
         <Style>
           <Border>
@@ -719,7 +726,7 @@
     <Height>1.15625in</Height>
     <Style />
   </Body>
-  <Width>6.5in</Width>
+  <Width>8.77083in</Width>
   <Page>
     <LeftMargin>1in</LeftMargin>
     <RightMargin>1in</RightMargin>
