@@ -41,6 +41,7 @@ namespace TechSupport.View
       this.ViewIncidentsByTechnicianControl = new TechSupport.Controls.ViewIncidentsByTechnicianControl();
       this.LogoutLink = new System.Windows.Forms.LinkLabel();
       this.LoggedInUserLabel = new System.Windows.Forms.Label();
+      this.ReportPage = new System.Windows.Forms.TabPage();
       this.MainTabControl.SuspendLayout();
       this.DisplayOpenIncidentsPage.SuspendLayout();
       this.AddIncidentPage.SuspendLayout();
@@ -57,6 +58,7 @@ namespace TechSupport.View
       this.MainTabControl.Controls.Add(this.AddIncidentPage);
       this.MainTabControl.Controls.Add(this.UpdateIncidentPage);
       this.MainTabControl.Controls.Add(this.ViewIncidentsByTechnicianPage);
+      this.MainTabControl.Controls.Add(this.ReportPage);
       this.MainTabControl.Location = new System.Drawing.Point(0, 6);
       this.MainTabControl.Name = "MainTabControl";
       this.MainTabControl.SelectedIndex = 0;
@@ -160,6 +162,15 @@ namespace TechSupport.View
       this.LoggedInUserLabel.TabIndex = 4;
       this.LoggedInUserLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
       // 
+      // ReportPage
+      // 
+      this.ReportPage.Location = new System.Drawing.Point(4, 22);
+      this.ReportPage.Name = "ReportPage";
+      this.ReportPage.Size = new System.Drawing.Size(702, 455);
+      this.ReportPage.TabIndex = 6;
+      this.ReportPage.Text = "Report";
+      this.ReportPage.UseVisualStyleBackColor = true;
+      // 
       // MainDashboard
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -195,5 +206,6 @@ namespace TechSupport.View
     private UpdateIncidentControl UpdateIncidentControl;
     private ViewIncidentsByTechnicianControl ViewIncidentsByTechnicianControl;
     private System.Windows.Forms.TabPage ViewIncidentsByTechnicianPage;
+    private System.Windows.Forms.TabPage ReportPage;
   }
 }
