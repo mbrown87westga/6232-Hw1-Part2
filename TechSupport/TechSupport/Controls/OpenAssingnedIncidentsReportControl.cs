@@ -10,8 +10,14 @@ using System.Windows.Forms;
 
 namespace TechSupport.Controls
 {
+  /// <summary>
+  /// The report control
+  /// </summary>
   public partial class OpenAssingnedIncidentsReportControl : UserControl
   {
+    /// <summary>
+    /// The default constructor
+    /// </summary>
     public OpenAssingnedIncidentsReportControl()
     {
       InitializeComponent();
