@@ -78,6 +78,11 @@ namespace TechSupport.Controller
     /// <returns>the technician with only some fields populated (see above)</returns>
     public Technician GetTechnicianEmailAndPhone(int technicianId)
     {
+      if (technicianId < 0)
+      {
+        throw new ArgumentException("Technician Id must be > 0.");
+      }
+
       return _technicianDbDal.GetTechnicianEmailAndPhone(technicianId);
     }
 
@@ -88,6 +93,11 @@ namespace TechSupport.Controller
     /// <returns>the incidents as a list</returns>
     public List<Incident> GetOpenTechnicianIncidents(int technicianId)
     {
+      if (technicianId < 0)
+      {
+        throw new ArgumentException("Technician Id must be > 0.");
+      }
+
       return _incidentDbDal.GetOpenTechnicianIncidents(technicianId);
     }
 
