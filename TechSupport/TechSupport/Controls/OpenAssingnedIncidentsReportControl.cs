@@ -19,8 +19,18 @@ namespace TechSupport.Controls
 
     private void OpenAssingnedIncidentsReportControl_Load(object sender, EventArgs e)
     {
+      LoadData();
+    }
+
+    private void LoadData()
+    {
       this.openAssignedIncidentsTableAdapter.Fill(this.techSupportDataSet.OpenAssignedIncidents);
       this.reportViewer.RefreshReport();
+    }
+
+    private void OpenAssingnedIncidentsReportControl_VisibleChanged(object sender, EventArgs e)
+    {
+      LoadData();
     }
   }
 }

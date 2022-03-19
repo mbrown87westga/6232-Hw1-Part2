@@ -29,37 +29,37 @@
     private void InitializeComponent()
     {
       this.components = new System.ComponentModel.Container();
-      Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
-      this.reportViewer = new Microsoft.Reporting.WinForms.ReportViewer();
-      this.techSupportDataSet = new TechSupport.TechSupportDataSet();
+      Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
       this.openAssignedIncidentsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+      this.techSupportDataSet = new TechSupport.TechSupportDataSet();
+      this.reportViewer = new Microsoft.Reporting.WinForms.ReportViewer();
       this.openAssignedIncidentsTableAdapter = new TechSupport.TechSupportDataSetTableAdapters.OpenAssignedIncidentsTableAdapter();
-      ((System.ComponentModel.ISupportInitialize)(this.techSupportDataSet)).BeginInit();
       ((System.ComponentModel.ISupportInitialize)(this.openAssignedIncidentsBindingSource)).BeginInit();
+      ((System.ComponentModel.ISupportInitialize)(this.techSupportDataSet)).BeginInit();
       this.SuspendLayout();
       // 
-      // reportViewer
+      // openAssignedIncidentsBindingSource
       // 
-      this.reportViewer.Dock = System.Windows.Forms.DockStyle.Fill;
-      reportDataSource2.Name = "OpenAssignedIncidentDataSet";
-      reportDataSource2.Value = this.openAssignedIncidentsBindingSource;
-      this.reportViewer.LocalReport.DataSources.Add(reportDataSource2);
-      this.reportViewer.LocalReport.ReportEmbeddedResource = "TechSupport.OpenAssignedIncidentReport.rdlc";
-      this.reportViewer.Location = new System.Drawing.Point(0, 0);
-      this.reportViewer.Name = "reportViewer";
-      this.reportViewer.ServerReport.BearerToken = null;
-      this.reportViewer.Size = new System.Drawing.Size(611, 323);
-      this.reportViewer.TabIndex = 0;
+      this.openAssignedIncidentsBindingSource.DataMember = "OpenAssignedIncidents";
+      this.openAssignedIncidentsBindingSource.DataSource = this.techSupportDataSet;
       // 
       // techSupportDataSet
       // 
       this.techSupportDataSet.DataSetName = "TechSupportDataSet";
       this.techSupportDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
       // 
-      // openAssignedIncidentsBindingSource
+      // reportViewer
       // 
-      this.openAssignedIncidentsBindingSource.DataMember = "OpenAssignedIncidents";
-      this.openAssignedIncidentsBindingSource.DataSource = this.techSupportDataSet;
+      this.reportViewer.Dock = System.Windows.Forms.DockStyle.Fill;
+      reportDataSource1.Name = "OpenAssignedIncidentDataSet";
+      reportDataSource1.Value = this.openAssignedIncidentsBindingSource;
+      this.reportViewer.LocalReport.DataSources.Add(reportDataSource1);
+      this.reportViewer.LocalReport.ReportEmbeddedResource = "TechSupport.OpenAssignedIncidentReport.rdlc";
+      this.reportViewer.Location = new System.Drawing.Point(0, 0);
+      this.reportViewer.Name = "reportViewer";
+      this.reportViewer.ServerReport.BearerToken = null;
+      this.reportViewer.Size = new System.Drawing.Size(611, 323);
+      this.reportViewer.TabIndex = 0;
       // 
       // openAssignedIncidentsTableAdapter
       // 
@@ -73,8 +73,9 @@
       this.Name = "OpenAssingnedIncidentsReportControl";
       this.Size = new System.Drawing.Size(611, 323);
       this.Load += new System.EventHandler(this.OpenAssingnedIncidentsReportControl_Load);
-      ((System.ComponentModel.ISupportInitialize)(this.techSupportDataSet)).EndInit();
+      this.VisibleChanged += new System.EventHandler(this.OpenAssingnedIncidentsReportControl_VisibleChanged);
       ((System.ComponentModel.ISupportInitialize)(this.openAssignedIncidentsBindingSource)).EndInit();
+      ((System.ComponentModel.ISupportInitialize)(this.techSupportDataSet)).EndInit();
       this.ResumeLayout(false);
 
     }
