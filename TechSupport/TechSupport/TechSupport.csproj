@@ -47,6 +47,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controller\IncidentController.cs" />
+    <Compile Include="Controls\OpenAssingnedIncidentsReportControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\OpenAssingnedIncidentsReportControl.Designer.cs">
+      <DependentUpon>OpenAssingnedIncidentsReportControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\UpdateIncidentControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -86,6 +92,9 @@
     <Compile Include="View\LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Controls\OpenAssingnedIncidentsReportControl.resx">
+      <DependentUpon>OpenAssingnedIncidentsReportControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\UpdateIncidentControl.resx">
       <DependentUpon>UpdateIncidentControl.cs</DependentUpon>
     </EmbeddedResource>
