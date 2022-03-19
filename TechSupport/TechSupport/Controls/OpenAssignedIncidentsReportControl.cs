@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace TechSupport.Controls
@@ -13,17 +6,17 @@ namespace TechSupport.Controls
   /// <summary>
   /// The report control
   /// </summary>
-  public partial class OpenAssingnedIncidentsReportControl : UserControl
+  public partial class OpenAssignedIncidentsReportControl : UserControl
   {
     /// <summary>
     /// The default constructor
     /// </summary>
-    public OpenAssingnedIncidentsReportControl()
+    public OpenAssignedIncidentsReportControl()
     {
       InitializeComponent();
     }
 
-    private void OpenAssingnedIncidentsReportControl_Load(object sender, EventArgs e)
+    private void OpenAssignedIncidentsReportControl_Load(object sender, EventArgs e)
     {
       LoadData();
     }
@@ -34,7 +27,7 @@ namespace TechSupport.Controls
       this.reportViewer.RefreshReport();
     }
 
-    private void OpenAssingnedIncidentsReportControl_VisibleChanged(object sender, EventArgs e)
+    private void OpenAssignedIncidentsReportControl_VisibleChanged(object sender, EventArgs e)
     {
       LoadData();
     }

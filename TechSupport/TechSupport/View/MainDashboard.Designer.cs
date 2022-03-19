@@ -42,7 +42,7 @@ namespace TechSupport.View
       this.ReportPage = new System.Windows.Forms.TabPage();
       this.LogoutLink = new System.Windows.Forms.LinkLabel();
       this.LoggedInUserLabel = new System.Windows.Forms.Label();
-      this.openAssingnedIncidentsReportControl = new TechSupport.Controls.OpenAssingnedIncidentsReportControl();
+      this._openAssignedIncidentsReportControl = new TechSupport.Controls.OpenAssignedIncidentsReportControl();
       this.MainTabControl.SuspendLayout();
       this.DisplayOpenIncidentsPage.SuspendLayout();
       this.AddIncidentPage.SuspendLayout();
@@ -144,7 +144,7 @@ namespace TechSupport.View
       // 
       // ReportPage
       // 
-      this.ReportPage.Controls.Add(this.openAssingnedIncidentsReportControl);
+      this.ReportPage.Controls.Add(this._openAssignedIncidentsReportControl);
       this.ReportPage.Location = new System.Drawing.Point(4, 22);
       this.ReportPage.Name = "ReportPage";
       this.ReportPage.Size = new System.Drawing.Size(702, 455);
@@ -174,13 +174,13 @@ namespace TechSupport.View
       this.LoggedInUserLabel.TabIndex = 4;
       this.LoggedInUserLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
       // 
-      // openAssingnedIncidentsReportControl
+      // _openAssignedIncidentsReportControl
       // 
-      this.openAssingnedIncidentsReportControl.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.openAssingnedIncidentsReportControl.Location = new System.Drawing.Point(0, 0);
-      this.openAssingnedIncidentsReportControl.Name = "openAssingnedIncidentsReportControl";
-      this.openAssingnedIncidentsReportControl.Size = new System.Drawing.Size(702, 455);
-      this.openAssingnedIncidentsReportControl.TabIndex = 0;
+      this._openAssignedIncidentsReportControl.Dock = System.Windows.Forms.DockStyle.Fill;
+      this._openAssignedIncidentsReportControl.Location = new System.Drawing.Point(0, 0);
+      this._openAssignedIncidentsReportControl.Name = "_openAssignedIncidentsReportControl";
+      this._openAssignedIncidentsReportControl.Size = new System.Drawing.Size(702, 455);
+      this._openAssignedIncidentsReportControl.TabIndex = 0;
       // 
       // MainDashboard
       // 
@@ -219,6 +219,6 @@ namespace TechSupport.View
     private ViewIncidentsByTechnicianControl ViewIncidentsByTechnicianControl;
     private System.Windows.Forms.TabPage ViewIncidentsByTechnicianPage;
     private System.Windows.Forms.TabPage ReportPage;
-    private OpenAssingnedIncidentsReportControl openAssingnedIncidentsReportControl;
+    private OpenAssignedIncidentsReportControl _openAssignedIncidentsReportControl;
   }
 }

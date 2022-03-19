@@ -1,6 +1,6 @@
 ﻿namespace TechSupport.Controls
 {
-  partial class OpenAssingnedIncidentsReportControl
+  partial class OpenAssignedIncidentsReportControl
   {
     /// <summary> 
     /// Required designer variable.
@@ -65,15 +65,15 @@
       // 
       this.openAssignedIncidentsTableAdapter.ClearBeforeFill = true;
       // 
-      // OpenAssingnedIncidentsReportControl
+      // OpenAssignedIncidentsReportControl
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.Controls.Add(this.reportViewer);
-      this.Name = "OpenAssingnedIncidentsReportControl";
+      this.Name = "OpenAssignedIncidentsReportControl";
       this.Size = new System.Drawing.Size(611, 323);
-      this.Load += new System.EventHandler(this.OpenAssingnedIncidentsReportControl_Load);
-      this.VisibleChanged += new System.EventHandler(this.OpenAssingnedIncidentsReportControl_VisibleChanged);
+      this.Load += new System.EventHandler(this.OpenAssignedIncidentsReportControl_Load);
+      this.VisibleChanged += new System.EventHandler(this.OpenAssignedIncidentsReportControl_VisibleChanged);
       ((System.ComponentModel.ISupportInitialize)(this.openAssignedIncidentsBindingSource)).EndInit();
       ((System.ComponentModel.ISupportInitialize)(this.techSupportDataSet)).EndInit();
       this.ResumeLayout(false);
